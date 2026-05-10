@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink-900: #191919;
+  --ink-700: #3e3a35;
+  --ink-500: #6d665f;
+  --paper-50: #fbf7f2;
+  --paper-100: #f4efe8;
+  --paper-200: #e7dfd5;
+  --accent-500: #c7372f;
+  --accent-600: #a32b24;
+  --accent-700: #8a241e;
+  --ring: #f0c9b8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--paper-50);
+  --color-foreground: var(--ink-900);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper-50);
+  color: var(--ink-900);
+  font-family: var(--font-body), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), "Times New Roman", serif;
+  color: var(--ink-900);
+}
+
+.site-bg {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(199, 55, 47, 0.12), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(25, 25, 25, 0.08), transparent 40%),
+    linear-gradient(180deg, #fbf7f2 0%, #f4efe8 45%, #f0e7dd 100%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(35, 35, 35, 0.08);
+  box-shadow: 0 32px 60px -48px rgba(25, 25, 25, 0.35);
+  backdrop-filter: blur(16px);
+}
+
+.nav-indicator {
+  height: 2px;
+  background: var(--accent-500);
+  border-radius: 999px;
+  position: absolute;
+  bottom: 0;
+  transition: transform 240ms ease, width 240ms ease, opacity 180ms ease;
+}
+
+.nav-link {
+  transition: color 200ms ease;
+}
+
+.nav-link.active {
+  color: var(--accent-600);
+}
+
+.ring-soft {
+  box-shadow: 0 0 0 4px rgba(240, 201, 184, 0.4);
 }

@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services"
+  },
+  "home": {
+    "title": "Architecting calm, modern workspaces",
+    "subtitle": "KYN Partners designs refined interiors with a quiet confidence, balancing craft, function, and brand identity in every detail.",
+    "ctaPrimary": "View Portfolio",
+    "ctaSecondary": "Book a Consultation",
+    "highlightsTitle": "Design with intent",
+    "highlightsBody": "From lobby to boardroom, every surface tells a story of clarity and purpose.",
+    "highlightCards": [
+      {
+        "title": "Spatial Strategy",
+        "body": "Plan zones that feel open yet focused, tuned to the flow of daily work."
+      },
+      {
+        "title": "Materiality",
+        "body": "Layer warm stone, soft textiles, and sculpted lighting for tactile comfort."
+      },
+      {
+        "title": "Brand Presence",
+        "body": "Translate brand values into a space that visitors can instantly feel."
+      }
+    ]
+  },
+  "products": {
+    "title": "Products",
+    "lead": "A curated lineup of furnishings and finishes tailored for premium office environments.",
+    "items": [
+      {
+        "title": "Executive Desks",
+        "body": "Timeless silhouettes in walnut, oak, and matte lacquer finishes."
+      },
+      {
+        "title": "Collaborative Seating",
+        "body": "Soft modular seating built for long-form conversations."
+      },
+      {
+        "title": "Lighting Systems",
+        "body": "Layered lighting that brings calm focus to every workspace."
+      }
+    ]
+  },
+  "services": {
+    "title": "Services",
+    "lead": "End-to-end architectural and interior design support for modern workplaces.",
+    "items": [
+      {
+        "title": "Concept Design",
+        "body": "Moodboards, spatial planning, and vision alignment workshops."
+      },
+      {
+        "title": "Design Development",
+        "body": "Detailed drawings, material selection, and vendor coordination."
+      },
+      {
+        "title": "Build Supervision",
+        "body": "On-site guidance to deliver a flawless, on-brand result."
+      }
+    ]
+  }
+}
