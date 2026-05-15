@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 
-import { getDictionary, hasLocale, locales, type Locale } from "../dictionaries";
+import { getDictionary, hasLocale, locales, type Locale } from "../../dictionaries";
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-export default async function Products({
+export default async function Services({
   params,
 }: {
   params: Promise<{ lang: Locale }>;
@@ -23,18 +23,18 @@ export default async function Products({
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-10 px-6 py-16">
       <header className="flex flex-col gap-4">
         <p className="text-xs font-semibold uppercase tracking-[0.42em] text-zinc-500">
-          Catalog
+          Studio
         </p>
         <h1 className="text-4xl text-zinc-900 sm:text-5xl">
-          {dict.products.title}
+          {dict.services.title}
         </h1>
         <p className="max-w-2xl text-lg text-zinc-600">
-          {dict.products.lead}
+          {dict.services.lead}
         </p>
       </header>
 
       <section className="grid gap-6 md:grid-cols-3">
-        {dict.products.items.map((item) => (
+        {dict.services.items.map((item) => (
           <article
             key={item.title}
             className="rounded-3xl border border-black/5 bg-white/80 p-6 shadow-[0_24px_50px_-40px_rgba(17,24,39,0.4)]"

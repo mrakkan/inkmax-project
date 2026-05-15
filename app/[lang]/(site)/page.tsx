@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getDictionary, hasLocale, locales, type Locale } from "./dictionaries";
+import { getDictionary, hasLocale, locales, type Locale } from "../dictionaries";
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
