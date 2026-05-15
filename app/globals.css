@@ -57,7 +57,7 @@ h6 {
 
 .nav-indicator {
   height: 2px;
-  background: var(--accent-500);
+  background: #a31621;
   border-radius: 999px;
   position: absolute;
   bottom: 0;
@@ -69,7 +69,7 @@ h6 {
 }
 
 .nav-link.active {
-  color: var(--accent-600);
+  color: #a31621;
 }
 
 .ring-soft {
