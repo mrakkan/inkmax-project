@@ -9,7 +9,7 @@ export async function generateStaticParams() {
 export default async function Services({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
 
