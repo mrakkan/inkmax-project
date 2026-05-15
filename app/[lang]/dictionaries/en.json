@@ -5,26 +5,61 @@
     "services": "Services"
   },
   "home": {
-    "title": "Architecting calm, modern workspaces",
-    "subtitle": "KYN Partners designs refined interiors with a quiet confidence, balancing craft, function, and brand identity in every detail.",
-    "ctaPrimary": "View Portfolio",
-    "ctaSecondary": "Book a Consultation",
-    "highlightsTitle": "Design with intent",
-    "highlightsBody": "From lobby to boardroom, every surface tells a story of clarity and purpose.",
-    "highlightCards": [
-      {
-        "title": "Spatial Strategy",
-        "body": "Plan zones that feel open yet focused, tuned to the flow of daily work."
-      },
-      {
-        "title": "Materiality",
-        "body": "Layer warm stone, soft textiles, and sculpted lighting for tactile comfort."
-      },
-      {
-        "title": "Brand Presence",
-        "body": "Translate brand values into a space that visitors can instantly feel."
-      }
-    ]
+    "coreTech": {
+      "title": "Core tech",
+      "items": [
+        {
+          "title": "Agri-Tech",
+          "body": "Develop integrated agriculture solutions from pre- to post-harvest to improve efficiency, reduce loss, and raise value across the supply chain."
+        },
+        {
+          "title": "Food-Tech",
+          "body": "Research and develop ready-to-eat food products with consistent quality standards and scalable commercial production."
+        },
+        {
+          "title": "Bio-Tech",
+          "body": "Apply biotechnology to food and agriculture products to create added value and commercial expansion pathways."
+        }
+      ]
+    },
+    "vision": {
+      "title": "Our Vision",
+      "body": "To become a leader in developing knowledge and intellectual property that drive a sustainable innovation-driven economy."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "body": "To develop and commercialize research, technology, and IP into scalable business models that create tangible economic impact."
+    },
+    "about": {
+      "paragraphs": [
+        "KYN Partners & Co was founded with the vision of becoming an \"Architecture of Innovation\" that transforms knowledge, research, and intellectual property into innovation and business models ready for commercialization.",
+        "The company is rooted in Agri-Food Innovation and specializes in product innovation, IP commercialization, and business model design, combining science, technology, and strategic collaboration to build a connected ecosystem of products, technologies, and partners."
+      ]
+    },
+    "supportedBy": {
+      "title": "Supported By",
+      "items": [
+        {
+          "name": "Mae Fah Luang University",
+          "subtitle": "MAE FAH LUANG UNIVERSITY"
+        },
+        {
+          "name": "NIA",
+          "subtitle": "National Innovation Agency"
+        },
+        {
+          "name": "TED Youth Startup",
+          "subtitle": "YOUTH STARTUP"
+        },
+        {
+          "name": "Experiential Learning Program",
+          "subtitle": "ELP"
+        },
+        {
+          "name": "SiBB"
+        }
+      ]
+    }
   },
   "products": {
     "title": "Products",
@@ -61,5 +96,26 @@
         "body": "On-site guidance to deliver a flawless, on-brand result."
       }
     ]
+  },
+  "footer": {
+    "title": "Contact",
+    "company": "KYN Partners & Co., Ltd.",
+    "headOfficeLabel": "Head Office",
+    "headOffice": "321/12 Charoenprathet Rd., Mueang Chiang Mai, Chiang Mai 50100",
+    "factoryLabel": "Factory",
+    "factory": "321/12 Charoenprathet Rd., Mueang Chiang Mai, Chiang Mai 50100",
+    "socials": [
+      "Social name",
+      "Social name",
+      "Social name",
+      "Social name"
+    ],
+    "form": {
+      "nameLabel": "Sender name",
+      "emailLabel": "Sender email",
+      "subjectLabel": "Subject",
+      "messageLabel": "Message",
+      "submitLabel": "Send email"
+    }
   }
 }
