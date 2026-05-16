@@ -7,13 +7,22 @@
   "home": {
     "hero": {
       "tagline": [],
-      "nav": ["Company", "Products", "OEM", "Overview"],
+      "nav": [
+        "Company",
+        "Products",
+        "OEM",
+        "Overview"
+      ],
       "slides": [
         {
           "id": "hero-1",
           "title": "KYN PARTNERS & CO",
           "subtitle": "ARCHITECTURE OF INNOVATION",
-          "tagline": ["Strategy", "Ventures", "Growth"],
+          "tagline": [
+            "Strategy",
+            "Ventures",
+            "Growth"
+          ],
           "align": "center",
           "image": "/images/corporate-buildings.jpg"
         },
@@ -29,7 +38,10 @@
         {
           "id": "hero-3",
           "title": "End-to-End\nOEM Solutions",
-          "description": ["From idea to delivery...", "we build, you scale."],
+          "description": [
+            "From idea to delivery...",
+            "we build, you scale."
+          ],
           "align": "left",
           "image": "/images/HOME_OEM.png"
         },
@@ -135,9 +147,15 @@
     "overall": {
       "title": "Overall Product",
       "items": [
-        { "title": "Spice Blend" },
-        { "title": "Herbal Infusion" },
-        { "title": "Green Cleanser" }
+        {
+          "title": "Spice Blend"
+        },
+        {
+          "title": "Herbal Infusion"
+        },
+        {
+          "title": "Green Cleanser"
+        }
       ]
     },
     "food": {
@@ -165,55 +183,73 @@
           "size": "Net weight: 60 g",
           "price": "99.00 THB"
         }
-      ]
-    },
-    "itemBlock": {
-      "title": "Item",
-      "lines": [
-        "Product Code: SPG-001",
-        "SKU: 60 g",
-        "Batch: 2026-05"
-      ]
-    },
-    "detailsBlock": {
-      "title": "Details",
-      "lines": [
-        "Net weight: 60 g",
-        "Serving size: 20 g",
-        "Storage: Cool, dry place"
-      ]
-    },
-    "storage": {
-      "title": "Storage & Usage Instructions",
-      "items": [
-        "Store in a dry, cool place away from direct sunlight.",
-        "Seal tightly after opening to preserve aroma.",
-        "Use within 30 days for best flavor."
-      ]
+      ],
+      "itemBlock": {
+        "title": "Item",
+        "lines": [
+          "Product Code: SP060-SP, SP060-MA, SP060-LB",
+          "Packaging Size: 1 pouch or 24 pouches per carton",
+          "Packaging: 300 gsm art paper + aluminum zip-lock pouch",
+          "Shelf Life: 2 years"
+        ]
+      }
     },
     "availableAt": {
       "title": "Available At",
-      "items": ["7-Eleven", "Big C", "Ninno", "Singha Park", "Savkist"]
+      "items": [
+        "7-Eleven",
+        "Big C",
+        "Ninno",
+        "Singha Park",
+        "Savkist"
+      ]
     },
     "trustedBy": {
       "title": "Trusted By",
-      "items": ["A", "B", "C", "D", "E", "F"]
+      "items": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
     },
-    "pet": {
-      "title": "Pet Food Product",
-      "subtitle": "Nutrition-focused recipes tailored for pets.",
+    "postHarvest": {
+      "title": "Agri Food (Postharvest)",
+      "subtitle": "Post-harvest flower preservation products under the KLORA brand,\ndeveloped to extend the shelf life and freshness of cut flowers.",
       "brand": "Klora",
-      "itemTitle": "Klora Pet Treats",
-      "body": "Soft bites with omega-rich ingredients and a gentle aroma.",
-      "size": "Net weight: 90 g"
+      "itemTitle": "Flower Boost Effervescent Powder",
+      "body": "An innovative solution for flower care and restoration that helps maintain freshness and quality for more than 14 days. It reduces microbial buildup in water and prevents blockage in the flower stem’s vascular system, allowing flowers to absorb water and nutrients more efficiently. As a result, flowers remain fresh, vibrant in color, and well-shaped for a longer period. Suitable for various flower types, including orchids, roses, gerberas, carnations, chrysanthemums, and many others.",
+      "size": "Net weight: 60 g (12 sachets per box)",
+      "price": "220.00 THB",
+      "itemBlock": {
+        "title": "Item",
+        "lines": [
+          "Product Code: KL060",
+          "Packaging Size: 1 box (contains 12 sachets)",
+          "Packaging: 300 gsm art paper + aluminum pouch",
+          "Shelf Life: 1 years"
+        ]
+      }
     },
     "agro": {
-      "title": "Agro Product",
-      "subtitle": "Sustainable crop care formulated for growth and resilience.",
-      "brand": "BiOmega",
-      "itemTitle": "BiOmega Nutrient Boost",
-      "body": "Organic nutrient concentrate designed for plant vitality.",
-      "size": "Net weight: 1 L"
+      "title": "Agri Food (Pre harvest)",
+      "subtitle": "Biological supplement products based on endophytic fungi under the BiMega brand,\ndeveloped to enhance nutrient absorption and stimulate plant growth.",
+      "brand": "BiMega",
+      "itemTitle": "Hydrogel-Based Endophytic Fungal Fertilizer",
+      "body": "A biological innovation designed to unlock nutrients in the soil and stimulate root development from within the plant through the activity of endophytic fungi and natural IAA hormones. It enhances nutrient absorption efficiency, strengthens root systems, and supports sustainable crop productivity.",
+      "size": "Net Weight: 500 ml",
+      "price": "800.00 THB",
+      "itemBlock": {
+        "title": "Item",
+        "lines": [
+          "Product Code: BI500",
+          "Packaging Size: 1 bottle",
+          "Packaging: HDPE Plastic Bottle (High Density Polyethylene)",
+          "Shelf Life: 2 years"
+        ]
+      }
     }
   },
   "services": {

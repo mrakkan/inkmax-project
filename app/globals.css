@@ -71,6 +71,10 @@ h6 {
   letter-spacing: 0.02em;
 }
 
+p {
+  font-size: 1rem;
+}
+
 .site-bg {
   background:
     radial-gradient(circle at 15% 15%, rgba(199, 55, 47, 0.12), transparent 45%),
