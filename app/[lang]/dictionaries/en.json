@@ -64,20 +64,89 @@
   "products": {
     "title": "Products",
     "lead": "A curated lineup of furnishings and finishes tailored for premium office environments.",
-    "items": [
-      {
-        "title": "Executive Desks",
-        "body": "Timeless silhouettes in walnut, oak, and matte lacquer finishes."
-      },
-      {
-        "title": "Collaborative Seating",
-        "body": "Soft modular seating built for long-form conversations."
-      },
-      {
-        "title": "Lighting Systems",
-        "body": "Layered lighting that brings calm focus to every workspace."
-      }
-    ]
+    "overall": {
+      "title": "Overall Product",
+      "items": [
+        { "title": "Spice Blend" },
+        { "title": "Herbal Infusion" },
+        { "title": "Green Cleanser" }
+      ]
+    },
+    "food": {
+      "title": "Food Product",
+      "subtitle": "Signature spice blends crafted for bold aroma and balanced heat.",
+      "items": [
+        {
+          "brand": "Savkist",
+          "title": "Ready-to-Cook Spice Blend",
+          "body": "A deep, smoky blend with layered chilies and toasted herbs.",
+          "size": "Net weight: 60 g",
+          "price": "99.00"
+        },
+        {
+          "brand": "Savkist",
+          "title": "Ready-to-Eat Mala Spice",
+          "body": "Bright citrus heat with peppercorn warmth and smooth finish.",
+          "size": "Net weight: 60 g",
+          "price": "99.00"
+        },
+        {
+          "brand": "Savkist",
+          "title": "Ready-to-Cook Lab Spice",
+          "body": "Savory aromatics designed for everyday cooking.",
+          "size": "Net weight: 60 g",
+          "price": "99.00"
+        }
+      ]
+    },
+    "itemBlock": {
+      "title": "Item",
+      "lines": [
+        "Product Code: SPG-001",
+        "SKU: 60 g",
+        "Batch: 2026-05"
+      ]
+    },
+    "detailsBlock": {
+      "title": "Details",
+      "lines": [
+        "Net weight: 60 g",
+        "Serving size: 20 g",
+        "Storage: Cool, dry place"
+      ]
+    },
+    "storage": {
+      "title": "Storage & Usage Instructions",
+      "items": [
+        "Store in a dry, cool place away from direct sunlight.",
+        "Seal tightly after opening to preserve aroma.",
+        "Use within 30 days for best flavor."
+      ]
+    },
+    "availableAt": {
+      "title": "Available At",
+      "items": ["7-Eleven", "Big C", "Ninno", "Singha Park", "Savkist"]
+    },
+    "trustedBy": {
+      "title": "Trusted By",
+      "items": ["A", "B", "C", "D", "E", "F"]
+    },
+    "pet": {
+      "title": "Pet Food Product",
+      "subtitle": "Nutrition-focused recipes tailored for pets.",
+      "brand": "Klora",
+      "itemTitle": "Klora Pet Treats",
+      "body": "Soft bites with omega-rich ingredients and a gentle aroma.",
+      "size": "Net weight: 90 g"
+    },
+    "agro": {
+      "title": "Agro Product",
+      "subtitle": "Sustainable crop care formulated for growth and resilience.",
+      "brand": "BiOmega",
+      "itemTitle": "BiOmega Nutrient Boost",
+      "body": "Organic nutrient concentrate designed for plant vitality.",
+      "size": "Net weight: 1 L"
+    }
   },
   "services": {
     "title": "Services",
