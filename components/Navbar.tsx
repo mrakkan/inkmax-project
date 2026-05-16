@@ -13,6 +13,19 @@ type NavLabels = {
   services: string;
 };
 
+type NavChild = {
+  key: string;
+  href: string;
+  label: string;
+};
+
+type NavLink = {
+  key: string;
+  href: string;
+  label: string;
+  children?: NavChild[];
+};
+
 type NavbarProps = {
   lang: Locale;
   labels: NavLabels;
@@ -58,10 +71,19 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     opacity: 0,
   });
 
-  const navLinks = useMemo(
+  const navLinks = useMemo<NavLink[]>(
     () => [
       { key: "home", href: "/", label: labels.home },
-      { key: "products", href: "/products", label: labels.products },
+      {
+        key: "products",
+        href: "/products",
+        label: labels.products,
+        children: [
+          { key: "product-1", href: "/products/a", label: "Product A" },
+          { key: "product-2", href: "/products/b", label: "Product B" },
+          { key: "product-3", href: "/products/c", label: "Product C" },
+        ],
+      },
       { key: "services", href: "/services", label: labels.services },
     ],
     [labels]
@@ -118,6 +140,44 @@ export default function Navbar({ lang, labels }: NavbarProps) {
             <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
+                if (link.children) {
+                  return (
+                    <div key={link.key} className="group relative">
+                      <Link
+                        href={withLocale(lang, link.href)}
+                        className={`nav-link text-sm text-center font-medium w-15 ${
+                          isActive
+                            ? "active"
+                            : "text-zinc-500 hover:text-[#C61B1B]"
+                        }`}
+                        aria-current={isActive ? "page" : undefined}
+                        ref={(el) => {
+                          linkRefs.current[index] = el;
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                      <div className="absolute left-1/2 top-full z-20 hidden w-44 -translate-x-1/2 pt-4 group-hover:block">
+                        <div className="rounded-lg border border-zinc-100 bg-white py-2 shadow-lg">
+                          {link.children.map((child) => (
+                            <Link
+                              key={child.key}
+                              href={withLocale(lang, child.href)}
+                              className={`block px-4 py-2 text-sm transition ${
+                                basePath === child.href
+                                  ? "text-[#C61B1B]"
+                                  : "text-zinc-600 hover:text-[#C61B1B]"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={link.key}
@@ -195,15 +255,33 @@ export default function Navbar({ lang, labels }: NavbarProps) {
               (link.href === "/" && basePath === "/") ||
               (link.href !== "/" && basePath.startsWith(link.href));
             return (
-              <Link
-                key={link.key}
-                href={withLocale(lang, link.href)}
-                className={`text-sm font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? "text-[#C61B1B]" : "text-zinc-600"
-                }`}
-              >
-                {link.label}
-              </Link>
+              <div key={link.key} className="flex flex-col gap-2">
+                <Link
+                  href={withLocale(lang, link.href)}
+                  className={`text-sm font-semibold uppercase tracking-[0.18em] ${
+                    isActive ? "text-[#C61B1B]" : "text-zinc-600"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+                {link.children ? (
+                  <div className="flex flex-col gap-2 pl-4">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.key}
+                        href={withLocale(lang, child.href)}
+                        className={`text-sm ${
+                          basePath === child.href
+                            ? "text-[#C61B1B]"
+                            : "text-zinc-500"
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             );
           })}
           <div className="flex items-center text-xs font-semibold">
