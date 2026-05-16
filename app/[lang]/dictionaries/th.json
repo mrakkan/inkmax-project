@@ -5,58 +5,126 @@
     "services": "บริการ"
   },
   "home": {
+    "hero": {
+      "tagline": [],
+      "nav": ["Company", "Products", "OEM", "Overview"],
+      "slides": [
+        {
+          "id": "hero-1",
+          "title": "KYN PARTNERS & CO",
+          "subtitle": "ARCHITECTURE OF INNOVATION",
+          "tagline": ["Strategy", "Ventures", "Growth"],
+          "align": "center",
+          "image": "/images/corporate-buildings.jpg"
+        },
+        {
+          "id": "hero-2",
+          "title": "สร้างนวัตกรรม\nเพื่อชีวิตที่ดีขึ้น",
+          "description": [
+            "ผลิตภัณฑ์สุขภาพดี ทางเลือกที่ฉลาดกว่า",
+            "ชุมชนแข็งแรงขึ้น"
+          ],
+          "align": "left"
+        },
+        {
+          "id": "hero-3",
+          "title": "โซลูชัน OEM\nครบวงจร",
+          "description": ["จากไอเดียสู่การส่งมอบ...", "เราสร้าง คุณขยาย"],
+          "align": "left",
+          "image": "/images/HOME_OEM.png"
+        },
+        {
+          "id": "hero-4",
+          "title": "ร่วมกัน\nสร้างอนาคต",
+          "description": [
+            "ร่วมมือ สร้างสรรค์ เติบโต",
+            "เพื่อวันพรุ่งนี้ที่ยั่งยืน"
+          ],
+          "align": "left"
+        }
+      ]
+    },
+    "pillars": {
+      "items": [
+        {
+          "title": "KYN",
+          "body": "การสานเครือข่ายนวัตกรรมเพื่อการเติบโตอย่างยั่งยืน",
+          "imageLabel": "ภาพ"
+        },
+        {
+          "title": "Partners",
+          "body": "เครือข่ายความร่วมมือภาครัฐและเอกชน เพื่อสร้างโอกาสใหม่ร่วมกัน",
+          "imageLabel": "ภาพ"
+        },
+        {
+          "title": "Co-operate",
+          "body": "การทำงานร่วมกับองค์กรในระบบ เพื่อขยายธุรกิจและสร้างการเติบโตที่ยั่งยืน",
+          "imageLabel": "ภาพ"
+        }
+      ]
+    },
     "coreTech": {
       "title": "Core tech",
       "items": [
         {
           "title": "Agri-Tech",
-          "body": "พัฒนาโซลูชันด้านการเกษตรแบบครบวงจร ครอบคลุมตั้งแต่ก่อนและหลังการเก็บเกี่ยว เพื่อเพิ่มประสิทธิภาพ ลดการสูญเสีย และยกระดับมูลค่าในห่วงโซ่อุปทาน"
+          "body": "พัฒนาโซลูชันด้านการเกษตรแบบครบวงจร ครอบคลุมตั้งแต่ก่อนและหลังการเก็บเกี่ยว เพื่อเพิ่มประสิทธิภาพ ลดการสูญเสีย และยกระดับมูลค่าในห่วงโซ่อุปทาน",
+          "imageLabel": "ภาพ"
         },
         {
           "title": "Food-Tech",
-          "body": "วิจัยและพัฒนาผลิตภัณฑ์อาหารสำเร็จรูป ที่ได้มาตรฐาน มุ่งเน้นความสม่ำเสมอของคุณภาพ และรองรับการผลิตเชิงพาณิชย์"
+          "body": "วิจัยและพัฒนาผลิตภัณฑ์อาหารสำเร็จรูป ที่ได้มาตรฐาน มุ่งเน้นความสม่ำเสมอของคุณภาพ และรองรับการผลิตเชิงพาณิชย์",
+          "imageLabel": "ภาพ"
         },
         {
           "title": "Bio-Tech",
-          "body": "ประยุกต์ใช้เทคโนโลยีชีวภาพในการพัฒนาผลิตภัณฑ์ด้านอาหารและการเกษตร เพื่อสร้างมูลค่าเพิ่มและต่อยอดสู่การใช้งานเชิงพาณิชย์"
+          "body": "ประยุกต์ใช้เทคโนโลยีชีวภาพในการพัฒนาผลิตภัณฑ์ด้านอาหารและการเกษตร เพื่อสร้างมูลค่าเพิ่มและต่อยอดสู่การใช้งานเชิงพาณิชย์",
+          "imageLabel": "ภาพ"
         }
       ]
     },
     "vision": {
       "title": "Our Vision",
-      "body": "To become a leader in developing knowledge and intellectual property that drive a sustainable innovation-driven economy."
+      "body": "ก้าวสู่การเป็นผู้นำด้านการพัฒนาองค์ความรู้และทรัพย์สินทางปัญญา เพื่อขับเคลื่อนเศรษฐกิจนวัตกรรมอย่างยั่งยืน"
     },
     "mission": {
       "title": "Our Mission",
-      "body": "To develop and commercialize research, technology, and IP into scalable business models that create tangible economic impact."
+      "body": "พัฒนางานวิจัย เทคโนโลยี และ IP ให้กลายเป็นโมเดลธุรกิจที่ขยายผลได้ สร้างผลกระทบทางเศรษฐกิจอย่างเป็นรูปธรรม"
     },
-    "about": {
-      "paragraphs": [
+    "team": {
+      "title": "KYN Partners & Co",
+      "body": [
         "KYN Partners & Co ก่อตั้งด้วยวิสัยทัศน์ในการเป็น \"Architecture of Innovation\" ที่มุ่งเปลี่ยนองค์ความรู้ งานวิจัย และทรัพย์สินทางปัญญา ให้กลายเป็นนวัตกรรมและโมเดลธุรกิจ ที่สามารถขยายผลเชิงพาณิชย์ได้จริง",
         "บริษัทมีรากฐานจาก Agri-Food Innovation และเชี่ยวชาญด้านการพัฒนานวัตกรรมผลิตภัณฑ์ การต่อยอดทรัพย์สินทางปัญญา และการออกแบบโครงสร้างธุรกิจ โดยผสานองค์ความรู้ด้านวิทยาศาสตร์ เทคโนโลยี และความร่วมมือเชิงกลยุทธ์ เพื่อสร้างระบบนิเวศทางธุรกิจที่เชื่อมโยงผลิตภัณฑ์ เทคโนโลยี และพันธมิตรเข้าด้วยกันอย่างยั่งยืน"
-      ]
+      ],
+      "imageLabel": "ภาพทีม"
     },
     "supportedBy": {
       "title": "Supported By",
       "items": [
         {
-          "name": "มหาวิทยาลัยแม่ฟ้าหลวง",
-          "subtitle": "MAE FAH LUANG UNIVERSITY"
+          "name": "TED Fund",
+          "logoLabel": "TED Fund"
+        },
+        {
+          "name": "Startup Thailand",
+          "logoLabel": "Startup Thailand"
         },
         {
           "name": "NIA",
-          "subtitle": "สำนักงานนวัตกรรมแห่งชาติ"
+          "logoLabel": "NIA"
         },
         {
-          "name": "TED Youth Startup",
-          "subtitle": "YOUTH STARTUP"
+          "name": "มหาวิทยาลัยแม่ฟ้าหลวง",
+          "logoLabel": "Mae Fah Luang University"
         },
         {
           "name": "Experiential Learning Program",
-          "subtitle": "ELP"
+          "logoLabel": "ELP"
         },
         {
-          "name": "SiBB"
+          "name": "SiBB",
+          "logoLabel": "SiBB"
         }
       ]
     }

@@ -5,20 +5,81 @@
     "services": "Services"
   },
   "home": {
+    "hero": {
+      "tagline": [],
+      "nav": ["Company", "Products", "OEM", "Overview"],
+      "slides": [
+        {
+          "id": "hero-1",
+          "title": "KYN PARTNERS & CO",
+          "subtitle": "ARCHITECTURE OF INNOVATION",
+          "tagline": ["Strategy", "Ventures", "Growth"],
+          "align": "center",
+          "image": "/images/corporate-buildings.jpg"
+        },
+        {
+          "id": "hero-2",
+          "title": "Innovating\nBetter Lives",
+          "description": [
+            "Healthier products. Smarter choices.",
+            "Stronger communities."
+          ],
+          "align": "left"
+        },
+        {
+          "id": "hero-3",
+          "title": "End-to-End\nOEM Solutions",
+          "description": ["From idea to delivery...", "we build, you scale."],
+          "align": "left",
+          "image": "/images/HOME_OEM.png"
+        },
+        {
+          "id": "hero-4",
+          "title": "Together,\nWe Create the Future",
+          "description": [
+            "Collaborate. Innovate. Grow.",
+            "For a sustainable tomorrow"
+          ],
+          "align": "left"
+        }
+      ]
+    },
+    "pillars": {
+      "items": [
+        {
+          "title": "KYN",
+          "body": "Cultivating innovation networks for sustainable growth.",
+          "imageLabel": "Image"
+        },
+        {
+          "title": "Partners",
+          "body": "Building collaborative partnerships across sectors to unlock new opportunities.",
+          "imageLabel": "Image"
+        },
+        {
+          "title": "Co-operate",
+          "body": "Working together to scale business impact with shared purpose.",
+          "imageLabel": "Image"
+        }
+      ]
+    },
     "coreTech": {
       "title": "Core tech",
       "items": [
         {
           "title": "Agri-Tech",
-          "body": "Develop integrated agriculture solutions from pre- to post-harvest to improve efficiency, reduce loss, and raise value across the supply chain."
+          "body": "Develop integrated agriculture solutions from pre- to post-harvest to improve efficiency, reduce loss, and raise value across the supply chain.",
+          "imageLabel": "Image"
         },
         {
           "title": "Food-Tech",
-          "body": "Research and develop ready-to-eat food products with consistent quality standards and scalable commercial production."
+          "body": "Research and develop ready-to-eat food products with consistent quality standards and scalable commercial production.",
+          "imageLabel": "Image"
         },
         {
           "title": "Bio-Tech",
-          "body": "Apply biotechnology to food and agriculture products to create added value and commercial expansion pathways."
+          "body": "Apply biotechnology to food and agriculture products to create added value and commercial expansion pathways.",
+          "imageLabel": "Image"
         }
       ]
     },
@@ -30,33 +91,40 @@
       "title": "Our Mission",
       "body": "To develop and commercialize research, technology, and IP into scalable business models that create tangible economic impact."
     },
-    "about": {
-      "paragraphs": [
-        "KYN Partners & Co was founded with the vision of becoming an \"Architecture of Innovation\" that transforms knowledge, research, and intellectual property into innovation and business models ready for commercialization.",
-        "The company is rooted in Agri-Food Innovation and specializes in product innovation, IP commercialization, and business model design, combining science, technology, and strategic collaboration to build a connected ecosystem of products, technologies, and partners."
-      ]
+    "team": {
+      "title": "KYN Partners & Co",
+      "body": [
+        "Founded to become an Architecture of Innovation that transforms knowledge and intellectual property into commercial-ready ventures.",
+        "We integrate science, technology, and strategic collaboration to build an ecosystem of products, technologies, and partners."
+      ],
+      "imageLabel": "Team Image"
     },
     "supportedBy": {
       "title": "Supported By",
       "items": [
         {
-          "name": "Mae Fah Luang University",
-          "subtitle": "MAE FAH LUANG UNIVERSITY"
+          "name": "TED Fund",
+          "logoLabel": "TED Fund"
+        },
+        {
+          "name": "Startup Thailand",
+          "logoLabel": "Startup Thailand"
         },
         {
           "name": "NIA",
-          "subtitle": "National Innovation Agency"
+          "logoLabel": "NIA"
         },
         {
-          "name": "TED Youth Startup",
-          "subtitle": "YOUTH STARTUP"
+          "name": "Mae Fah Luang University",
+          "logoLabel": "Mae Fah Luang University"
         },
         {
           "name": "Experiential Learning Program",
-          "subtitle": "ELP"
+          "logoLabel": "ELP"
         },
         {
-          "name": "SiBB"
+          "name": "SiBB",
+          "logoLabel": "SiBB"
         }
       ]
     }

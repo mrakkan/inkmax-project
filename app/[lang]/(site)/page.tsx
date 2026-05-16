@@ -139,10 +139,44 @@ export default async function Home({
   }
 
   const dict = await getDictionary(lang);
+  const hero = dict.home.hero;
+  const pillars = dict.home.pillars.items;
+  const team = dict.home.team;
 
   return (
     <div className="flex w-full flex-col bg-white">
-      <HeroSlider />
+      <HeroSlider
+        slides={hero.slides}
+        tagline={hero.tagline}
+        navItems={hero.nav}
+      />
+
+      <section className="relative z-10 -mt-14">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="grid gap-8 md:grid-cols-3 md:gap-0">
+            {pillars.map(
+              (item: { title: string; body: string; imageLabel?: string }, index: number) => (
+                <article
+                  key={item.title}
+                  className={`flex flex-col items-center px-6 text-center ${
+                    index > 0 ? "md:border-l md:border-zinc-200" : ""
+                  }`}
+                >
+                  <div className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-zinc-100 text-[10px] uppercase tracking-[0.2em] text-zinc-400 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)]">
+                    {item.imageLabel ?? "Image"}
+                  </div>
+                  <h3 className="mt-6 text-lg font-semibold text-[#A31621]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                    {item.body}
+                  </p>
+                </article>
+              )
+            )}
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-6 py-20 lg:px-10">
         <section className="flex flex-col items-center gap-10">
@@ -151,47 +185,57 @@ export default async function Home({
           </h2>
 
           <div className="grid w-full gap-8 md:grid-cols-3">
-            {dict.home.coreTech.items.map((item: { title: string; body: string }, index: number) => {
-              const theme = coreTechThemes[index];
-              const Icon = theme?.icon ?? LeafIcon;
+            {dict.home.coreTech.items.map(
+              (
+                item: { title: string; body: string; imageLabel?: string },
+                index: number
+              ) => {
+                const theme = coreTechThemes[index];
+                const Icon = theme?.icon ?? LeafIcon;
 
-              return (
-                <article
-                  key={item.title}
-                  className="relative min-h-[360px] overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]"
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: theme?.background,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/40" />
+                return (
+                  <article
+                    key={item.title}
+                    className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]"
+                  >
+                    <div className="relative h-[320px]">
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          backgroundImage: theme?.background,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/50" />
+                      <div className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-white/70">
+                        {item.imageLabel ?? "Image"}
+                      </div>
 
-                  <div className="absolute left-6 top-6">
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-full border border-white/80"
-                      style={{ backgroundColor: theme?.accent ?? "#A31621" }}
-                    >
-                      <Icon className="h-5 w-5 text-white" />
+                      <div className="absolute left-6 top-6">
+                        <div
+                          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/80"
+                          style={{ backgroundColor: theme?.accent ?? "#A31621" }}
+                        >
+                          <Icon className="h-5 w-5 text-white" />
+                        </div>
+                      </div>
+
+                      <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                        <h3 className="text-xl font-semibold">{item.title}</h3>
+                        <p className="mt-3 text-xs leading-relaxed text-white/90">
+                          {item.body}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                    <h3 className="text-xl font-semibold">{item.title}</h3>
-                    <p className="mt-3 text-xs leading-relaxed text-white/90">
-                      {item.body}
-                    </p>
-                  </div>
-                </article>
-              );
-            })}
+                  </article>
+                );
+              }
+            )}
           </div>
         </section>
 
-        <section className="grid gap-12 md:grid-cols-2">
+        <section className="grid items-center gap-10 md:grid-cols-[1fr_auto_1fr]">
           <div className="flex items-center gap-6">
             <div className="flex h-20 w-20 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
               <VisionIcon className="h-9 w-9 text-[#A31621]" />
@@ -205,6 +249,8 @@ export default async function Home({
               </p>
             </div>
           </div>
+
+          <div className="hidden h-20 w-px bg-zinc-200 md:block" />
 
           <div className="flex items-center gap-6">
             <div className="flex h-20 w-20 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
@@ -221,13 +267,25 @@ export default async function Home({
           </div>
         </section>
 
-        <section className="rounded-[32px] bg-[#FFF1F1] px-8 py-12 sm:px-12 sm:py-14">
-          <div className="mx-auto flex max-w-3xl flex-col gap-6 text-sm leading-loose text-zinc-700">
-            {dict.home.about.paragraphs.map(
-              (paragraph: string, index: number) => (
-                <p key={`${index}-${paragraph}`}>{paragraph}</p>
-              )
-            )}
+        <section className="rounded-[32px] bg-gradient-to-r from-[#7a0f14] via-[#b32025] to-[#f36b3a] px-8 py-10 text-white sm:px-12 sm:py-12">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center">
+            <div className="flex h-32 w-full items-center justify-center overflow-hidden rounded-2xl bg-white/15 md:h-36 md:w-[220px]">
+              <img
+                src="/images/Team.png"
+                alt="Team"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-1 flex-col gap-4">
+              <h3 className="text-xl font-semibold sm:text-2xl">
+                {team.title}
+              </h3>
+              {team.body.map((paragraph: string, index: number) => (
+                <p key={`${index}-${paragraph}`} className="text-sm leading-relaxed text-white/90">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -235,18 +293,16 @@ export default async function Home({
           <h2 className="text-2xl font-semibold text-[#A31621]! sm:text-3xl">
             {dict.home.supportedBy.title}
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-10 text-center">
+          <div className="grid w-full gap-6 text-center sm:grid-cols-2 lg:grid-cols-3">
             {dict.home.supportedBy.items.map(
-              (item: { name: string; subtitle?: string }) => (
-                <div key={item.name} className="flex flex-col items-center gap-2">
-                  <span className="text-base font-semibold text-[#8F151A]">
+              (item: { name: string; logoLabel?: string }) => (
+                <div key={item.name} className="flex flex-col items-center gap-3">
+                  <div className="flex h-12 w-32 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-[10px] uppercase tracking-[0.18em] text-zinc-400">
+                    {item.logoLabel ?? item.name}
+                  </div>
+                  <span className="text-xs font-semibold text-zinc-600">
                     {item.name}
                   </span>
-                  {item.subtitle ? (
-                    <span className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                      {item.subtitle}
-                    </span>
-                  ) : null}
                 </div>
               )
             )}
