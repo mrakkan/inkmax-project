@@ -110,13 +110,13 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 lg:px-10">
         <Link href={withLocale(lang, "/")} className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center">
-            <img
-              src="/images/LOGO_COMPANY V2_KYN.png"
-              alt="KYN Partners logo"
-              className="h-20 w-20 object-contain"
-            />
-          </span>
+          <Image
+            src="/logo.png"
+            alt="KYN Partners & Co Ltd."
+            width={144}
+            height={36}
+            priority
+          />
         </Link>
 
         <div className="flex items-center gap-12">
