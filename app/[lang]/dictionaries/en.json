@@ -104,27 +104,28 @@
       "items": [
         {
           "name": "TED Fund",
-          "logoLabel": "TED Fund"
+          "logoLabel": "TED Fund",
+          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
         },
         {
           "name": "Startup Thailand",
-          "logoLabel": "Startup Thailand"
+          "logoLabel": "Startup Thailand",
+          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
           "name": "NIA",
-          "logoLabel": "NIA"
+          "logoLabel": "NIA",
+          "logoSrc": "/home/Supported%20by_LOGO/NIA-logo.png"
         },
         {
           "name": "Mae Fah Luang University",
-          "logoLabel": "Mae Fah Luang University"
+          "logoLabel": "Mae Fah Luang University",
+          "logoSrc": "/home/Supported%20by_LOGO/mfu_LOGO.png"
         },
         {
-          "name": "Experiential Learning Program",
-          "logoLabel": "ELP"
-        },
-        {
-          "name": "SiBB",
-          "logoLabel": "SiBB"
+          "name": "MHESI",
+          "logoLabel": "MHESI",
+          "logoSrc": "/home/Supported%20by_LOGO/%E0%B8%AD%E0%B8%A7.Logo.png"
         }
       ]
     }

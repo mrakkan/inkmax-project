@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -110,17 +109,17 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 lg:px-10">
         <Link href={withLocale(lang, "/")} className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center">
+          <span className="flex h-14 w-44 items-center">
             <img
-              src="/images/LOGO_COMPANY V2_KYN.png"
+              src="/home/LOGO_COMPANY%20V2_KYN.png"
               alt="KYN Partners logo"
-              className="h-20 w-20 object-contain"
+              className="h-12 w-auto object-contain"
             />
           </span>
         </Link>
 
         <div className="flex items-center gap-12">
-          <nav className="hidden md:flex w-">
+          <nav className="hidden md:flex">
             <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
@@ -128,7 +127,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                   <Link
                     key={link.key}
                     href={withLocale(lang, link.href)}
-                    className={`nav-link text-sm text-center font-medium w-15 ${
+                    className={`nav-link text-sm text-center font-medium ${
                       isActive
                         ? "active"
                         : "text-zinc-500 hover:text-[#C61B1B]"
