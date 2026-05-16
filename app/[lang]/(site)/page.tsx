@@ -144,7 +144,7 @@ export default async function Home({
     <div className="flex w-full flex-col bg-white">
       <HeroSlider />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-24 px-6 py-20 lg:px-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-6 py-20 lg:px-10">
         <section className="flex flex-col items-center gap-10">
           <h2 className="text-3xl font-semibold text-[#A31621] sm:text-4xl">
             {dict.home.coreTech.title}

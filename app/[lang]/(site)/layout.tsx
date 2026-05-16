@@ -26,7 +26,7 @@ export default async function SiteLayout({
       <main className="flex flex-1 flex-col">{children}</main>
 
       <footer className="bg-[#A31621] text-white">
-        <div className="mx-auto w-full max-w-6xl px-6 py-12 lg:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
             <div className="flex flex-col gap-6">
               <h3 className="text-lg font-semibold">{dict.footer.title}</h3>

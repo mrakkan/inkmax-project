@@ -20,7 +20,7 @@ export default async function Products({
   const dict = await getDictionary(lang);
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-10 px-6 py-16">
+    <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-10 px-6 py-16">
       <header className="flex flex-col gap-4">
         <p className="text-xs font-semibold uppercase tracking-[0.42em] text-zinc-500">
           Catalog
