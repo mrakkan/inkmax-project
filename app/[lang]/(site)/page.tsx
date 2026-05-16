@@ -146,7 +146,7 @@ export default async function Home({
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-6 py-20 lg:px-10">
         <section className="flex flex-col items-center gap-10">
-          <h2 className="text-3xl font-semibold text-[#A31621] sm:text-4xl">
+          <h2 className="text-3xl font-semibold text-[#A31621]! sm:text-4xl">
             {dict.home.coreTech.title}
           </h2>
 
@@ -197,7 +197,7 @@ export default async function Home({
               <VisionIcon className="h-9 w-9 text-[#A31621]" />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]">
+              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
                 {dict.home.vision.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-700">
@@ -211,7 +211,7 @@ export default async function Home({
               <MissionIcon className="h-9 w-9 text-[#A31621]" />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]">
+              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
                 {dict.home.mission.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-700">
@@ -232,7 +232,7 @@ export default async function Home({
         </section>
 
         <section className="flex flex-col items-center gap-10 pb-6">
-          <h2 className="text-2xl font-semibold text-[#A31621] sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-[#A31621]! sm:text-3xl">
             {dict.home.supportedBy.title}
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-10 text-center">

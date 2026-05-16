@@ -29,7 +29,9 @@ export default async function SiteLayout({
         <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
             <div className="flex flex-col gap-6">
-              <h3 className="text-lg font-semibold">{dict.footer.title}</h3>
+              <h3 className="text-lg font-semibold text-white!">
+                {dict.footer.title}
+              </h3>
               <div className="space-y-3 text-sm leading-relaxed">
                 <p>{dict.footer.company}</p>
                 <p>
@@ -107,7 +109,7 @@ export default async function SiteLayout({
 
               <button
                 type="button"
-                className="mt-2 w-fit rounded-md bg-white px-5 py-2 text-sm font-semibold text-[#A31621] transition hover:bg-white/90"
+                className="mt-2 w-fit rounded-md bg-white px-5 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-white/90"
               >
                 {dict.footer.form.submitLabel}
               </button>

@@ -8,7 +8,7 @@
   --paper-100: #f4efe8;
   --paper-200: #e7dfd5;
   --accent-500: #c7372f;
-  --accent-600: #a32b24;
+  --accent-600: #C61B1B;
   --accent-700: #8a241e;
   --ring: #f0c9b8;
 }
@@ -57,7 +57,7 @@ h6 {
 
 .nav-indicator {
   height: 2px;
-  background: #a31621;
+  background: #C61B1B;
   border-radius: 999px;
   position: absolute;
   bottom: 0;
@@ -69,7 +69,7 @@ h6 {
 }
 
 .nav-link.active {
-  color: #a31621;
+  color: #C61B1B;
 }
 
 .ring-soft {

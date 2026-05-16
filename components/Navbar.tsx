@@ -107,8 +107,8 @@ export default function Navbar({ lang, labels }: NavbarProps) {
           <Image
             src="/logo.png"
             alt="KYN Partners & Co Ltd."
-            width={144}
-            height={36}
+            width={136}
+            height={34}
             priority
           />
         </Link>
@@ -125,7 +125,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                     className={`nav-link text-sm text-center font-medium w-15 ${
                       isActive
                         ? "active"
-                        : "text-zinc-500 hover:text-[#A31621]"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                     ref={(el) => {
@@ -153,8 +153,8 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 href={withLocale("en", basePath)}
                 className={`border-r border-zinc-100 px-3 py-2 transition ${
                   lang === "en"
-                    ? "bg-[#A31621] text-white"
-                    : "text-zinc-500 hover:text-[#A31621]"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
                 }`}
               >
                 EN
@@ -163,8 +163,8 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 href={withLocale("th", basePath)}
                 className={`px-3 py-2 transition ${
                   lang === "th"
-                    ? "bg-[#A31621] text-white"
-                    : "text-zinc-500 hover:text-[#A31621]"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
                 }`}
               >
                 TH
@@ -199,7 +199,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 key={link.key}
                 href={withLocale(lang, link.href)}
                 className={`text-sm font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? "text-[#A31621]" : "text-zinc-600"
+                  isActive ? "text-[#C61B1B]" : "text-zinc-600"
                 }`}
               >
                 {link.label}
@@ -212,8 +212,8 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 href={withLocale("en", basePath)}
                 className={`border-r border-zinc-100 px-3 py-2 transition ${
                   lang === "en"
-                    ? "bg-[#A31621] text-white"
-                    : "text-zinc-500 hover:text-[#A31621]"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
                 }`}
               >
                 EN
@@ -222,8 +222,8 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 href={withLocale("th", basePath)}
                 className={`px-3 py-2 transition ${
                   lang === "th"
-                    ? "bg-[#A31621] text-white"
-                    : "text-zinc-500 hover:text-[#A31621]"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
                 }`}
               >
                 TH
