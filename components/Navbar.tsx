@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -10,6 +11,12 @@ type NavLabels = {
   home: string;
   products: string;
   services: string;
+};
+
+type NavLink = {
+  key: string;
+  href: string;
+  label: string;
 };
 
 type NavbarProps = {
@@ -57,7 +64,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     opacity: 0,
   });
 
-  const navLinks = useMemo(
+  const navLinks = useMemo<NavLink[]>(
     () => [
       { key: "home", href: "/", label: labels.home },
       { key: "products", href: "/products", label: labels.products },
@@ -112,19 +119,19 @@ export default function Navbar({ lang, labels }: NavbarProps) {
           </span>
         </Link>
 
-        <div className="flex items-center gap-10">
-          <nav className="hidden md:flex">
-            <div ref={navRef} className="relative flex items-center gap-6 pb-2">
+        <div className="flex items-center gap-12">
+          <nav className="hidden md:flex w-">
+            <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <Link
                     key={link.key}
                     href={withLocale(lang, link.href)}
-                    className={`nav-link text-[11px] font-semibold uppercase tracking-[0.22em] ${
+                    className={`nav-link text-sm text-center font-medium w-15 ${
                       isActive
                         ? "active"
-                        : "text-zinc-500 hover:text-[#A31621]"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                     ref={(el) => {
@@ -138,7 +145,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
               <span
                 className="nav-indicator"
                 style={{
-                  transform: `translateX(${indicator.left}px)`,
+                  transform: `translateX(${indicator.left}px) translateY(6px)`,
                   width: `${indicator.width}px`,
                   opacity: indicator.opacity,
                 }}
@@ -146,33 +153,36 @@ export default function Navbar({ lang, labels }: NavbarProps) {
             </div>
           </nav>
 
-          <div className="hidden items-center gap-2 text-[11px] font-semibold md:flex">
-            <Link
-              href={withLocale("en", basePath)}
-              className={`px-2 py-1 transition ${
-                lang === "en"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              EN
-            </Link>
-            <span className="text-zinc-300">|</span>
-            <Link
-              href={withLocale("th", basePath)}
-              className={`rounded-sm px-2 py-1 transition ${
-                lang === "th"
-                  ? "bg-[#A31621] text-white"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              TH
-            </Link>
+          <div className="hidden items-center text-xs font-semibold md:flex">
+            <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm ">
+              <Link
+                href={withLocale("en", basePath)}
+                scroll={false}
+                className={`border-r border-zinc-100 px-3 py-2 transition ${
+                  lang === "en"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                EN
+              </Link>
+              <Link
+                href={withLocale("th", basePath)}
+                scroll={false}
+                className={`px-3 py-2 transition ${
+                  lang === "th"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                TH
+              </Link>
+            </div>
           </div>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md border border-zinc-200 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-600 md:hidden"
+            className="inline-flex items-center justify-center rounded-md border border-zinc-100 shadow-sm px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 md:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"
@@ -197,34 +207,38 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                 key={link.key}
                 href={withLocale(lang, link.href)}
                 className={`text-sm font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? "text-[#A31621]" : "text-zinc-600"
+                  isActive ? "text-[#C61B1B]" : "text-zinc-600"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="flex items-center gap-3 text-xs font-semibold">
-            <Link
-              href={withLocale("en", basePath)}
-              className={`${
-                lang === "en"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              EN
-            </Link>
-            <Link
-              href={withLocale("th", basePath)}
-              className={`${
-                lang === "th"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              TH
-            </Link>
+          <div className="flex items-center text-xs font-semibold">
+            <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm">
+              <Link
+                href={withLocale("en", basePath)}
+                scroll={false}
+                className={`border-r border-zinc-100 px-3 py-2 transition ${
+                  lang === "en"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                EN
+              </Link>
+              <Link
+                href={withLocale("th", basePath)}
+                scroll={false}
+                className={`px-3 py-2 transition ${
+                  lang === "th"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                TH
+              </Link>
+            </div>
           </div>
         </div>
       </div>

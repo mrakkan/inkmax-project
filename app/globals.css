@@ -8,9 +8,10 @@
   --paper-100: #f4efe8;
   --paper-200: #e7dfd5;
   --accent-500: #c7372f;
-  --accent-600: #a32b24;
+  --accent-600: #C61B1B;
   --accent-700: #8a241e;
   --ring: #f0c9b8;
+  --primary: #C61B1B;
 }
 
 @theme inline {
@@ -39,6 +40,35 @@ h5,
 h6 {
   font-family: var(--font-display), "Times New Roman", serif;
   color: var(--ink-900);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 2vw + 1.5rem, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 1.5vw + 1.25rem, 2.25rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
 }
 
 .site-bg {
@@ -57,7 +87,7 @@ h6 {
 
 .nav-indicator {
   height: 2px;
-  background: #a31621;
+  background: #C61B1B;
   border-radius: 999px;
   position: absolute;
   bottom: 0;
@@ -69,7 +99,7 @@ h6 {
 }
 
 .nav-link.active {
-  color: #a31621;
+  color: #C61B1B;
 }
 
 .ring-soft {
