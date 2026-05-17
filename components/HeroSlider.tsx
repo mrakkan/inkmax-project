@@ -68,6 +68,22 @@ export default function HeroSlider({
     return () => window.clearInterval(timer);
   }, [activeIndex, totalSlides]);
 
+  useEffect(() => {
+    if (totalSlides < 2) {
+      return;
+    }
+
+    const nextIndex = (activeIndex + 1) % totalSlides;
+    const nextImage = normalizedSlides[nextIndex]?.image;
+
+    if (!nextImage) {
+      return;
+    }
+
+    const img = new window.Image();
+    img.src = nextImage;
+  }, [activeIndex, normalizedSlides, totalSlides]);
+
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
@@ -90,33 +106,48 @@ export default function HeroSlider({
 
   return (
     <section className="relative min-h-screen min-h-[100svh] w-full overflow-hidden bg-white">
-      {normalizedSlides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-[1200ms] ${
-            index === activeIndex ? "opacity-100" : "opacity-0"
-          }`}
-          aria-hidden={index !== activeIndex}
-        >
+      {normalizedSlides.map((slide, index) => {
+        const prevIndex = (activeIndex - 1 + totalSlides) % totalSlides;
+        const nextIndex = (activeIndex + 1) % totalSlides;
+        const shouldLoadImage =
+          index === activeIndex || index === prevIndex || index === nextIndex;
+
+        return (
           <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: slide.image
-                ? `linear-gradient(120deg, rgba(255, 195, 195, 0.28) 0%, rgba(243, 140, 140, 0.38) 45%, rgba(255, 195, 160, 0.5) 100%), url('${slide.image}')`
-                : slide.background ?? DEFAULT_GRADIENT,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
-            }}
-          />
-        </div>
-      ))}
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-[1200ms] ${
+              index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden={index !== activeIndex}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: slide.background ?? DEFAULT_GRADIENT,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+            {slide.image && shouldLoadImage ? (
+              <img
+                src={slide.image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+                decoding="async"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+              />
+            ) : null}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(255,245,245,0.88) 0%, rgba(255,228,228,0.72) 34%, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
+              }}
+            />
+          </div>
+        );
+      })}
 
       {normalizedSlides.map((slide, index) => {
         if (index !== activeIndex) {
