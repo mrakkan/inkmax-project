@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import Navbar from "@/components/Navbar";
@@ -29,11 +30,11 @@ export default async function SiteLayout({
       <footer className="bg-[#A31621] text-white">
         <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               <h3 className="text-lg font-semibold text-white!">
                 {dict.footer.title}
               </h3>
-              <div className="space-y-3 text-sm leading-relaxed">
+              <div className="space-y-3 text-base leading-relaxed">
                 <p>{dict.footer.company}</p>
                 <p>
                   <span className="font-semibold">
@@ -49,15 +50,50 @@ export default async function SiteLayout({
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-2">
-                {dict.footer.socials.map((item: string, index: number) => (
-                  <div
-                    key={`${item}-${index}`}
-                    className="flex items-center gap-3 text-sm"
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {[
+                  {
+                    key: "mail",
+                    label: "Mail",
+                    href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@kynpartners.co",
+                    src: "/contact/Mail.png",
+                  },
+                  {
+                    key: "facebook",
+                    label: "Facebook",
+                    href: "https://www.facebook.com/profile.php?id=61567969809756",
+                    src: "/contact/Facebook.png",
+                  },
+                  {
+                    key: "linkedin",
+                    label: "LinkedIn",
+                    href: "https://www.linkedin.com/company/grand-sp-siam-co-ltd/",
+                    src: "/contact/Linkedin.png",
+                  },
+                  {
+                    key: "line",
+                    label: "Line OA",
+                    href: "https://line.me/R/ti/p/@294tvolg",
+                    src: "/contact/LineOA.png",
+                  },
+                ].map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.label}
+                    title={item.label}
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full shadow-sm transition hover:shadow-md"
                   >
-                    <span className="h-8 w-8 rounded-full bg-white/20" />
-                    <span>{item}</span>
-                  </div>
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      width={48}
+                      height={48}
+                      className="h-12 w-12"
+                    />
+                  </a>
                 ))}
               </div>
             </div>
