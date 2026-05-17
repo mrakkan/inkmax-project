@@ -25,6 +25,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 48px;
+}
+
+html:has(:target) {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--paper-50);
   color: var(--ink-900);

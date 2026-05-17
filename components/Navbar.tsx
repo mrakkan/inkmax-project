@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import type { Locale } from "@/app/[lang]/dictionaries";
 
@@ -82,6 +82,34 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     return basePath.startsWith(link.href);
   });
 
+  const scrollToTop = () => {
+    const root = document.scrollingElement ?? document.documentElement;
+    root.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  const handleNavClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    link: NavLink,
+    deferScroll = false
+  ) => {
+    if (link.href === "/products" && basePath.startsWith("/products")) {
+      event.preventDefault();
+      if (window.location.hash) {
+        const cleanUrl = withLocale(lang, link.href);
+        window.history.replaceState(null, "", cleanUrl);
+      }
+      if (deferScroll) {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(scrollToTop);
+        });
+      } else {
+        scrollToTop();
+      }
+    }
+  };
+
   useEffect(() => {
     const updateIndicator = () => {
       const activeEl = linkRefs.current[activeIndex];
@@ -135,6 +163,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                     ref={(el) => {
                       linkRefs.current[index] = el;
                     }}
+                    onClick={(event) => handleNavClick(event, link)}
                   >
                     {link.label}
                   </Link>
@@ -231,7 +260,10 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                     className={`text-sm font-semibold uppercase tracking-[0.18em] ${
                       isActive ? "text-[#C61B1B]" : "text-zinc-600"
                     }`}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(event) => {
+                      handleNavClick(event, link, true);
+                      setMenuOpen(false);
+                    }}
                   >
                     {link.label}
                   </Link>

@@ -32,7 +32,7 @@ export default async function Products({
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 px-6 py-16">
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 px-6 py-8 lg:py-16">
       <section className="text-center">
         <h2 className="text-(--primary)!">
           Overall Products
@@ -42,19 +42,23 @@ export default async function Products({
             {
               src: "/product/Product Poster_SVARIEST_KYN.png",
               alt: "Product Poster SVARIEST",
+              href: "#food",
             },
             {
               src: "/product/Product Poster_KLORA_KYN.png",
               alt: "Product Poster KLORA",
+              href: "#postharvest",
             },
             {
               src: "/product/Product Poster_BIMEGA_KYN.png",
               alt: "Product Poster BIMEGA",
+              href: "#preharvest",
             },
           ].map((item) => (
-            <div
+            <a
               key={item.src}
-              className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm"
+              href={item.href}
+              className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               <Image
                 src={item.src}
@@ -64,12 +68,15 @@ export default async function Products({
                 className="h-auto w-full"
                 sizes="(min-width: 640px) 33vw, 100vw"
               />
-            </div>
+            </a>
           ))}
         </div>
       </section>
 
-      <section className="text-center flex flex-col items-center gap-4">
+      <section
+        id="food"
+        className="scroll-mt-12 text-center flex flex-col items-center gap-4"
+      >
         <h3 className="text-(--primary)!">
           Food Products
         </h3>
@@ -178,6 +185,7 @@ export default async function Products({
               frame: "h-24 w-36",
               fit: "object-cover",
               position: "object-center",
+              scale: "",
             },
             {
               src: "/product/logo/INNO STORE.png",
@@ -185,6 +193,7 @@ export default async function Products({
               frame: "h-24 w-48",
               fit: "object-cover",
               position: "object-[50%_55%]",
+              scale: "",
             },
             {
               src: "/product/logo/SINGHA PARK.png",
@@ -192,7 +201,7 @@ export default async function Products({
               frame: "h-12 w-76",
               fit: "object-cover",
               position: "object-center",
-              scale: "scale-125"
+              scale: "scale-125",
             },
           ].map((logo) => (
             <div
@@ -203,8 +212,8 @@ export default async function Products({
                 src={logo.src}
                 alt={logo.alt}
                 fill
-                className={`${logo.fit} ${logo.position ?? ""}`}
-                sizes="(min-width: 1024px) 180px, 140px"
+                className={`${logo.fit} ${logo.position}`}
+                sizes="(min-width: 1024px) 200px, 160px"
               />
             </div>
           ))}
@@ -250,7 +259,7 @@ export default async function Products({
           ].map((logo) => (
             <div
               key={logo.src}
-              className={`relative overflow-hidden ${logo.frame} ${logo.scale}`}
+              className={`relative overflow-hidden ${logo.frame}`}
             >
               <Image
                 src={logo.src}
@@ -264,7 +273,10 @@ export default async function Products({
         </div>
       </section>
 
-      <section className="text-center flex flex-col items-center gap-4">
+      <section
+        id="postharvest"
+        className="scroll-mt-12 text-center flex flex-col items-center gap-4"
+      >
         <h3 className="text-[#033D67]!">
           Agri Food (Postharvest)
         </h3>
@@ -350,7 +362,10 @@ export default async function Products({
         </div>
       </section>
 
-      <section className="text-center flex flex-col items-center gap-4">
+      <section
+        id="preharvest"
+        className="scroll-mt-12 text-center flex flex-col items-center gap-4"
+      >
         <h3 className="text-[#137C17]!">
           Agri Food (Preharvest)
         </h3>
