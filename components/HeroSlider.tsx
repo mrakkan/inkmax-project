@@ -142,7 +142,7 @@ export default function HeroSlider({
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(255,245,245,0.88) 0%, rgba(255,228,228,0.72) 34%, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
+                  "linear-gradient(180deg, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
               }}
             />
           </div>
