@@ -89,7 +89,7 @@ export default function HeroSlider({
   };
 
   return (
-    <section className="relative h-[360px] w-full overflow-hidden bg-white sm:h-[480px] lg:h-[560px]">
+    <section className="relative min-h-screen min-h-[100svh] w-full overflow-hidden bg-white">
       {normalizedSlides.map((slide, index) => (
         <div
           key={slide.id}
@@ -108,7 +108,13 @@ export default function HeroSlider({
               backgroundPosition: "center",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/35" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
+            }}
+          />
         </div>
       ))}
 
@@ -124,7 +130,7 @@ export default function HeroSlider({
         return (
           <div key={`${slide.id}-content`} className="absolute inset-0 flex items-center px-6">
             <div
-              className={`flex w-full flex-col text-white ${
+              className={`flex w-full flex-col text-[#8b1419] ${
                 isLeft ? "items-center" : "items-center text-center"
               }`}
             >
@@ -134,7 +140,7 @@ export default function HeroSlider({
                 }`}
               >
                 {showLogo ? (
-                  <div className="mb-4 flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32 lg:h-40 lg:w-40">
+                  <div className="mb-4 flex h-50 w-50 items-center justify-center sm:h-32 sm:w-32 lg:h-50 lg:w-50">
                     <img
                       src="/logo/LOGO_COMPANY_KYN.png"
                       alt="KYN logo"
@@ -146,13 +152,13 @@ export default function HeroSlider({
                   {renderLines(slide.title)}
                 </h1>
                 {slide.subtitle ? (
-                  <p className="mt-3 text-[clamp(0.65rem,1.4vw,1rem)] uppercase tracking-[0.3em] text-white/90">
+                  <p className="mt-3 text-[clamp(0.65rem,1.4vw,1rem)] uppercase tracking-[0.3em] text-[#8b1419]/75">
                     {renderLines(slide.subtitle)}
                   </p>
                 ) : null}
 
                 {slide.description && slide.description.length > 0 ? (
-                  <div className="mt-4 text-[clamp(0.9rem,1.6vw,1.1rem)] leading-relaxed text-white/90">
+                  <div className="mt-4 text-[clamp(0.9rem,1.6vw,1.1rem)] leading-relaxed text-[#8b1419]/75">
                     {slide.description.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -160,12 +166,12 @@ export default function HeroSlider({
                 ) : null}
 
                 {slideTagline && slideTagline.length > 0 ? (
-                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
+                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-[#8b1419]/65 sm:text-[11px]">
                     {slideTagline.map((item, itemIndex) => (
                       <span key={item} className="flex items-center gap-3">
                         {item}
                         {itemIndex < slideTagline.length - 1 ? (
-                          <span className="h-1 w-1 rounded-full bg-white/70" />
+                          <span className="h-1 w-1 rounded-full bg-[#8b1419]/35" />
                         ) : null}
                       </span>
                     ))}
@@ -180,7 +186,7 @@ export default function HeroSlider({
       <button
         type="button"
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 text-white/80 transition hover:text-white"
+        className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-black/45 transition hover:text-black/70"
         onClick={handlePrev}
       >
         <svg
@@ -199,7 +205,7 @@ export default function HeroSlider({
       <button
         type="button"
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 text-white/80 transition hover:text-white"
+        className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-black/45 transition hover:text-black/70"
         onClick={handleNext}
       >
         <svg
@@ -216,7 +222,7 @@ export default function HeroSlider({
         </svg>
       </button>
 
-      <div className="absolute bottom-20 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3">
+      <div className="absolute bottom-16 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3">
         <div className="flex items-center gap-2">
           {normalizedSlides.map((slide, index) => (
             <button
@@ -225,15 +231,15 @@ export default function HeroSlider({
               aria-label={`Go to slide ${index + 1}`}
               className={`h-2 w-2 rounded-full transition ${
                 index === activeIndex
-                  ? "scale-125 bg-white"
-                  : "bg-white/50"
+                  ? "scale-125 bg-black/55"
+                  : "bg-black/20"
               }`}
               onClick={() => setActiveIndex(index)}
             />
           ))}
         </div>
         {navItems.length > 0 ? (
-          <div className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-white/75">
+          <div className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-[#8b1419]/55">
             {navItems.map((item, index) => (
               <span key={`${item}-${index}`}>{item}</span>
             ))}

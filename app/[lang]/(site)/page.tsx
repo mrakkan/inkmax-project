@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import HeroSlider from "@/components/HeroSlider";
+import MotionReveal from "@/components/MotionReveal";
 
 import { getDictionary, hasLocale, locales } from "../dictionaries";
 
@@ -87,59 +88,68 @@ export default async function Home({
         navItems={hero.nav}
       />
 
-      <section className="relative z-10 -mt-14">
+      <section className="relative z-10">
         <div className="mx-auto w-full max-w-6xl px-6">
-          <div className=" py-12">
-            <div className="grid gap-10 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
-              {pillars.map(
-                (
-                  item: { title: string; body: string; imageLabel?: string },
-                  index: number
-                ) => [
-                  <article
-                    key={`${item.title}-item`}
-                    className="flex flex-col items-center px-6 text-center"
-                  >
-                    <div className="flex h-44 w-44 items-center justify-center overflow-hidden rounded-full bg-white  md:-mt-16 sm:h-48 sm:w-48">
-                      {pillarImages[index] ? (
-                        <img
-                          src={pillarImages[index]}
-                          alt={item.title}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
-                          {item.imageLabel ?? "Image"}
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-7 w-full max-w-[240px] text-center md:text-left">
-                      <h3 className="text-4xl font-semibold leading-[1.05] tracking-tight text-[#8b1419] sm:text-5xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-4 text-[13px] leading-relaxed text-zinc-500">
-                        {item.body}
-                      </p>
-                    </div>
-                  </article>,
+          <MotionReveal>
+            <div className="py-12">
+              <div className="grid gap-10 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
+                {pillars.map(
+                  (
+                    item: { title: string; body: string; imageLabel?: string },
+                    index: number
+                  ) => [
+                    <article
+                      key={`${item.title}-item`}
+                      className="flex flex-col items-center px-6 text-center"
+                    >
+                      <div className="flex h-44 w-44 items-center justify-center overflow-hidden rounded-full bg-white md:-mt-16 sm:h-48 sm:w-48">
+                        {pillarImages[index] ? (
+                          <img
+                            src={pillarImages[index]}
+                            alt={item.title}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+                            {item.imageLabel ?? "Image"}
+                          </span>
+                        )}
+                      </div>
+                      <MotionReveal delayMs={index * 100}>
+                        <div className="mt-7 w-full max-w-[240px] text-center md:text-left">
+                          <h3 className="text-4xl font-semibold leading-[1.05] tracking-tight text-[#8b1419] sm:text-5xl">
+                            {item.title}
+                          </h3>
+                          <p className="mt-4 text-[13px] leading-relaxed text-zinc-500">
+                            {item.body}
+                          </p>
+                        </div>
+                      </MotionReveal>
+                    </article>,
 
-                  index < pillars.length - 1 ? (
-                    <div key={`${item.title}-sep`} className="hidden md:flex md:justify-center">
-                      <div className="mt-24 h-24 w-px bg-zinc-200" />
-                    </div>
-                  ) : null,
-                ]
-              )}
+                    index < pillars.length - 1 ? (
+                      <div
+                        key={`${item.title}-sep`}
+                        className="hidden md:flex md:justify-center"
+                      >
+                        <div className="mt-24 h-24 w-px bg-zinc-200" />
+                      </div>
+                    ) : null,
+                  ]
+                )}
+              </div>
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </section>
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-6 py-20 lg:px-10">
         <section className="flex flex-col items-center gap-10">
-          <h2 className="text-3xl font-semibold text-(--primary)! sm:text-4xl">
-            {dict.home.coreTech.title}
-          </h2>
+          
+            <h2 className="text-3xl font-semibold text-(--primary)! sm:text-4xl">
+              {dict.home.coreTech.title}
+            </h2>
+          
 
           <div className="grid w-full justify-items-center gap-8 md:grid-cols-3">
             {dict.home.coreTech.items.map(
@@ -156,74 +166,72 @@ export default async function Home({
                 const accent = theme?.accent ?? "#A31621";
 
                 return (
-                  <div
-                    key={item.title}
-                    className="card-fade relative mx-auto w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]"
-                    style={{ animationDelay: `${index * 120}ms` }}
-                  >
-                    <article className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]">
-                      <div className="relative h-[400px] lg:h-[420px]">
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            backgroundImage,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        />
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background: `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, ${hexToRgba(
-                              accent,
-                              0.28
-                            )} 52%, ${hexToRgba(accent, 0.88)} 100%)`,
-                          }}
-                        />
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background:
-                              "radial-gradient(circle at 24% 18%, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 22%, transparent 55%)",
-                          }}
-                        />
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background: `linear-gradient(140deg, ${hexToRgba(
-                              accent,
-                              0.35
-                            )} 0%, rgba(0,0,0,0.05) 34%, rgba(0,0,0,0.45) 100%)`,
-                          }}
-                        />
-                        {!imageSrc ? (
-                          <div className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-white/70">
-                            {item.imageLabel ?? "Image"}
-                          </div>
-                        ) : null}
+                  
+                    <div className="relative mx-auto w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]">
+                      <article className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]">
+                        <div className="relative h-[420px] min-h-[420px] lg:h-[460px]">
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              backgroundImage,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          />
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background: `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, ${hexToRgba(
+                                accent,
+                                0.28
+                              )} 52%, ${hexToRgba(accent, 0.88)} 100%)`,
+                            }}
+                          />
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background:
+                                "radial-gradient(circle at 24% 18%, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 22%, transparent 55%)",
+                            }}
+                          />
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background: `linear-gradient(140deg, ${hexToRgba(
+                                accent,
+                                0.35
+                              )} 0%, rgba(0,0,0,0.05) 34%, rgba(0,0,0,0.45) 100%)`,
+                            }}
+                          />
+                          {!imageSrc ? (
+                            <div className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-white/70">
+                              {item.imageLabel ?? "Image"}
+                            </div>
+                          ) : null}
 
-                        <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-white">
-                          <h3 className="text-xl font-semibold">{item.title}</h3>
-                          <p className="mt-3 text-xs leading-relaxed text-white/90">
-                            {item.body}
-                          </p>
+                          <div className="absolute inset-x-0 bottom-0 z-10 p-7 text-white">
+                            <h3 className="text-2xl font-semibold">{item.title}</h3>
+                            <p className="mt-4 text-sm leading-relaxed text-white/90">
+                              {item.body}
+                            </p>
+                          </div>
+                        </div>
+                      </article>
+
+                      <div className="absolute -left-5 -top-5 z-20">
+                        <div
+                          className="flex h-16 w-16 items-center justify-center rounded-full ring-8 ring-white shadow-[0_26px_50px_-40px_rgba(15,23,42,0.65)]"
+                          style={{ backgroundColor: accent }}
+                        >
+                          <img
+                            src={iconSrc}
+                            alt={item.title}
+                            className="h-9 w-9 object-contain"
+                          />
                         </div>
                       </div>
-                    </article>
-
-                    <div className="absolute -left-5 -top-5 z-20">
-                      <div
-                        className="flex h-16 w-16 items-center justify-center rounded-full ring-8 ring-white shadow-[0_26px_50px_-40px_rgba(15,23,42,0.65)]"
-                        style={{ backgroundColor: accent }}
-                      >
-                        <img
-                          src={iconSrc}
-                          alt={item.title}
-                          className="h-9 w-9 object-contain"
-                        />
-                      </div>
                     </div>
-                  </div>
+                  
                 );
               }
             )}
@@ -231,90 +239,110 @@ export default async function Home({
         </section>
 
         <section className="grid items-center gap-10 md:grid-cols-[1fr_auto_1fr]">
-          <div className="flex items-center gap-6">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border border-zinc-200 bg-white p-5 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
-              <img
-                src="/home/icon/Innovation.png"
-                alt="Innovation"
-                className="h-10 w-10 object-contain"
-              />
+          <MotionReveal>
+            <div className="flex items-center gap-6">
+              <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border border-zinc-200 bg-white p-5 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
+                <img
+                  src="/home/icon/Innovation.png"
+                  alt="Innovation"
+                  className="h-10 w-10 object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
+                  {dict.home.vision.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-700">
+                  {dict.home.vision.body}
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
-                {dict.home.vision.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-700">
-                {dict.home.vision.body}
-              </p>
-            </div>
-          </div>
+          </MotionReveal>
 
           <div className="hidden h-20 w-px bg-zinc-200 md:block" />
 
-          <div className="flex items-center gap-6">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border border-zinc-200 bg-white p-5 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
-              <img
-                src="/home/icon/Goal.png"
-                alt="Goal"
-                className="h-10 w-10 object-contain"
-              />
+          <MotionReveal delayMs={140}>
+            <div className="flex items-center gap-6">
+              <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border border-zinc-200 bg-white p-5 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.35)]">
+                <img
+                  src="/home/icon/Goal.png"
+                  alt="Goal"
+                  className="h-10 w-10 object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
+                  {dict.home.mission.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-700">
+                  {dict.home.mission.body}
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold leading-tight text-[#A31621]!">
-                {dict.home.mission.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-700">
-                {dict.home.mission.body}
-              </p>
-            </div>
-          </div>
+          </MotionReveal>
         </section>
 
-        <section className="relative overflow-visible rounded-[32px] bg-gradient-to-b from-[#8b1419] via-[#b32025] to-[#f36b3a] text-white min-[1000px]:bg-gradient-to-r">
-          <div className="flex flex-col gap-6 min-[1000px]:flex-row min-[1000px]:items-center">
-            <div className="relative h-[220px] w-full overflow-visible min-[1000px]:h-[320px] min-[1000px]:w-1/2">
-              <img
-                src="/home/team_v2.png"
-                alt="Team"
-                className=" object-contain object-bottom min-[1000px]:h-[320px] min-[1000px]:w-[600px] min-[1000px]:-translate-y-0 max-[1000px]:object-center max-[1000px]:translate-y-0 max-[1000px]:w-full max-[1000px]:h-full max-[1000px]:object-contain max-[1000px]:translate-y-0"
-              />
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-[#8b1419]/70 to-[#b32025] min-[1000px]:hidden" />
+        <MotionReveal>
+          <section className="relative overflow-hidden rounded-[32px] bg-gradient-to-b from-[#8b1419] via-[#b32025] to-[#f36b3a] text-white min-[1000px]:bg-gradient-to-r">
+            <div className="flex flex-col gap-6 min-[1000px]:flex-row min-[1000px]:items-center">
+              <MotionReveal className="min-[1000px]:w-1/2">
+                <div className="relative h-[260px] w-full overflow-visible max-[1000px]:bg-[#8b1419] min-[1000px]:h-[380px]">
+                  <img
+                    src="/home/team_v2.png"
+                    alt="Team"
+                    className="h-full w-full object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_68%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_68%,transparent)] min-[1000px]:h-[380px] min-[1000px]:w-[620px] min-[1000px]:[mask-image:none] min-[1000px]:[-webkit-mask-image:none]"
+                  />
+                  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-b from-transparent via-[#8b1419]/75 to-[#b32025] min-[1000px]:hidden" />
+                </div>
+              </MotionReveal>
+              <MotionReveal delayMs={140} className="min-[1000px]:w-1/2">
+                <div className="flex flex-col gap-4 px-6 py-10 min-[1000px]:py-14">
+                  <h3 className="text-2xl font-semibold sm:text-3xl">
+                    {team.title}
+                  </h3>
+                  {team.body.map((paragraph: string, index: number) => (
+                    <p
+                      key={`${index}-${paragraph}`}
+                      className="text-sm leading-relaxed text-white/90"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </MotionReveal>
             </div>
-            <div className="flex flex-col gap-4 px-6 py-8 min-[1000px]:w-1/2 min-[1000px]:py-12">
-              <h3 className="text-xl font-semibold sm:text-2xl">
-                {team.title}
-              </h3>
-              {team.body.map((paragraph: string, index: number) => (
-                <p key={`${index}-${paragraph}`} className="text-sm leading-relaxed text-white/90">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        </MotionReveal>
 
         <section className="flex flex-col items-center gap-10 pb-6">
-          <h2 className="text-2xl font-semibold text-[#A31621]! sm:text-3xl">
-            {dict.home.supportedBy.title}
-          </h2>
-          <div className="grid w-full gap-6 text-center sm:grid-cols-2 lg:grid-cols-3">
+          <MotionReveal>
+            <h2 className="text-2xl font-semibold text-[#A31621]! sm:text-3xl">
+              {dict.home.supportedBy.title}
+            </h2>
+          </MotionReveal>
+          <div className="grid w-full gap-8 text-center sm:grid-cols-2 lg:grid-cols-3">
             {dict.home.supportedBy.items.map(
-              (item: { name: string; logoLabel?: string; logoSrc?: string }) => (
-                <div key={item.name} className="flex flex-col items-center gap-3">
-                  <div className="flex h-12 w-32 items-center justify-center px-2">
-                    {item.logoSrc ? (
-                      <img
-                        src={item.logoSrc}
-                        alt={item.name}
-                        className="max-h-20 w-full object-contain"
-                      />
-                    ) : (
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">
-                        {item.logoLabel ?? item.name}
-                      </span>
-                    )}
+              (
+                item: { name: string; logoLabel?: string; logoSrc?: string },
+                index: number
+              ) => (
+                <MotionReveal key={item.name} delayMs={index * 90}>
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="flex h-14 w-40 items-center justify-center px-2">
+                      {item.logoSrc ? (
+                        <img
+                          src={item.logoSrc}
+                          alt={item.name}
+                          className="max-h-24 w-full object-contain"
+                        />
+                      ) : (
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">
+                          {item.logoLabel ?? item.name}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
+                </MotionReveal>
               )
             )}
           </div>
