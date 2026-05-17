@@ -7,7 +7,7 @@ type HeroSlide = {
   title: string;
   subtitle?: string;
   description?: string[];
-  align?: "center" | "left";
+  align?: "center" | "left" | string;
   image?: string;
   background?: string;
   tagline?: string[];
