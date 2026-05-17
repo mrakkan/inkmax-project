@@ -20,7 +20,7 @@ type HeroSliderProps = {
 };
 
 const DEFAULT_GRADIENT =
-  "linear-gradient(120deg, rgba(120, 16, 22, 0.78) 0%, rgba(173, 32, 40, 0.88) 52%, rgba(246, 126, 76, 0.92) 100%), radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.2), transparent 55%)";
+  "linear-gradient(120deg, rgba(224, 128, 128, 0.35) 0%, rgba(230, 142, 142, 0.45) 52%, rgba(255, 184, 150, 0.55) 100%), radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.35), transparent 55%)";
 
 const SLIDE_INTERVAL = 4800;
 
@@ -102,13 +102,13 @@ export default function HeroSlider({
             className="absolute inset-0"
             style={{
               backgroundImage: slide.image
-                ? `linear-gradient(120deg, rgba(94, 8, 13, 0.55) 0%, rgba(160, 23, 34, 0.7) 40%, rgba(246, 126, 76, 0.78) 100%), url('${slide.image}')`
+                ? `linear-gradient(120deg, rgba(255, 195, 195, 0.28) 0%, rgba(243, 140, 140, 0.38) 45%, rgba(255, 195, 160, 0.5) 100%), url('${slide.image}')`
                 : slide.background ?? DEFAULT_GRADIENT,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/35" />
         </div>
       ))}
 
@@ -119,37 +119,40 @@ export default function HeroSlider({
 
         const isLeft = slide.align === "left";
         const slideTagline = slide.tagline ?? tagline;
+        const showLogo = index === 0;
 
         return (
           <div key={`${slide.id}-content`} className="absolute inset-0 flex items-center px-6">
             <div
               className={`flex w-full flex-col text-white ${
-                isLeft ? "items-start text-left" : "items-center text-center"
+                isLeft ? "items-center" : "items-center text-center"
               }`}
             >
               <div
-                className={`flex max-w-3xl flex-col ${
-                  isLeft ? "items-start" : "items-center"
-                } ${isLeft ? "sm:pl-10" : ""}`}
+                className={`mx-auto flex w-full max-w-3xl flex-col ${
+                  isLeft ? "items-start text-left" : "items-center"
+                }`}
               >
-                <div className="mb-5 flex h-60 w-60 items-center justify-center">
-                  <img
-                    src="/images/KYN_LOGO_01.png"
-                    alt="KYN logo"
-                    className="h-60 w-60 object-contain"
-                  />
-                </div>
-                <h1 className="text-2xl font-semibold uppercase tracking-[0.2em] sm:text-4xl">
+                {showLogo ? (
+                  <div className="mb-4 flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32 lg:h-40 lg:w-40">
+                    <img
+                      src="/logo/LOGO_COMPANY_KYN.png"
+                      alt="KYN logo"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                ) : null}
+                <h1 className="text-[clamp(1.6rem,4vw,3.4rem)] font-semibold uppercase leading-tight tracking-[0.16em]">
                   {renderLines(slide.title)}
                 </h1>
                 {slide.subtitle ? (
-                  <p className="mt-2 text-xs uppercase tracking-[0.32em] text-white/90 sm:text-sm">
+                  <p className="mt-3 text-[clamp(0.65rem,1.4vw,1rem)] uppercase tracking-[0.3em] text-white/90">
                     {renderLines(slide.subtitle)}
                   </p>
                 ) : null}
 
                 {slide.description && slide.description.length > 0 ? (
-                  <div className="mt-4 text-sm text-white/85">
+                  <div className="mt-4 text-[clamp(0.9rem,1.6vw,1.1rem)] leading-relaxed text-white/90">
                     {slide.description.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -157,7 +160,7 @@ export default function HeroSlider({
                 ) : null}
 
                 {slideTagline && slideTagline.length > 0 ? (
-                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/80">
+                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
                     {slideTagline.map((item, itemIndex) => (
                       <span key={item} className="flex items-center gap-3">
                         {item}
@@ -213,7 +216,7 @@ export default function HeroSlider({
         </svg>
       </button>
 
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
+      <div className="absolute bottom-20 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3">
         <div className="flex items-center gap-2">
           {normalizedSlides.map((slide, index) => (
             <button
@@ -230,7 +233,7 @@ export default function HeroSlider({
           ))}
         </div>
         {navItems.length > 0 ? (
-          <div className="flex flex-wrap items-center justify-center gap-4 text-[10px] uppercase tracking-[0.26em] text-white/70">
+          <div className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-white/75">
             {navItems.map((item, index) => (
               <span key={`${item}-${index}`}>{item}</span>
             ))}

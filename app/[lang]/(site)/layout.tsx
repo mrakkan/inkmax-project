@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import Navbar from "@/components/Navbar";
+import FooterContactForm from "@/components/FooterContactForm";
 
 import { getDictionary, hasLocale, type Locale } from "../dictionaries";
 
@@ -61,59 +62,7 @@ export default async function SiteLayout({
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium" htmlFor="name">
-                    {dict.footer.form.nameLabel}
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    className="h-10 rounded-md bg-white px-3 text-sm text-zinc-900 outline-none"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium" htmlFor="email">
-                    {dict.footer.form.emailLabel}
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    className="h-10 rounded-md bg-white px-3 text-sm text-zinc-900 outline-none"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium" htmlFor="subject">
-                  {dict.footer.form.subjectLabel}
-                </label>
-                <input
-                  id="subject"
-                  type="text"
-                  className="h-10 rounded-md bg-white px-3 text-sm text-zinc-900 outline-none"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium" htmlFor="message">
-                  {dict.footer.form.messageLabel}
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="resize-none rounded-md bg-white px-3 py-2 text-sm text-zinc-900 outline-none"
-                />
-              </div>
-
-              <button
-                type="button"
-                className="mt-2 w-fit rounded-md bg-white px-5 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-white/90"
-              >
-                {dict.footer.form.submitLabel}
-              </button>
-            </div>
+            <FooterContactForm labels={dict.footer.form} />
           </div>
         </div>
       </footer>

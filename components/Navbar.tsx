@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -120,7 +119,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
         </Link>
 
         <div className="flex items-center gap-12">
-          <nav className="hidden md:flex w-">
+          <nav className="hidden md:flex">
             <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
@@ -128,7 +127,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                   <Link
                     key={link.key}
                     href={withLocale(lang, link.href)}
-                    className={`nav-link text-sm text-center font-medium w-15 ${
+                    className={`nav-link text-sm text-center font-medium ${
                       isActive
                         ? "active"
                         : "text-zinc-500 hover:text-[#C61B1B]"
