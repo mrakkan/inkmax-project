@@ -109,3 +109,18 @@ p {
 .ring-soft {
   box-shadow: 0 0 0 4px rgba(240, 201, 184, 0.4);
 }
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-fade {
+  animation: cardFadeIn 700ms ease both;
+}

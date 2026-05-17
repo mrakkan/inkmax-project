@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -54,6 +55,7 @@ const withLocale = (lang: Locale, pathname: string) =>
 
 export default function Navbar({ lang, labels }: NavbarProps) {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const basePath = stripLocale(pathname);
   const navRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
@@ -79,10 +81,6 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     }
     return basePath.startsWith(link.href);
   });
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -120,7 +118,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
         </Link>
 
         <div className="flex items-center gap-12">
-          <nav className="hidden md:flex w-">
+          <nav className="hidden md:flex">
             <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
@@ -128,7 +126,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
                   <Link
                     key={link.key}
                     href={withLocale(lang, link.href)}
-                    className={`nav-link text-sm text-center font-medium w-15 ${
+                    className={`nav-link text-sm text-center font-medium ${
                       isActive
                         ? "active"
                         : "text-zinc-500 hover:text-[#C61B1B]"
@@ -182,66 +180,95 @@ export default function Navbar({ lang, labels }: NavbarProps) {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md border border-zinc-100 shadow-sm px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-100 bg-white shadow-sm transition hover:bg-zinc-50 md:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"
           >
-            Menu
+            <span className="relative h-4 w-5">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-full rounded bg-zinc-700 transition-transform duration-200 ${
+                  menuOpen ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rounded bg-zinc-700 transition-opacity duration-200 ${
+                  menuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 w-full rounded bg-zinc-700 transition-transform duration-200 ${
+                  menuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
 
-      <div
-        className={`md:hidden ${
-          menuOpen ? "block" : "hidden"
-        } border-t border-zinc-100 bg-white`}
-      >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-6">
-          {navLinks.map((link) => {
-            const isActive =
-              (link.href === "/" && basePath === "/") ||
-              (link.href !== "/" && basePath.startsWith(link.href));
-            return (
-              <Link
-                key={link.key}
-                href={withLocale(lang, link.href)}
-                className={`text-sm font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? "text-[#C61B1B]" : "text-zinc-600"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <div className="flex items-center text-xs font-semibold">
-            <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm">
-              <Link
-                href={withLocale("en", basePath)}
-                scroll={false}
-                className={`border-r border-zinc-100 px-3 py-2 transition ${
-                  lang === "en"
-                    ? "bg-[#C61B1B] text-white"
-                    : "text-zinc-500 hover:text-[#C61B1B]"
-                }`}
-              >
-                EN
-              </Link>
-              <Link
-                href={withLocale("th", basePath)}
-                scroll={false}
-                className={`px-3 py-2 transition ${
-                  lang === "th"
-                    ? "bg-[#C61B1B] text-white"
-                    : "text-zinc-500 hover:text-[#C61B1B]"
-                }`}
-              >
-                TH
-              </Link>
+      <AnimatePresence initial={false}>
+        {menuOpen ? (
+          <motion.div
+            className="md:hidden overflow-hidden border-t border-zinc-100 bg-white"
+            initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+            animate={reduceMotion ? undefined : { height: "auto", opacity: 1 }}
+            exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+            transition={
+              reduceMotion
+                ? undefined
+                : { duration: 0.25, ease: [0.22, 1, 0.36, 1] }
+            }
+          >
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-6">
+              {navLinks.map((link) => {
+                const isActive =
+                  (link.href === "/" && basePath === "/") ||
+                  (link.href !== "/" && basePath.startsWith(link.href));
+                return (
+                  <Link
+                    key={link.key}
+                    href={withLocale(lang, link.href)}
+                    className={`text-sm font-semibold uppercase tracking-[0.18em] ${
+                      isActive ? "text-[#C61B1B]" : "text-zinc-600"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <div className="flex items-center text-xs font-semibold">
+                <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm">
+                  <Link
+                    href={withLocale("en", basePath)}
+                    scroll={false}
+                    className={`border-r border-zinc-100 px-3 py-2 transition ${
+                      lang === "en"
+                        ? "bg-[#C61B1B] text-white"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    EN
+                  </Link>
+                  <Link
+                    href={withLocale("th", basePath)}
+                    scroll={false}
+                    className={`px-3 py-2 transition ${
+                      lang === "th"
+                        ? "bg-[#C61B1B] text-white"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    TH
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
