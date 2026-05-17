@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 type Env = {
-  RESEND_API_KEY: "re_XAAp56NN_6v8sVNwMr6j9Kv7AboaeMVXg";
+  RESEND_API_KEY: string;
   RESEND_FROM?: string;
 };
 
