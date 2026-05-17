@@ -113,12 +113,14 @@ export default async function Home({
                         </span>
                       )}
                     </div>
-                    <h3 className="mt-7 text-2xl font-semibold tracking-tight text-[#A31621] sm:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 max-w-[28ch] text-sm leading-relaxed text-zinc-600">
-                      {item.body}
-                    </p>
+                    <div className="mt-7 w-full max-w-[240px] text-center md:text-left">
+                      <h3 className="text-4xl font-semibold leading-[1.05] tracking-tight text-[#8b1419] sm:text-5xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-4 text-[13px] leading-relaxed text-zinc-500">
+                        {item.body}
+                      </p>
+                    </div>
                   </article>,
 
                   index < pillars.length - 1 ? (
@@ -139,7 +141,7 @@ export default async function Home({
             {dict.home.coreTech.title}
           </h2>
 
-          <div className="grid w-full gap-8 md:grid-cols-3 md:justify-items-center">
+          <div className="grid w-full justify-items-center gap-8 md:grid-cols-3">
             {dict.home.coreTech.items.map(
               (
                 item: { title: string; body: string; imageLabel?: string },
@@ -156,7 +158,7 @@ export default async function Home({
                 return (
                   <div
                     key={item.title}
-                    className="card-fade relative w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]"
+                    className="card-fade relative mx-auto w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]"
                     style={{ animationDelay: `${index * 120}ms` }}
                   >
                     <article className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]">
