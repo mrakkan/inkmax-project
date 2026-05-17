@@ -292,7 +292,7 @@ export default async function Home({
                     alt="Team"
                     className="h-full w-full object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_68%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_68%,transparent)] min-[1000px]:h-[380px] min-[1000px]:w-[620px] min-[1000px]:[mask-image:none] min-[1000px]:[-webkit-mask-image:none]"
                   />
-                  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-b from-transparent via-[#8b1419]/75 to-[#b32025] min-[1000px]:hidden" />
+                  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-b from-transparent via-[#8b1419]/50 to-[#b32025] min-[1000px]:hidden" />
                 </div>
               </MotionReveal>
               <MotionReveal delayMs={140} className="min-[1000px]:w-1/2">
