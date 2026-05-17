@@ -87,7 +87,7 @@ export default async function Products({
         {dict.products.food.items.map((item, index) => (
           <article
             key={item.title}
-            className={`grid items-center gap-24 lg:grid-cols-[480px_1fr] ${index % 2 === 1 ? "lg:grid-cols-[1fr_480px]" : ""
+            className={`grid items-center justify-items-center gap-8 lg:gap-24 lg:grid-cols-[480px_1fr] ${index % 2 === 1 ? "lg:grid-cols-[1fr_480px]" : ""
               }`}
           >
             <div
@@ -168,15 +168,44 @@ export default async function Products({
 
       <section className="text-center">
         <h3 className="font-semibold text-(--primary)!">
-          Available at
+          Available At
         </h3>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
-          {dict.products.availableAt.items.map((item) => (
+          {[
+            {
+              src: "/product/logo/INNOMALL.png",
+              alt: "INNOMALL",
+              frame: "h-24 w-36",
+              fit: "object-cover",
+              position: "object-center",
+            },
+            {
+              src: "/product/logo/INNO STORE.png",
+              alt: "INNO STORE",
+              frame: "h-24 w-48",
+              fit: "object-cover",
+              position: "object-[50%_55%]",
+            },
+            {
+              src: "/product/logo/SINGHA PARK.png",
+              alt: "SINGHA PARK",
+              frame: "h-12 w-76",
+              fit: "object-cover",
+              position: "object-center",
+              scale: "scale-125"
+            },
+          ].map((logo) => (
             <div
-              key={item}
-              className="flex h-10 items-center rounded-full border border-zinc-200 px-4 text-xs text-zinc-500"
+              key={logo.src}
+              className={`relative overflow-hidden ${logo.frame} ${logo.scale}`}
             >
-              {item}
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                fill
+                className={`${logo.fit} ${logo.position ?? ""}`}
+                sizes="(min-width: 1024px) 180px, 140px"
+              />
             </div>
           ))}
         </div>
@@ -187,12 +216,49 @@ export default async function Products({
           Trusted by
         </h3>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-          {dict.products.trustedBy.items.map((item) => (
+          {[
+            {
+              src: "/product/logo/LONGPINGYANG.png",
+              alt: "LONGPINGYANG",
+              frame: "h-32 w-32",
+              fit: "object-cover",
+            },
+            {
+              src: "/product/logo/CC.png",
+              alt: "CC",
+              frame: "h-32 w-32",
+              fit: "object-cover",
+            },
+            {
+              src: "/product/logo/HONGCHA.png",
+              alt: "HONGCHA",
+              frame: "h-32 w-32",
+              fit: "object-cover",
+            },
+            {
+              src: "/product/logo/ORIGIN.png",
+              alt: "ORIGIN",
+              frame: "h-32 w-32",
+              fit: "object-cover",
+            },
+            {
+              src: "/product/logo/MAGIN.png",
+              alt: "MAGIN",
+              frame: "h-32 w-32",
+              fit: "object-cover",
+            },
+          ].map((logo) => (
             <div
-              key={item}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-zinc-200 text-xs text-zinc-500"
+              key={logo.src}
+              className={`relative overflow-hidden ${logo.frame} ${logo.scale}`}
             >
-              {item}
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                fill
+                className={logo.fit}
+                sizes="(min-width: 1024px) 180px, 140px"
+              />
             </div>
           ))}
         </div>
@@ -218,7 +284,7 @@ export default async function Products({
         </p>
       </section>
 
-      <section className="grid items-center gap-8 lg:grid-cols-[480px_1fr]">
+      <section className="grid items-center justify-items-center gap-8 lg:grid-cols-[480px_1fr]">
         <div className="h-72 w-72 overflow-hidden rounded-2xl bg-white shadow-md lg:h-120 lg:w-120">
           <Image
             src="/product/Product_KLORA_KYN.png"
@@ -304,7 +370,7 @@ export default async function Products({
         </p>
       </section>
 
-      <section className="grid items-center gap-8 lg:grid-cols-[480px_1fr]">
+      <section className="grid items-center justify-items-center gap-8 lg:grid-cols-[480px_1fr]">
         <div className="h-72 w-72 overflow-hidden rounded-2xl bg-white shadow-md lg:h-120 lg:w-120">
           <Image
             src="/product/Product_BIMEGA_KYN.png"
