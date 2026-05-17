@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import MotionReveal from "@/components/MotionReveal";
+
 import { getDictionary, hasLocale, locales, type Locale } from "../../dictionaries";
 
 export async function generateStaticParams() {
@@ -203,19 +205,18 @@ export default async function Products({
               position: "object-center",
               scale: "scale-125",
             },
-          ].map((logo) => (
-            <div
-              key={logo.src}
-              className={`relative overflow-hidden ${logo.frame} ${logo.scale}`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                className={`${logo.fit} ${logo.position}`}
-                sizes="(min-width: 1024px) 200px, 160px"
-              />
-            </div>
+          ].map((logo, index) => (
+            <MotionReveal key={logo.src} delayMs={index * 250}>
+              <div className={`relative overflow-hidden ${logo.frame} ${logo.scale}`}>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className={`${logo.fit} ${logo.position}`}
+                  sizes="(min-width: 1024px) 200px, 160px"
+                />
+              </div>
+            </MotionReveal>
           ))}
         </div>
       </section>
@@ -256,19 +257,18 @@ export default async function Products({
               frame: "h-32 w-32",
               fit: "object-cover",
             },
-          ].map((logo) => (
-            <div
-              key={logo.src}
-              className={`relative overflow-hidden ${logo.frame}`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                className={logo.fit}
-                sizes="(min-width: 1024px) 180px, 140px"
-              />
-            </div>
+          ].map((logo, index) => (
+            <MotionReveal key={logo.src} delayMs={index * 250}>
+              <div className={`relative overflow-hidden ${logo.frame}`}>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className={logo.fit}
+                  sizes="(min-width: 1024px) 180px, 140px"
+                />
+              </div>
+            </MotionReveal>
           ))}
         </div>
       </section>
