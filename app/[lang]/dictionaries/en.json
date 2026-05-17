@@ -5,20 +5,81 @@
     "services": "Services"
   },
   "home": {
+    "hero": {
+      "tagline": [],
+      "nav": ["Company", "Products", "OEM", "Overview"],
+      "slides": [
+        {
+          "id": "hero-1",
+          "title": "KYN PARTNERS & CO",
+          "subtitle": "ARCHITECTURE OF INNOVATION",
+          "tagline": ["Strategy", "Ventures", "Growth"],
+          "align": "center",
+          "image": "/images/corporate-buildings.jpg"
+        },
+        {
+          "id": "hero-2",
+          "title": "Innovating\nBetter Lives",
+          "description": [
+            "Healthier products. Smarter choices.",
+            "Stronger communities."
+          ],
+          "align": "left"
+        },
+        {
+          "id": "hero-3",
+          "title": "End-to-End\nOEM Solutions",
+          "description": ["From idea to delivery...", "we build, you scale."],
+          "align": "left",
+          "image": "/images/HOME_OEM.png"
+        },
+        {
+          "id": "hero-4",
+          "title": "Together,\nWe Create the Future",
+          "description": [
+            "Collaborate. Innovate. Grow.",
+            "For a sustainable tomorrow"
+          ],
+          "align": "left"
+        }
+      ]
+    },
+    "pillars": {
+      "items": [
+        {
+          "title": "KYN",
+          "body": "Cultivating innovation networks for sustainable growth.",
+          "imageLabel": "Image"
+        },
+        {
+          "title": "Partners",
+          "body": "Building collaborative partnerships across sectors to unlock new opportunities.",
+          "imageLabel": "Image"
+        },
+        {
+          "title": "Co-operate",
+          "body": "Working together to scale business impact with shared purpose.",
+          "imageLabel": "Image"
+        }
+      ]
+    },
     "coreTech": {
       "title": "Core tech",
       "items": [
         {
           "title": "Agri-Tech",
-          "body": "Develop integrated agriculture solutions from pre- to post-harvest to improve efficiency, reduce loss, and raise value across the supply chain."
+          "body": "Develop integrated agriculture solutions from pre- to post-harvest to improve efficiency, reduce loss, and raise value across the supply chain.",
+          "imageLabel": "Image"
         },
         {
           "title": "Food-Tech",
-          "body": "Research and develop ready-to-eat food products with consistent quality standards and scalable commercial production."
+          "body": "Research and develop ready-to-eat food products with consistent quality standards and scalable commercial production.",
+          "imageLabel": "Image"
         },
         {
           "title": "Bio-Tech",
-          "body": "Apply biotechnology to food and agriculture products to create added value and commercial expansion pathways."
+          "body": "Apply biotechnology to food and agriculture products to create added value and commercial expansion pathways.",
+          "imageLabel": "Image"
         }
       ]
     },
@@ -30,33 +91,41 @@
       "title": "Our Mission",
       "body": "To develop and commercialize research, technology, and IP into scalable business models that create tangible economic impact."
     },
-    "about": {
-      "paragraphs": [
-        "KYN Partners & Co was founded with the vision of becoming an \"Architecture of Innovation\" that transforms knowledge, research, and intellectual property into innovation and business models ready for commercialization.",
-        "The company is rooted in Agri-Food Innovation and specializes in product innovation, IP commercialization, and business model design, combining science, technology, and strategic collaboration to build a connected ecosystem of products, technologies, and partners."
-      ]
+    "team": {
+      "title": "KYN Partners & Co",
+      "body": [
+        "Founded to become an Architecture of Innovation that transforms knowledge and intellectual property into commercial-ready ventures.",
+        "We integrate science, technology, and strategic collaboration to build an ecosystem of products, technologies, and partners."
+      ],
+      "imageLabel": "Team Image"
     },
     "supportedBy": {
       "title": "Supported By",
       "items": [
         {
-          "name": "Mae Fah Luang University",
-          "subtitle": "MAE FAH LUANG UNIVERSITY"
+          "name": "TED Fund",
+          "logoLabel": "TED Fund",
+          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
+        },
+        {
+          "name": "MHESI",
+          "logoLabel": "MHESI",
+          "logoSrc": "/home/Supported%20by_LOGO/%E0%B8%AD%E0%B8%A7.Logo.png"
+        },
+        {
+          "name": "Startup Thailand",
+          "logoLabel": "Startup Thailand",
+          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
           "name": "NIA",
-          "subtitle": "National Innovation Agency"
+          "logoLabel": "NIA",
+          "logoSrc": "/home/Supported%20by_LOGO/NIA-logo.png"
         },
         {
-          "name": "TED Youth Startup",
-          "subtitle": "YOUTH STARTUP"
-        },
-        {
-          "name": "Experiential Learning Program",
-          "subtitle": "ELP"
-        },
-        {
-          "name": "SiBB"
+          "name": "Mae Fah Luang University",
+          "logoLabel": "Mae Fah Luang University",
+          "logoSrc": "/home/Supported%20by_LOGO/mfu_LOGO.png"
         }
       ]
     }
@@ -64,20 +133,89 @@
   "products": {
     "title": "Products",
     "lead": "A curated lineup of furnishings and finishes tailored for premium office environments.",
-    "items": [
-      {
-        "title": "Executive Desks",
-        "body": "Timeless silhouettes in walnut, oak, and matte lacquer finishes."
-      },
-      {
-        "title": "Collaborative Seating",
-        "body": "Soft modular seating built for long-form conversations."
-      },
-      {
-        "title": "Lighting Systems",
-        "body": "Layered lighting that brings calm focus to every workspace."
-      }
-    ]
+    "overall": {
+      "title": "Overall Product",
+      "items": [
+        { "title": "Spice Blend" },
+        { "title": "Herbal Infusion" },
+        { "title": "Green Cleanser" }
+      ]
+    },
+    "food": {
+      "title": "Food Product",
+      "subtitle": "Ready-to-use seasoning powder products under the Svariest brand, \ndeveloped for convenience, consistent flavor, and the needs of modern consumers.",
+      "items": [
+        {
+          "brand": "Svariest",
+          "title": "Ready-to-Cook Spice Blend",
+          "body": "A ready-to-cook seasoning powder made from more than 12 authentic Thai herbs and spices, bringing together traditional Thai flavors in one convenient sachet. Richly aromatic and perfectly balanced, it can be used in a variety of Thai and fusion dishes. Suitable for grilling, marinating, stir-frying, or seasoning, it helps elevate dishes with a distinctive Thai taste effortlessly.",
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
+        },
+        {
+          "brand": "Svariest",
+          "title": "Ready-to-Eat Mala Spice",
+          "body": "A ready-to-eat mala seasoning powder that combines the bold spiciness of mala with the aromatic essence of Thai herbs. The flavor is intense yet well-balanced in a way familiar to Thai consumers. Perfect for grilling, marinating, stir-frying, or dipping sauces, it adds a unique layer of Thai-inspired flavor to a wide range of dishes.",
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
+        },
+        {
+          "brand": "Svariest",
+          "title": "Ready-to-Cook Laab Spice",
+          "body": "A ready-to-cook laab seasoning powder based on the original Northern Thai recipe. Infused with Thai spices and local herbs, it delivers the authentic spicy, aromatic, and well-rounded flavor of traditional laab. Convenient for making laab, spicy salads, nam tok, or even dipping sauces without the need to prepare multiple ingredients.",
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
+        }
+      ]
+    },
+    "itemBlock": {
+      "title": "Item",
+      "lines": [
+        "Product Code: SPG-001",
+        "SKU: 60 g",
+        "Batch: 2026-05"
+      ]
+    },
+    "detailsBlock": {
+      "title": "Details",
+      "lines": [
+        "Net weight: 60 g",
+        "Serving size: 20 g",
+        "Storage: Cool, dry place"
+      ]
+    },
+    "storage": {
+      "title": "Storage & Usage Instructions",
+      "items": [
+        "Store in a dry, cool place away from direct sunlight.",
+        "Seal tightly after opening to preserve aroma.",
+        "Use within 30 days for best flavor."
+      ]
+    },
+    "availableAt": {
+      "title": "Available At",
+      "items": ["7-Eleven", "Big C", "Ninno", "Singha Park", "Savkist"]
+    },
+    "trustedBy": {
+      "title": "Trusted By",
+      "items": ["A", "B", "C", "D", "E", "F"]
+    },
+    "pet": {
+      "title": "Pet Food Product",
+      "subtitle": "Nutrition-focused recipes tailored for pets.",
+      "brand": "Klora",
+      "itemTitle": "Klora Pet Treats",
+      "body": "Soft bites with omega-rich ingredients and a gentle aroma.",
+      "size": "Net weight: 90 g"
+    },
+    "agro": {
+      "title": "Agro Product",
+      "subtitle": "Sustainable crop care formulated for growth and resilience.",
+      "brand": "BiOmega",
+      "itemTitle": "BiOmega Nutrient Boost",
+      "body": "Organic nutrient concentrate designed for plant vitality.",
+      "size": "Net weight: 1 L"
+    }
   },
   "services": {
     "title": "Services",

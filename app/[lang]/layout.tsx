@@ -1,28 +1,31 @@
 import type { Metadata } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { hasLocale, locales, type Locale } from "./dictionaries";
 import "../globals.css";
 
-const manrope = Manrope({
-  subsets: ["latin"],
+const notoSansThai = Noto_Sans_Thai({
+  subsets: ["thai", "latin"],
   variable: "--font-body",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
+const notoSansThaiDisplay = Noto_Sans_Thai({
+  subsets: ["thai", "latin"],
   variable: "--font-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "KYN Partners",
+    default: "KYN Partners & Co Ltd.",
     template: "%s | KYN Partners",
   },
   description: "Architectural and interior design studio for modern workplaces.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export const dynamicParams = false;
@@ -47,7 +50,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${manrope.variable} ${playfair.variable} h-full antialiased`}
+      className={`${notoSansThai.variable} ${notoSansThaiDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full text-foreground">{children}</body>
     </html>

@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -10,6 +12,12 @@ type NavLabels = {
   home: string;
   products: string;
   services: string;
+};
+
+type NavLink = {
+  key: string;
+  href: string;
+  label: string;
 };
 
 type NavbarProps = {
@@ -47,6 +55,7 @@ const withLocale = (lang: Locale, pathname: string) =>
 
 export default function Navbar({ lang, labels }: NavbarProps) {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const basePath = stripLocale(pathname);
   const navRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
@@ -57,7 +66,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     opacity: 0,
   });
 
-  const navLinks = useMemo(
+  const navLinks = useMemo<NavLink[]>(
     () => [
       { key: "home", href: "/", label: labels.home },
       { key: "products", href: "/products", label: labels.products },
@@ -72,10 +81,6 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     }
     return basePath.startsWith(link.href);
   });
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -103,40 +108,28 @@ export default function Navbar({ lang, labels }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 lg:px-10">
         <Link href={withLocale(lang, "/")} className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center text-[#A31621]">
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.9"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M4 4h16v16H4z" />
-              <path d="M4 4l16 16" />
-              <path d="M20 4L4 20" />
-            </svg>
-          </span>
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-zinc-500">
-            KYN Partners
-          </span>
+          <Image
+            src="/logo.png"
+            alt="KYN Partners & Co Ltd."
+            width={144}
+            height={36}
+            priority
+          />
         </Link>
 
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-12">
           <nav className="hidden md:flex">
-            <div ref={navRef} className="relative flex items-center gap-6 pb-2">
+            <div ref={navRef} className="relative flex items-center gap-8">
               {navLinks.map((link, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <Link
                     key={link.key}
                     href={withLocale(lang, link.href)}
-                    className={`nav-link text-[11px] font-semibold uppercase tracking-[0.22em] ${
+                    className={`nav-link text-sm text-center font-medium ${
                       isActive
                         ? "active"
-                        : "text-zinc-500 hover:text-[#A31621]"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                     ref={(el) => {
@@ -150,7 +143,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
               <span
                 className="nav-indicator"
                 style={{
-                  transform: `translateX(${indicator.left}px)`,
+                  transform: `translateX(${indicator.left}px) translateY(6px)`,
                   width: `${indicator.width}px`,
                   opacity: indicator.opacity,
                 }}
@@ -158,88 +151,124 @@ export default function Navbar({ lang, labels }: NavbarProps) {
             </div>
           </nav>
 
-          <div className="hidden items-center gap-2 text-[11px] font-semibold md:flex">
-            <Link
-              href={withLocale("en", basePath)}
-              className={`px-2 py-1 transition ${
-                lang === "en"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              EN
-            </Link>
-            <span className="text-zinc-300">|</span>
-            <Link
-              href={withLocale("th", basePath)}
-              className={`rounded-sm px-2 py-1 transition ${
-                lang === "th"
-                  ? "bg-[#A31621] text-white"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              TH
-            </Link>
+          <div className="hidden items-center text-xs font-semibold md:flex">
+            <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm ">
+              <Link
+                href={withLocale("en", basePath)}
+                scroll={false}
+                className={`border-r border-zinc-100 px-3 py-2 transition ${
+                  lang === "en"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                EN
+              </Link>
+              <Link
+                href={withLocale("th", basePath)}
+                scroll={false}
+                className={`px-3 py-2 transition ${
+                  lang === "th"
+                    ? "bg-[#C61B1B] text-white"
+                    : "text-zinc-500 hover:text-[#C61B1B]"
+                }`}
+              >
+                TH
+              </Link>
+            </div>
           </div>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md border border-zinc-200 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-600 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-100 bg-white shadow-sm transition hover:bg-zinc-50 md:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"
           >
-            Menu
+            <span className="relative h-4 w-5">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-full rounded bg-zinc-700 transition-transform duration-200 ${
+                  menuOpen ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rounded bg-zinc-700 transition-opacity duration-200 ${
+                  menuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 w-full rounded bg-zinc-700 transition-transform duration-200 ${
+                  menuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
 
-      <div
-        className={`md:hidden ${
-          menuOpen ? "block" : "hidden"
-        } border-t border-zinc-100 bg-white`}
-      >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-6">
-          {navLinks.map((link) => {
-            const isActive =
-              (link.href === "/" && basePath === "/") ||
-              (link.href !== "/" && basePath.startsWith(link.href));
-            return (
-              <Link
-                key={link.key}
-                href={withLocale(lang, link.href)}
-                className={`text-sm font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? "text-[#A31621]" : "text-zinc-600"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <div className="flex items-center gap-3 text-xs font-semibold">
-            <Link
-              href={withLocale("en", basePath)}
-              className={`${
-                lang === "en"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              EN
-            </Link>
-            <Link
-              href={withLocale("th", basePath)}
-              className={`${
-                lang === "th"
-                  ? "text-[#A31621]"
-                  : "text-zinc-500 hover:text-[#A31621]"
-              }`}
-            >
-              TH
-            </Link>
-          </div>
-        </div>
-      </div>
+      <AnimatePresence initial={false}>
+        {menuOpen ? (
+          <motion.div
+            className="md:hidden overflow-hidden border-t border-zinc-100 bg-white"
+            initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+            animate={reduceMotion ? undefined : { height: "auto", opacity: 1 }}
+            exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+            transition={
+              reduceMotion
+                ? undefined
+                : { duration: 0.25, ease: [0.22, 1, 0.36, 1] }
+            }
+          >
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-6">
+              {navLinks.map((link) => {
+                const isActive =
+                  (link.href === "/" && basePath === "/") ||
+                  (link.href !== "/" && basePath.startsWith(link.href));
+                return (
+                  <Link
+                    key={link.key}
+                    href={withLocale(lang, link.href)}
+                    className={`text-sm font-semibold uppercase tracking-[0.18em] ${
+                      isActive ? "text-[#C61B1B]" : "text-zinc-600"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <div className="flex items-center text-xs font-semibold">
+                <div className="flex overflow-hidden rounded-lg border border-zinc-100 shadow-sm">
+                  <Link
+                    href={withLocale("en", basePath)}
+                    scroll={false}
+                    className={`border-r border-zinc-100 px-3 py-2 transition ${
+                      lang === "en"
+                        ? "bg-[#C61B1B] text-white"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    EN
+                  </Link>
+                  <Link
+                    href={withLocale("th", basePath)}
+                    scroll={false}
+                    className={`px-3 py-2 transition ${
+                      lang === "th"
+                        ? "bg-[#C61B1B] text-white"
+                        : "text-zinc-500 hover:text-[#C61B1B]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    TH
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
