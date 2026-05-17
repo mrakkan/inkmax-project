@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 type Env = {
   RESEND_API_KEY: string;
   RESEND_FROM?: string;
@@ -8,6 +6,9 @@ type Env = {
 function json(data: unknown, init?: ResponseInit) {
   const headers = new Headers(init?.headers);
   headers.set("Content-Type", "application/json; charset=utf-8");
+  headers.set("Access-Control-Allow-Origin", "*");
+  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  headers.set("Access-Control-Allow-Headers", "Content-Type");
   return new Response(JSON.stringify(data), { ...init, headers });
 }
 
@@ -71,7 +72,6 @@ export const onRequestPost = async ({
     return json({ ok: false, error: "ข้อความยาวเกินไป" }, { status: 400 });
   }
 
-  const resend = new Resend(env.RESEND_API_KEY);
   const from = env.RESEND_FROM ?? "KYN Website <onboarding@resend.dev>";
 
   const html = `
@@ -86,18 +86,52 @@ export const onRequestPost = async ({
     </div>
   `.trim();
 
-  const { error } = await resend.emails.send({
-    from,
-    to: "info@kynpartners.co",
-    subject: `[KYN Website] ${subject}`,
-    html,
-    replyTo: email,
-  });
+  let response: Response;
+  try {
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: "mansuperyoung4399@gmail.com",
+        subject: `[KYN Website] ${subject}`,
+        html,
+        reply_to: email,
+      }),
+    });
+  } catch {
+    return json({ ok: false, error: "เชื่อมต่อระบบส่งอีเมลไม่ได้" }, { status: 502 });
+  }
 
-  if (error) {
-    return json({ ok: false, error: "ส่งอีเมลไม่สำเร็จ" }, { status: 502 });
+  if (!response.ok) {
+    const contentType = response.headers.get("Content-Type") ?? "";
+    const jsonBody = contentType.includes("application/json")
+      ? ((await response.json().catch(() => null)) as { message?: string } | null)
+      : null;
+    const textBody = !contentType.includes("application/json")
+      ? (await response.text().catch(() => "")).slice(0, 300)
+      : "";
+    return json(
+      { ok: false, error: jsonBody?.message ?? textBody ?? "ส่งอีเมลไม่สำเร็จ" },
+      { status: 502 }
+    );
   }
 
   return json({ ok: true }, { status: 200 });
+};
+
+export const onRequestOptions = async () => {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400",
+    },
+  });
 };
 
