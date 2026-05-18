@@ -2,6 +2,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { getDictionary, hasLocale, locales } from "../../dictionaries";
+import ServiceSelection from "./ServiceSelection";
+
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -23,28 +25,88 @@ export default async function Services({
 
   const categoryIcons = [
     (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M7 3h10l1 4h2v2H4V7h2l1-4Zm1.6 2-.5 2h7.8l-.5-2H8.6ZM5 11h14l-1.2 7.4A2 2 0 0 1 15.8 20H8.2a2 2 0 0 1-2-1.6L5 11Z"
-        />
-      </svg>
+      <Image
+        src="/icons/Flour.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
     ),
     (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M7.4 3.5h9.2l2.1 2.1v2.2l-4 4.1-.2 4.8-4.9 2.3.9-5-3.9-3.9V5.6l1.8-2.1Zm1.5 2.1-.9 1v3.5l3.9 3.9-.4 2.4 2.2-1 .1-3.4 3.9-4v-.6l-1-1H8.9Z"
-        />
-      </svg>
+      <Image
+        src="/icons/MortarandPestle.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
     ),
     (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M9 2h6v3h2a2 2 0 0 1 2 2v3c0 2.8-2.2 5-5 5v4H10v-4c-2.8 0-5-2.2-5-5V7a2 2 0 0 1 2-2h2V2Zm-1 5v3a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3V7H8Zm1-3v1h6V4H9Z"
-        />
-      </svg>
+      <Image
+        src="/icons/Sauce.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+  ];
+
+  const endToEndIcons = [
+    (
+      <Image
+        src="/icons/Flour.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+    (
+      <Image
+        src="/icons/MortarandPestle.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+    (
+      <Image
+        src="/icons/Sauce.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+    (
+      <Image
+        src="/icons/Flour.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+    (
+      <Image
+        src="/icons/MortarandPestle.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
+    ),
+    (
+      <Image
+        src="/icons/Sauce.svg"
+        alt=""
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
     ),
   ];
 
@@ -142,117 +204,29 @@ export default async function Services({
             <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {services.process.steps.map((step, index) => (
-              <article
-                key={step.title}
-                className="rounded-3xl border border-white/60 bg-white/80 p-6 text-center shadow-sm"
-              >
-                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#A31621] text-sm font-semibold text-white">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <h3 className="text-base font-semibold text-[#A31621]">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm text-zinc-600">{step.body}</p>
-              </article>
-            ))}
+            {services.process.steps.map((step, index) => {
+              const icon = endToEndIcons[index] ?? endToEndIcons[0];
+              return (
+                <article
+                  key={step.title}
+                  className="rounded-3xl border border-white/60 bg-white/80 p-6 text-center shadow-sm"
+                >
+                  <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#A31621] text-sm font-semibold text-white">
+                    {icon}
+                  </div>
+                  <h3 className="text-base font-semibold text-[#A31621]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-zinc-600">{step.body}</p>
+                </article>
+              )
+            })}
+
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
-            {services.packages.title}
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
-        </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {services.packages.items.map((item) => (
-            <article
-              key={item.name}
-              className={`rounded-3xl border p-6 shadow-sm ${item.featured
-                  ? "border-[#C61B1B] bg-white"
-                  : "border-zinc-200 bg-white"
-                }`}
-            >
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                  {item.tier}
-                </p>
-                {item.featured ? (
-                  <span className="rounded-full bg-[#C61B1B] px-3 py-1 text-xs font-semibold text-white">
-                    {services.packages.featuredLabel}
-                  </span>
-                ) : null}
-              </div>
-              <h3 className="mt-3 text-xl font-semibold text-zinc-900">
-                {item.name}
-              </h3>
-              <p className="mt-1 text-sm text-zinc-500">{item.subtitle}</p>
-              <p className="mt-4 text-lg font-semibold text-[#C61B1B]">
-                {item.price}
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                {item.features.map((feature) => (
-                  <li key={feature}>• {feature}</li>
-                ))}
-              </ul>
-              <p className="mt-6 text-xs text-zinc-400">{item.footnote}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
-            {services.addOns.title}
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {services.addOns.items.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-3xl border border-zinc-100 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-base font-semibold text-zinc-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-lg font-semibold text-[#C61B1B]">
-                {item.price}
-              </p>
-              <p className="mt-3 text-sm text-zinc-600">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
-            {services.subscription.title}
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {services.subscription.items.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-3xl border border-zinc-100 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-base font-semibold text-zinc-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-lg font-semibold text-[#C61B1B]">
-                {item.price}
-              </p>
-              <p className="mt-3 text-sm text-zinc-600">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ServiceSelection lang={lang} services={services} />
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-zinc-100 bg-white px-6 py-8 text-center shadow-sm md:flex-row md:text-left">
@@ -276,6 +250,7 @@ export default async function Services({
               alt="Halal"
               width={72}
               height={72}
+              className="w-18 h-18"
             />
           </div>
         </div>

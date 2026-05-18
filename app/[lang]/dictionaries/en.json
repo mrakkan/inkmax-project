@@ -346,7 +346,11 @@
             "Dedicated QC and logistics"
           ],
           "footnote": "Lead time: by project scope",
-          "featured": false
+          "featured": false,
+          "includedAddOns": [
+            "FDA registration (customer owned)",
+            "Halal registration"
+          ]
         }
       ]
     },
@@ -404,6 +408,15 @@
           "body": "Annual contract with volume discounts."
         }
       ]
+    },
+    "selection": {
+      "summaryTitle": "Summary",
+      "totalLabel": "Estimated total",
+      "totalNote": "Plus custom-priced items",
+      "totalUnavailable": "Custom quotation",
+      "includedLabel": "Included",
+      "selectedLabel": "Selected",
+      "emptyLabel": "Select a package, add-ons, or a subscription."
     },
     "standards": {
       "title": "Standards",
