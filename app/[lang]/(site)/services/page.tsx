@@ -56,10 +56,10 @@ export default async function Services({
 
   return (
     <div className="flex w-full flex-1 flex-col gap-16 bg-white pb-16">
-      <section className="mx-auto w-full max-w-7xl px-6 pt-10 lg:px-10">
-        <div className="relative overflow-hidden rounded-[28px]">
+      <section className="mx-auto w-full">
+        <div className="relative overflow-hidden">
           <Image
-            src="/service/OEM.jpg"
+            src="/service/Banner.jpg"
             alt="OEM Manufacturing Service"
             fill
             priority
@@ -67,24 +67,22 @@ export default async function Services({
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
-          <div className="relative flex min-h-[320px] flex-col justify-center gap-6 px-6 py-12 text-white sm:min-h-[380px] lg:px-12">
+          <div className="relative flex min-h-[320px] max-w-6xl flex-col justify-center gap-6 mx-auto px-6 py-12 text-white sm:min-h-[380px] lg:px-12">
             <div className="max-w-xl space-y-4">
-              <h1 className="text-3xl font-semibold leading-tight sm:text-5xl">
+              <h1 className="text-3xl font-semibold text-white/90! leading-tight sm:text-5xl">
                 {services.title}
               </h1>
-              <p className="text-base text-white/80 sm:text-lg">
+              <p className="text-base text-white/90! sm:text-lg">
                 {services.lead}
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              {["/service/FDA_LOGO.png", "/service/HALAL_LOGO.png"].map((src) => (
-                <div
-                  key={src}
-                  className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white p-2 shadow-md"
-                >
-                  <Image src={src} alt="Certification logo" width={56} height={56} />
-                </div>
-              ))}
+              <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
+                <Image src="/service/FDA_LOGO.png" alt="FDA logo" width={56} height={56} className="scale-75" />
+              </div>
+              <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
+                <Image src="/service/HALAL_LOGO.png" alt="Halal logo" width={72} height={72} className="scale-115" />
+              </div>
             </div>
           </div>
         </div>
@@ -173,11 +171,10 @@ export default async function Services({
           {services.packages.items.map((item) => (
             <article
               key={item.name}
-              className={`rounded-3xl border p-6 shadow-sm ${
-                item.featured
+              className={`rounded-3xl border p-6 shadow-sm ${item.featured
                   ? "border-[#C61B1B] bg-white"
                   : "border-zinc-200 bg-white"
-              }`}
+                }`}
             >
               <div className="flex items-center justify-between">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
