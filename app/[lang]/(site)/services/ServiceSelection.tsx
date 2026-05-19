@@ -364,11 +364,13 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
   return (
     <>
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
+        <div className="text-center flex flex-col items-center justify-center gap-4 my-12">
+          <h2 className="text-2xl font-semibold text-[#A31621]!">
             {services.packages.title}
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
+          <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="150" height="4" rx="2" fill="#A11111" />
+          </svg>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {services.packages.items.map((item) => (
@@ -398,11 +400,13 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
+        <div className="text-center flex flex-col items-center justify-center gap-4 my-4">
+          <h2 className="text-2xl font-semibold text-[#A31621]!">
             {services.addOns.title}
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
+          <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="150" height="4" rx="2" fill="#A11111" />
+          </svg>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {services.addOns.items.map((item) => {
@@ -425,11 +429,13 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-[#A31621]">
+        <div className="text-center flex flex-col items-center justify-center gap-4 my-4">
+          <h2 className="text-2xl font-semibold text-[#A31621]!">
             {services.subscription.title}
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-[#A31621]" />
+          <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="150" height="4" rx="2" fill="#A11111" />
+          </svg>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {services.subscription.items.map((item) => (
