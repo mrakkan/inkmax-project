@@ -141,6 +141,7 @@ export default function Navbar({ lang, labels }: NavbarProps) {
             alt="KYN Partners & Co Ltd."
             width={144}
             height={36}
+            className="h-9 w-36 object-contain"
             priority
           />
         </Link>
