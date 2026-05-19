@@ -59,13 +59,20 @@ export default function FooterContactForm({ labels }: FooterContactFormProps) {
         body: JSON.stringify(form),
       });
 
-      const payload = (await res.json().catch(() => null)) as
-        | { ok: boolean; error?: string }
-        | null;
+      const contentType = res.headers.get("Content-Type") ?? "";
+      const payload = contentType.includes("application/json")
+        ? ((await res.json().catch(() => null)) as { ok: boolean; error?: string } | null)
+        : null;
+      const textFallback = !payload
+        ? (await res.text().catch(() => "")).slice(0, 300)
+        : "";
 
       if (!res.ok || !payload?.ok) {
         setStatus("error");
-        setErrorMessage(payload?.error ?? "ส่งข้อความไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");
+        setErrorMessage(
+          (payload?.error ?? textFallback) ||
+            `ส่งข้อความไม่สำเร็จ (HTTP ${res.status}) กรุณาลองใหม่อีกครั้ง`
+        );
         return;
       }
 
