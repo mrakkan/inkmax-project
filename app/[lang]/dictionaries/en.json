@@ -28,12 +28,11 @@
         },
         {
           "id": "hero-2",
-          "title": "Innovating\nBetter Lives",
           "description": [
-            "Healthier products. Smarter choices.",
-            "Stronger communities."
+
           ],
-          "align": "left"
+          "align": "left",
+          "image": "/images/Home_Products.png"
         },
         {
           "id": "hero-3",
@@ -43,16 +42,14 @@
             "we build, you scale."
           ],
           "align": "left",
-          "image": "/images/HOME_OEM.png"
+          "image": "/images/Home_OEM.jpg"
         },
         {
           "id": "hero-4",
-          "title": "Together,\nWe Create the Future",
-          "description": [
-            "Collaborate. Innovate. Grow.",
-            "For a sustainable tomorrow"
-          ],
-          "align": "left"
+          "title": "From Research,To Real-World Solutions",
+          "subtitle": "EMBRACING CAPABILITY",
+          "align": "center",
+          "image": "/images/Home_Overview.png" 
         }
       ]
     },
@@ -106,8 +103,7 @@
     "team": {
       "title": "KYN Partners & Co",
       "body": [
-        "Founded to become an Architecture of Innovation that transforms knowledge and intellectual property into commercial-ready ventures.",
-        "We integrate science, technology, and strategic collaboration to build an ecosystem of products, technologies, and partners."
+        "Driven by the vision of “Architecture of Innovation” transforming knowledge, research, and intellectual property into innovations and business models with real commercial scalability."
       ],
       "imageLabel": "Team Image"
     },
@@ -138,7 +134,22 @@
           "name": "Mae Fah Luang University",
           "logoLabel": "Mae Fah Luang University",
           "logoSrc": "/home/Supported%20by_LOGO/mfu_LOGO.png"
-        }
+        },
+        {
+          "name": "ELP",
+          "logoLabel": "ELP",
+          "logoSrc": "/home/Supported%20by_LOGO/ELP.png"
+        },
+        {
+          "name": "SiBB",
+          "logoLabel": "SiBB",
+          "logoSrc": "/home/Supported%20by_LOGO/SiBB.png"
+        },
+        {
+          "name": "EWC",
+          "logoLabel": "EWC",
+          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
+               }
       ]
     }
   },

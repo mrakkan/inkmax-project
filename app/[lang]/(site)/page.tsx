@@ -71,7 +71,7 @@ export default async function Home({
   ];
   const coreTechImages = [
     "/images/AGRI-TECH.jpg",
-    null,
+    "/images/FOOD_TECH.jpg",
     "/images/BIO-TECH.png",
   ];
   const coreTechIconImages = [
@@ -102,7 +102,7 @@ export default async function Home({
                       key={`${item.title}-item`}
                       className="flex flex-col items-center px-6 text-center"
                     >
-                      <div className="flex h-44 w-44 items-center justify-center overflow-hidden rounded-full bg-white md:-mt-16 sm:h-48 sm:w-48">
+                      <div className="flex h-60 w-60 items-center justify-center overflow-hidden rounded-full bg-white md:-mt-20 sm:h-60 sm:w-60">
                         {pillarImages[index] ? (
                           <img
                             src={pillarImages[index]}
@@ -116,11 +116,14 @@ export default async function Home({
                         )}
                       </div>
                       <MotionReveal delayMs={index * 100}>
-                        <div className="mt-7 w-full max-w-[240px] text-center md:text-left">
-                          <h3 className="text-4xl font-semibold leading-[1.05] tracking-tight text-[#8b1419] sm:text-5xl">
+                        <div className="mt-8 w-full max-w-[280px] text-center md:text-left">
+                          <h3
+                            className="text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl"
+                            style={{ color: "#8b1419" }}
+                          >
                             {item.title}
                           </h3>
-                          <p className="mt-4 text-[13px] leading-relaxed text-zinc-500">
+                          <p className="mt-4 text-[15px] leading-relaxed text-zinc-500">
                             {item.body}
                           </p>
                         </div>
@@ -166,9 +169,8 @@ export default async function Home({
                 const accent = theme?.accent ?? "#A31621";
 
                 return (
-                  
-                    <div className="relative mx-auto w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]">
-                      <article className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]">
+                  <div className="relative mx-auto w-full max-w-[420px] overflow-visible md:max-w-[280px] lg:max-w-[320px]">
+                     <article className="relative overflow-hidden rounded-[32px] shadow-[0_30px_60px_-40px_rgba(15,23,42,0.4)]">
                         <div className="relative h-[420px] min-h-[420px] lg:h-[460px]">
                           <div
                             className="absolute inset-0"
@@ -210,7 +212,7 @@ export default async function Home({
                           ) : null}
 
                           <div className="absolute inset-x-0 bottom-0 z-10 p-7 text-white">
-                            <h3 className="text-2xl font-semibold">{item.title}</h3>
+                            <h3 className="text-2xl font-semibold" style={{color: 'rgba(255, 255, 255, 1)'}}>{item.title}</h3>
                             <p className="mt-4 text-sm leading-relaxed text-white/90">
                               {item.body}
                             </p>
@@ -297,7 +299,7 @@ export default async function Home({
               </MotionReveal>
               <MotionReveal delayMs={140} className="min-[1000px]:w-1/2">
                 <div className="flex flex-col gap-4 px-6 py-10 min-[1000px]:py-14">
-                  <h3 className="text-2xl font-semibold sm:text-3xl">
+                  <h3 className="text-2xl font-semibold sm:text-3xl" style={{color: '#FFD990'}}>
                     {team.title}
                   </h3>
                   {team.body.map((paragraph: string, index: number) => (

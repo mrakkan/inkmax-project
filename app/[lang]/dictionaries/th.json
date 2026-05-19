@@ -28,12 +28,7 @@
         },
         {
           "id": "hero-2",
-          "title": "สร้างนวัตกรรม\nเพื่อชีวิตที่ดีขึ้น",
-          "description": [
-            "ผลิตภัณฑ์สุขภาพดี ทางเลือกที่ฉลาดกว่า",
-            "ชุมชนแข็งแรงขึ้น"
-          ],
-          "align": "left"
+          "image": "/images/Home_Products.png"
         },
         {
           "id": "hero-3",
@@ -43,7 +38,7 @@
             "เราสร้าง คุณขยาย"
           ],
           "align": "left",
-          "image": "/images/HOME_OEM.png"
+          "image": "/images/HOME_OEM.jpg"
         },
         {
           "id": "hero-4",
@@ -52,7 +47,8 @@
             "ร่วมมือ สร้างสรรค์ เติบโต",
             "เพื่อวันพรุ่งนี้ที่ยั่งยืน"
           ],
-          "align": "left"
+          "align": "center",
+          "image": "/images/Home_Overview.png"
         }
       ]
     },
@@ -138,7 +134,22 @@
           "name": "มหาวิทยาลัยแม่ฟ้าหลวง",
           "logoLabel": "Mae Fah Luang University",
           "logoSrc": "/home/Supported%20by_LOGO/mfu_LOGO.png"
-        }
+        },
+        {
+          "name": "ELP",
+          "logoLabel": "ELP",
+          "logoSrc": "/home/Supported%20by_LOGO/ELP.png"
+        },
+        {
+          "name": "SiBB",
+          "logoLabel": "SiBB",
+          "logoSrc": "/home/Supported%20by_LOGO/SiBB.png"
+        },
+        {
+          "name": "EWC",
+          "logoLabel": "EWC",
+          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
+               }
       ]
     }
   },

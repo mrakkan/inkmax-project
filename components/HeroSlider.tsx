@@ -1,10 +1,11 @@
 "use client";
 
+import { rgba } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 type HeroSlide = {
   id: string;
-  title: string;
+  title?: string;
   subtitle?: string;
   description?: string[];
   align?: "center" | "left" | string;
@@ -157,11 +158,38 @@ export default function HeroSlider({
         const isLeft = slide.align === "left";
         const slideTagline = slide.tagline ?? tagline;
         const showLogo = index === 0;
+        const isFirstSlide = index === 0;
+        const isThirdSlide = index === 2;
+        const isFourthSlide = index === 3;
+        const titleColor = isFirstSlide ? "#8b1419" : "#ffffff";
+        const subtitleColor = isFirstSlide
+          ? "rgba(139, 20, 25, 0.80)"
+          : "rgba(255, 255, 255, 0.90)";
+        const descriptionColor = isFirstSlide
+          ? "rgba(139, 20, 25, 0.80)"
+          : "rgba(255, 255, 255, 0.90)";
+        const taglineColor = isFirstSlide
+          ? "rgba(139, 20, 25, 0.70)"
+          : "rgba(255, 255, 255, 0.80)";
+        const dotColor = isFirstSlide
+          ? "rgba(139, 20, 25, 0.40)"
+          : "rgba(255, 255, 255, 0.70)";
+        const titleFontSize = isThirdSlide
+          ? "clamp(2rem, 5vw, 4.2rem)"
+          : "clamp(1.6rem, 4vw, 3.4rem)";
+        const subtitleFontSize = isThirdSlide
+          ? "clamp(0.65rem, 1.4vw, 1rem)"
+          : isFirstSlide || isFourthSlide
+            ? "clamp(1.1rem, 3vw, 2.1rem)"
+            : "clamp(0.9rem, 1.8vw, 1.2rem)";
+        const descriptionFontSize = isThirdSlide
+          ? "clamp(1.8rem, 2vw, 1.8rem)"
+          : "clamp(1.9rem, 3vw, 2rem)";
 
         return (
           <div key={`${slide.id}-content`} className="absolute inset-0 flex items-center px-6">
             <div
-              className={`flex w-full flex-col text-[#8b1419] ${
+              className={`flex w-full flex-col ${
                 isLeft ? "items-center" : "items-center text-center"
               }`}
             >
@@ -169,9 +197,10 @@ export default function HeroSlider({
                 className={`mx-auto flex w-full max-w-3xl flex-col ${
                   isLeft ? "items-start text-left" : "items-center"
                 }`}
+                style={{ transform: "translateY(clamp(-72px, -8vh, -40px))" }}
               >
                 {showLogo ? (
-                  <div className="mb-4 flex h-50 w-50 items-center justify-center sm:h-32 sm:w-32 lg:h-50 lg:w-50">
+                  <div className="mb-4 flex h-32 w-32 items-center justify-center sm:h-50 sm:w-50 lg:h-70 lg:w-70">
                     <img
                       src="/logo/LOGO_COMPANY_KYN.png"
                       alt="KYN logo"
@@ -179,17 +208,40 @@ export default function HeroSlider({
                     />
                   </div>
                 ) : null}
-                <h1 className="text-[clamp(1.6rem,4vw,3.4rem)] font-semibold uppercase leading-tight tracking-[0.16em]">
-                  {renderLines(slide.title)}
-                </h1>
+                {slide.title ? (
+                  <h1
+                    className="font-semibold uppercase leading-tight tracking-[0.16em]"
+                    style={{
+                      color: titleColor,
+                      fontSize: titleFontSize,
+                      textShadow: "0 12px 28px rgba(0,0,0,0.38)",
+                    }}
+                  >
+                    {renderLines(slide.title)}
+                  </h1>
+                ) : null}
                 {slide.subtitle ? (
-                  <p className="mt-3 text-[clamp(0.65rem,1.4vw,1rem)] uppercase tracking-[0.3em] text-[#8b1419]/75">
+                  <p
+                    className="mt-3 uppercase tracking-[0.3em]"
+                    style={{
+                      color: '#ffffff',
+                      fontSize: subtitleFontSize,
+                      textShadow: "0 10px 24px rgba(0,0,0,0.34)",
+                    }}
+                  >
                     {renderLines(slide.subtitle)}
                   </p>
                 ) : null}
 
                 {slide.description && slide.description.length > 0 ? (
-                  <div className="mt-4 text-[clamp(0.9rem,1.6vw,1.1rem)] leading-relaxed text-[#8b1419]/75">
+                  <div
+                    className="mt-4 leading-relaxed"
+                    style={{
+                      color: '#ffffff',
+                      fontSize: descriptionFontSize,
+                      textShadow: "0 10px 24px rgba(0,0,0,0.30)",
+                    }}
+                  >
                     {slide.description.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -197,12 +249,18 @@ export default function HeroSlider({
                 ) : null}
 
                 {slideTagline && slideTagline.length > 0 ? (
-                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-[#8b1419]/65 sm:text-[11px]">
+                  <div
+                    className="mt-4 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] sm:text-[11px]"
+                    style={{
+                      color: '#ffffff',
+                      textShadow: "0 10px 22px rgba(0,0,0,0.28)",
+                    }}
+                  >
                     {slideTagline.map((item, itemIndex) => (
                       <span key={item} className="flex items-center gap-3">
                         {item}
                         {itemIndex < slideTagline.length - 1 ? (
-                          <span className="h-1 w-1 rounded-full bg-[#8b1419]/35" />
+                          <span className="h-1 w-1 rounded-full" style={{ backgroundColor: dotColor }} />
                         ) : null}
                       </span>
                     ))}
@@ -253,30 +311,65 @@ export default function HeroSlider({
         </svg>
       </button>
 
-      <div className="absolute bottom-16 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3">
-        <div className="flex items-center gap-2">
-          {normalizedSlides.map((slide, index) => (
-            <button
-              key={`${slide.id}-dot`}
-              type="button"
-              aria-label={`Go to slide ${index + 1}`}
-              className={`h-2 w-2 rounded-full transition ${
-                index === activeIndex
-                  ? "scale-125 bg-black/55"
-                  : "bg-black/20"
-              }`}
-              onClick={() => setActiveIndex(index)}
-            />
-          ))}
-        </div>
-        {navItems.length > 0 ? (
-          <div className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-[#8b1419]/55">
+      {navItems.length > 0 && navItems.length === normalizedSlides.length ? (
+        <div className="absolute bottom-24 left-1/2 z-10 -translate-x-1/2">
+          <div className="grid grid-flow-col auto-cols-fr items-end gap-x-8">
             {navItems.map((item, index) => (
-              <span key={`${item}-${index}`}>{item}</span>
+              <button
+                key={`${item}-${index}`}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                className="group flex flex-col items-center gap-3 whitespace-nowrap"
+                onClick={() => setActiveIndex(index)}
+              >
+                <span
+                  className={`h-2.5 w-2.5 rounded-full transition ${
+                    index === activeIndex
+                      ? "scale-125 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                      : "bg-white/45"
+                  }`}
+                />
+                <span
+                  className={`text-[10px] uppercase tracking-[0.26em] ${
+                    index === activeIndex ? "text-white" : "text-white/80"
+                  }`}
+                  style={{ textShadow: "0 10px 22px rgba(0,0,0,0.28)" }}
+                >
+                  {item}
+                </span>
+              </button>
             ))}
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : (
+        <div className="absolute bottom-24 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3">
+          <div className="flex items-center gap-3">
+            {normalizedSlides.map((slide, index) => (
+              <button
+                key={`${slide.id}-dot`}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-2.5 w-2.5 rounded-full transition ${
+                  index === activeIndex
+                    ? "scale-125 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                    : "bg-white/45"
+                }`}
+                onClick={() => setActiveIndex(index)}
+              />
+            ))}
+          </div>
+          {navItems.length > 0 ? (
+            <div
+              className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-white/80"
+              style={{ textShadow: "0 10px 22px rgba(0,0,0,0.28)" }}
+            >
+              {navItems.map((item, index) => (
+                <span key={`${item}-${index}`}>{item}</span>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      )}
     </section>
   );
 }
