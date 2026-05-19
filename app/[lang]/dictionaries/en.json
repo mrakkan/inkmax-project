@@ -167,22 +167,25 @@
           "brand": "Svariest",
           "title": "Ready-to-Cook Spice Blend",
           "body": "A ready-to-cook seasoning powder made from more than 12 authentic Thai herbs and spices, bringing together traditional Thai flavors in one convenient sachet. Richly aromatic and perfectly balanced, it can be used in a variety of Thai and fusion dishes. Suitable for grilling, marinating, stir-frying, or seasoning, it helps elevate dishes with a distinctive Thai taste effortlessly.",
-          "size": "Net weight: 60 g",
-          "price": "99.00 THB"
+          "size": "Net weight:",
+          "sizeValueSmall": "60 g",
+          "sizeValueBig": "500 g"
         },
         {
           "brand": "Svariest",
           "title": "Ready-to-Eat Mala Spice",
           "body": "A ready-to-eat mala seasoning powder that combines the bold spiciness of mala with the aromatic essence of Thai herbs. The flavor is intense yet well-balanced in a way familiar to Thai consumers. Perfect for grilling, marinating, stir-frying, or dipping sauces, it adds a unique layer of Thai-inspired flavor to a wide range of dishes.",
-          "size": "Net weight: 60 g",
-          "price": "99.00 THB"
+          "size": "Net weight:",
+          "sizeValueSmall": "60 g",
+          "sizeValueBig": "500 g"
         },
         {
           "brand": "Svariest",
           "title": "Ready-to-Cook Laab Spice",
           "body": "A ready-to-cook laab seasoning powder based on the original Northern Thai recipe. Infused with Thai spices and local herbs, it delivers the authentic spicy, aromatic, and well-rounded flavor of traditional laab. Convenient for making laab, spicy salads, nam tok, or even dipping sauces without the need to prepare multiple ingredients.",
-          "size": "Net weight: 60 g",
-          "price": "99.00 THB"
+          "size": "Net weight:",
+          "sizeValueSmall": "60 g",
+          "sizeValueBig": "500 g"
         }
       ],
       "itemBlock": {

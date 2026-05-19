@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import FoodProductCard from "@/components/FoodProductCard";
 import MotionReveal from "@/components/MotionReveal";
 
 import { getDictionary, hasLocale, locales, type Locale } from "../../dictionaries";
@@ -33,8 +34,23 @@ export default async function Products({
     };
   };
 
+  const foodProductImagePairs: [string, string][] = [
+    [
+      "/product/Product_SP_SVRIEST_KYN.png",
+      "/product/SP500.png",
+    ],
+    [
+      "/product/Product_MA_SVRIEST_KYN.png",
+      "/product/MA500.png",
+    ],
+    [
+      "/product/Product_LB_SVRIEST_KYN.png",
+      "/product/LB500.png",
+    ],
+  ];
+
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 px-6 py-8 lg:py-16">
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 px-6 py-8">
       <section className="text-center">
         <h2 className="text-(--primary)!">
           Overall Products
@@ -93,48 +109,24 @@ export default async function Products({
       </section>
 
       <section className="flex flex-col gap-10">
-        {dict.products.food.items.map((item, index) => (
-          <article
-            key={item.title}
-            className={`grid items-center justify-items-center gap-8 lg:gap-24 lg:grid-cols-[480px_1fr] ${index % 2 === 1 ? "lg:grid-cols-[1fr_480px]" : ""
-              }`}
-          >
-            <div
-              className={`h-72 w-72 overflow-hidden rounded-2xl bg-white shadow-md lg:h-120 lg:w-120 ${index % 2 === 1 ? "lg:order-2 lg:justify-self-end" : ""
-                }`}
-            >
-              <Image
-                src={
-                  [
-                    "/product/Product_SP_SVRIEST_KYN.png",
-                    "/product/Product_MA_SVRIEST_KYN.png",
-                    "/product/Product_LB_SVRIEST_KYN.png",
-                  ][index] ?? "/product/Product_SP_SVRIEST_KYN.png"
-                }
-                alt={item.title}
-                width={480}
-                height={480}
-                className="h-full w-full object-cover"
-                sizes="(min-width: 1024px) 480px, 288px"
-              />
-            </div>
-            <div className={index % 2 === 1 ? "md:order-1" : ""}>
-              <p className="pb-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                {item.brand}
-              </p>
-              <h3 className="mt-2 text-lg font-semibold text-zinc-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-base leading-6 text-zinc-600">
-                {item.body}
-              </p>
-              <p className="mt-2 text-base text-zinc-500">{item.size}</p>
-              <p className="mt-3 text-base font-semibold text-[#C61B1B]">
-                {item.price}
-              </p>
-            </div>
-          </article>
-        ))}
+        {dict.products.food.items.map((item, index) => {
+          const imagePair =
+            foodProductImagePairs[index] ?? foodProductImagePairs[0];
+          const images = [
+            { src: imagePair[0], alt: `${item.title} primary` },
+            { src: imagePair[1], alt: `${item.title} secondary` },
+          ];
+
+          return (
+            <FoodProductCard
+              key={item.title}
+              item={item}
+              images={images}
+              sizes="(min-width: 1024px) 450px, 270px"
+              isReversed={index % 2 === 1}
+            />
+          );
+        })}
       </section>
 
       <section className="rounded-3xl border border-zinc-200 bg-white px-6 py-8 shadow-[0_24px_60px_-50px_rgba(0,0,0,0.25)] md:px-8">
@@ -318,9 +310,6 @@ export default async function Products({
             {dict.products.postHarvest.body}
           </p>
           <p className="mt-2 text-base text-zinc-500">{dict.products.postHarvest.size}</p>
-          <p className="mt-3 text-base font-semibold text-[#C61B1B]">
-            {dict.products.postHarvest.price}
-          </p>
         </div>
       </section>
 
@@ -407,9 +396,6 @@ export default async function Products({
             {dict.products.agro.body}
           </p>
           <p className="mt-2 text-base text-zinc-500">{dict.products.agro.size}</p>
-          <p className="mt-3 text-base font-semibold text-[#C61B1B]">
-            {dict.products.agro.price}
-          </p>
         </div>
       </section>
 
