@@ -121,7 +121,7 @@ export default async function Services({
       <section className="mx-auto w-full">
         <div className="relative overflow-hidden">
           <Image
-            src="/service/Banner.jpg"
+            src="/service/OEMBANNER.jpg"
             alt="OEM Manufacturing Service"
             fill
             priority
