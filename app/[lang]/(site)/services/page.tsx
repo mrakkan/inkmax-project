@@ -159,15 +159,23 @@ export default async function Services({
             return (
               <article className="relative">
                 <div className={`relative min-h-[220px] overflow-hidden flex flex-col justify-end items-start px-9 py-6 rounded-3xl shadow-[0_20px_50px_-40px_rgba(17,24,39,0.45)] ${asset.accent}`}>
-                  <div className="absolute left-15 top-0 h-full w-full scale-125">
+                  <div className="absolute inset-0">
                     <Image
                       src={asset.image}
                       alt={item.title}
                       fill
-                      className="object-cover"
+                      className="object-cover scale-110 origin-center"
+                      style={{ objectPosition: "calc(50% + 64px) 50%" }}
                       sizes="(min-width: 768px) 33vw, 100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent" />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(251.53deg, rgba(255, 255, 255, 0) 30.81%, rgba(255, 255, 255, 0.8) 48.56%, #FFFFFF 65.27%)",
+                        transform: "translateX(12px)",
+                      }}
+                    />
                   </div>
 
                   <div className="relative z-10">
@@ -178,7 +186,7 @@ export default async function Services({
                       {item.subtitle}
                     </p>
                   </div>
-                  <p className="relative z-10">
+                  <p className="relative z-10 whitespace-break-spaces">
                     {item.body}
                   </p>
 
@@ -218,7 +226,7 @@ export default async function Services({
                     key={step.title}
                     className="relative rounded-3xl border border-white/60 bg-white/80 p-12 text-center shadow-sm"
                   >
-                    <div className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-[#A31621] text-xs font-semibold text-white">
+                    <div className="absolute left-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-[#A31621] text-xs font-semibold text-white">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                     <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white">
