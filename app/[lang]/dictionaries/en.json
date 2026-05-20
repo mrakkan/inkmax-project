@@ -46,7 +46,7 @@
         },
         {
           "id": "hero-4",
-          "title": "From Research,To Real-World Solutions",
+          "title": "From Research,\nTo Real-World Solutions",
           "subtitle": "EMBRACING CAPABILITY",
           "align": "center",
           "image": "/images/Home_Overview.png" 
@@ -111,25 +111,20 @@
       "title": "Supported By",
       "items": [
         {
-          "name": "TED Fund",
-          "logoLabel": "TED Fund",
-          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
-        },
-        {
           "name": "MHESI",
           "logoLabel": "MHESI",
           "logoSrc": "/home/Supported%20by_LOGO/%E0%B8%AD%E0%B8%A7.Logo.png"
-        },
-        {
-          "name": "Startup Thailand",
-          "logoLabel": "Startup Thailand",
-          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
           "name": "NIA",
           "logoLabel": "NIA",
           "logoSrc": "/home/Supported%20by_LOGO/NIA-logo.png"
         },
+        {
+          "name": "EWC",
+          "logoLabel": "EWC",
+          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
+               },
         {
           "name": "Mae Fah Luang University",
           "logoLabel": "Mae Fah Luang University",
@@ -141,15 +136,16 @@
           "logoSrc": "/home/Supported%20by_LOGO/ELP.png"
         },
         {
-          "name": "SiBB",
-          "logoLabel": "SiBB",
-          "logoSrc": "/home/Supported%20by_LOGO/SiBB.png"
+          "name": "Startup Thailand",
+          "logoLabel": "Startup Thailand",
+          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
-          "name": "EWC",
-          "logoLabel": "EWC",
-          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
-               }
+          "name": "TED Fund",
+          "logoLabel": "TED Fund",
+          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
+        }
+        
       ]
     }
   },
@@ -178,25 +174,22 @@
           "brand": "Svariest",
           "title": "Ready-to-Cook Spice Blend",
           "body": "A ready-to-cook seasoning powder made from more than 12 authentic Thai herbs and spices, bringing together traditional Thai flavors in one convenient sachet. Richly aromatic and perfectly balanced, it can be used in a variety of Thai and fusion dishes. Suitable for grilling, marinating, stir-frying, or seasoning, it helps elevate dishes with a distinctive Thai taste effortlessly.",
-          "size": "Net weight:",
-          "sizeValueSmall": "60 g",
-          "sizeValueBig": "500 g"
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
         },
         {
           "brand": "Svariest",
           "title": "Ready-to-Eat Mala Spice",
           "body": "A ready-to-eat mala seasoning powder that combines the bold spiciness of mala with the aromatic essence of Thai herbs. The flavor is intense yet well-balanced in a way familiar to Thai consumers. Perfect for grilling, marinating, stir-frying, or dipping sauces, it adds a unique layer of Thai-inspired flavor to a wide range of dishes.",
-          "size": "Net weight:",
-          "sizeValueSmall": "60 g",
-          "sizeValueBig": "500 g"
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
         },
         {
           "brand": "Svariest",
           "title": "Ready-to-Cook Laab Spice",
           "body": "A ready-to-cook laab seasoning powder based on the original Northern Thai recipe. Infused with Thai spices and local herbs, it delivers the authentic spicy, aromatic, and well-rounded flavor of traditional laab. Convenient for making laab, spicy salads, nam tok, or even dipping sauces without the need to prepare multiple ingredients.",
-          "size": "Net weight:",
-          "sizeValueSmall": "60 g",
-          "sizeValueBig": "500 g"
+          "size": "Net weight: 60 g",
+          "price": "99.00 THB"
         }
       ],
       "itemBlock": {
@@ -268,178 +261,22 @@
     }
   },
   "services": {
-    "title": "OEM Manufacturing Service",
-    "lead": "End-to-end OEM solutions from Idea to Delivery",
-    "categories": [
+    "title": "Services",
+    "lead": "End-to-end architectural and interior design support for modern workplaces.",
+    "items": [
       {
-        "title": "Seasoning Powder",
-        "subtitle": "(Seasoning Powder)",
-        "body": "Custom seasoning powders, spice blends, and ready-to-cook mixes."
+        "title": "Concept Design",
+        "body": "Moodboards, spatial planning, and vision alignment workshops."
       },
       {
-        "title": "Curry Paste",
-        "subtitle": "(Curry Paste)",
-        "body": "Signature curry pastes with authentic aromas and flexible heat levels."
+        "title": "Design Development",
+        "body": "Detailed drawings, material selection, and vendor coordination."
       },
       {
-        "title": "Sauce & Dressing",
-        "subtitle": "(Sauce & Dressing)",
-        "body": "Sauces, dressings, dips, and ready-to-use condiments."
+        "title": "Build Supervision",
+        "body": "On-site guidance to deliver a flawless, on-brand result."
       }
-    ],
-    "process": {
-      "title": "End-to-End Process",
-      "steps": [
-        {
-          "title": "Business & Product Consultation",
-          "body": "Consultation and planning to define product direction."
-        },
-        {
-          "title": "Custom Product Development (R&D)",
-          "body": "Develop recipes and adjust flavors to your needs."
-        },
-        {
-          "title": "OEM Manufacturing",
-          "body": "Produce in certified facilities with small-batch support."
-        },
-        {
-          "title": "Packaging & Branding Support",
-          "body": "Packaging and brand identity guidance."
-        },
-        {
-          "title": "Regulatory Support",
-          "body": "Support for FDA, Halal, and compliance documentation."
-        },
-        {
-          "title": "Quality Control (QC) & Delivery",
-          "body": "Quality checks and reliable delivery."
-        }
-      ]
-    },
-    "packages": {
-      "title": "OEM Package Model",
-      "featuredLabel": "Recommended",
-      "items": [
-        {
-          "tier": "Tier 1",
-          "name": "Starter",
-          "subtitle": "Small batch: 20-50 kg",
-          "price": "15,000 - 35,000 THB",
-          "features": [
-            "Standard recipe development",
-            "Small batch production",
-            "Basic packaging guidance",
-            "One design revision"
-          ],
-          "footnote": "Lead time: 15-20 days",
-          "featured": false
-        },
-        {
-          "tier": "Tier 2",
-          "name": "Professional",
-          "subtitle": "Mid batch: 100-200 kg",
-          "price": "50,000 - 120,000 THB",
-          "features": [
-            "Custom recipe development",
-            "Flavor adjustment rounds",
-            "Packaging & label design",
-            "Regulatory consultation"
-          ],
-          "footnote": "Lead time: 25-30 days",
-          "featured": true
-        },
-        {
-          "tier": "Tier 3",
-          "name": "Enterprise",
-          "subtitle": "Large batch: 1,000 kg+",
-          "price": "Custom quotation",
-          "features": [
-            "Advanced R&D and formulation",
-            "Full branding system support",
-            "Regulatory documentation",
-            "Dedicated QC and logistics"
-          ],
-          "footnote": "Lead time: by project scope",
-          "featured": false,
-          "includedAddOns": [
-            "FDA registration (customer owned)",
-            "Halal registration"
-          ]
-        }
-      ]
-    },
-    "addOns": {
-      "title": "Add-On Services",
-      "items": [
-        {
-          "title": "FDA registration (customer owned)",
-          "price": "+8,000 - 15,000 THB",
-          "body": "For brands registering under their own name."
-        },
-        {
-          "title": "Halal registration",
-          "price": "+5,000 - 10,000 THB",
-          "body": "Required for export or Muslim markets."
-        },
-        {
-          "title": "Shelf-life testing",
-          "price": "+8,000 - 18,000 THB",
-          "body": "Stability testing via accredited labs."
-        },
-        {
-          "title": "Nutrition facts panel",
-          "price": "+5,000 - 8,000 THB",
-          "body": "Lab-tested nutrition for packaging."
-        },
-        {
-          "title": "Express production",
-          "price": "+15% of package price",
-          "body": "Reduce lead time up to 40%."
-        },
-        {
-          "title": "Formula protection agreement",
-          "price": "+3,000 - 6,000 THB",
-          "body": "Secure IP and confidentiality support."
-        }
-      ]
-    },
-    "subscription": {
-      "title": "Subscription",
-      "items": [
-        {
-          "title": "Brand care monthly",
-          "price": "8,000 THB/month",
-          "body": "Ongoing marketing and design support."
-        },
-        {
-          "title": "Business consulting monthly",
-          "price": "15,000 THB/month",
-          "body": "Monthly business consulting sessions."
-        },
-        {
-          "title": "Production contract",
-          "price": "By order volume",
-          "body": "Annual contract with volume discounts."
-        }
-      ]
-    },
-    "selection": {
-      "summaryTitle": "Summary",
-      "totalLabel": "Estimated total",
-      "totalNote": "Plus custom-priced items",
-      "totalUnavailable": "Custom quotation",
-      "includedLabel": "Included",
-      "selectedLabel": "Selected",
-      "emptyLabel": "Select a package, add-ons, or a subscription."
-    },
-    "standards": {
-      "title": "Standards",
-      "body": "International manufacturing standards for safety, quality, and reliability."
-    },
-    "cta": {
-      "title": "Start your brand with our OEM experts",
-      "body": "We support formulation, production, and packaging to launch with confidence."
-    }
+    ]
   },
   "footer": {
     "title": "Contact",
