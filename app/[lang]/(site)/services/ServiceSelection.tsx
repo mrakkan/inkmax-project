@@ -38,6 +38,10 @@ type SelectionLabels = {
   includedLabel: string;
   selectedLabel: string;
   emptyLabel: string;
+  itemsLabel?: string;
+  actionLabel?: string;
+  packageLabel?: string;
+  addOnLabel?: string;
 };
 
 type ServicesSelectionData = {
@@ -166,8 +170,8 @@ const SelectableCard = ({
     <button
       type="button"
       className={`cursor-pointer group relative flex h-full flex-col rounded-[28px] border bg-white p-6 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${selected
-          ? "border-[#C61B1B] ring-1 ring-[#C61B1B]/20"
-          : "border-zinc-200"
+        ? "border-[#C61B1B] ring-1 ring-[#C61B1B]/20"
+        : "border-zinc-200"
         } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
       onClick={onClick}
       disabled={disabled}
@@ -177,8 +181,8 @@ const SelectableCard = ({
         <div>{header}</div>
         <span
           className={`inline-flex h-5 w-5 items-center justify-center rounded-[5px] border ${selected
-              ? "border-[#C61B1B] bg-[#C61B1B]"
-              : "border-zinc-300 bg-white"
+            ? "border-[#C61B1B] bg-[#C61B1B]"
+            : "border-zinc-300 bg-white"
             }`}
           aria-hidden="true"
         >
@@ -312,9 +316,8 @@ const SimpleSelectableCard = ({
   return (
     <button
       type="button"
-      className={`cursor-pointer group flex h-full min-h-[178px] flex-col gap-4 rounded-3xl border bg-white p-5 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${
-        selected ? "border-[#C61B1B]" : "border-zinc-200"
-      } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
+      className={`cursor-pointer group flex h-full min-h-[178px] flex-col gap-4 rounded-3xl border bg-white p-5 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${selected ? "border-[#C61B1B]" : "border-zinc-200"
+        } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
       onClick={onClick}
       disabled={disabled}
       aria-pressed={selected}
@@ -323,8 +326,8 @@ const SimpleSelectableCard = ({
         <h3 className="text-base font-semibold text-zinc-900">{title}</h3>
         <span
           className={`inline-flex h-5 w-5 items-center justify-center rounded-[5px] border ${selected
-              ? "border-[#C61B1B] bg-[#C61B1B]"
-              : "border-zinc-300 bg-white"
+            ? "border-[#C61B1B] bg-[#C61B1B]"
+            : "border-zinc-300 bg-white"
             }`}
           aria-hidden="true"
         >
@@ -543,6 +546,29 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
     summaryItems,
   ]);
 
+  const itemsLabel =
+    services.selection.itemsLabel ??
+    (lang === "th" ? "ดูรายการที่เลือก" : "Selected items");
+  const itemsCountLabel = `${itemsLabel} (${summaryItems.length} ${lang === "th" ? "รายการ" : "items"
+    })`;
+  const actionLabel =
+    services.selection.actionLabel ??
+    (lang === "th" ? "ติดต่อขอใบเสนอราคา" : "Contact for quote");
+  const packageLabel =
+    services.selection.packageLabel ??
+    (lang === "th" ? "แพ็กเกจที่เลือก" : "Selected package");
+  const addOnLabel =
+    services.selection.addOnLabel ??
+    (lang === "th" ? "บริการเพิ่มเติม" : "Add-on services");
+  const packageSummary = summaryItems.filter((item) =>
+    item.id.startsWith("package:")
+  );
+  const addOnSummary = summaryItems.filter(
+    (item) => !item.id.startsWith("package:")
+  );
+  const summaryNote =
+    total.note || (summaryItems.length ? services.selection.totalNote : "");
+
   return (
     <>
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
@@ -664,54 +690,140 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="rounded-3xl border border-zinc-100 bg-white p-6 shadow-sm">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="rounded-3xl border border-zinc-100 bg-white p-4 shadow-sm md:p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-zinc-900">
-                {services.selection.summaryTitle}
+              <h4 className="font-semibold uppercase">
+                {services.selection.totalLabel}
+              </h4>
+              <h3 className="mt-2! font-semibold text-(--primary)!">
+                {total.label}
               </h3>
-              {summaryItems.length ? null : (
-                <p className="mt-1 text-sm text-zinc-500">
+              {summaryNote ? (
+                <p className="mt-1 text-xs text-zinc-400">{summaryNote}</p>
+              ) : null}
+            </div>
+
+
+            <div className="flex w-full flex-1 items-center justify-between gap-3 md:justify-center">
+              {summaryItems.length ? (
+                <details className="group relative w-full max-w-sm">
+                  <summary className="flex cursor-pointer items-center justify-between rounded-2xl border border-zinc-200 px-4 py-3 text-sm font-semibold text-zinc-900">
+                    <span>{itemsCountLabel}</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="transition group-open:rotate-180"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 6L8 10L12 6"
+                        stroke="#3F3F46"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </summary>
+                  <div className="absolute left-0 right-0 z-10 mt-3 rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg">
+                    {packageSummary.length ? (
+                      <div className="space-y-2">
+                        <h5 className="font-semibold text-zinc-500 mb-2!">
+                          {packageLabel}
+                        </h5>
+                        <div className="space-y-2">
+                          {packageSummary.map((item) => (
+                            <div
+                              key={item.id}
+                              className="flex items-center justify-between text-sm"
+                            >
+                              <div className="flex gap-2">
+                                <span className="inline-flex h-4 w-4 items-center justify-center rounded-full">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-zinc-900" />
+                                </span>
+                                <span className="font-medium text-zinc-900">
+                                  {item.title}
+                                </span>
+                              </div>
+                              <span className="font-semibold text-[#C61B1B]">
+                                {item.price}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {addOnSummary.length ? (
+                      <div className="mt-4 space-y-2 border-t border-zinc-300 pt-4">
+                        <h5 className="font-semibold text-zinc-500 mb-2!">
+                          {addOnLabel}
+                        </h5>
+                        <div className="space-y-2">
+                          {addOnSummary.map((item) => (
+                            <div
+                              key={item.id}
+                              className="flex items-center justify-between text-sm"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full">
+                                  <svg
+                                    width="16"
+                                    height="12"
+                                    viewBox="0 0 10 8"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M1 4L3.75 6.5L9 1.5"
+                                      stroke="var(--color-zinc-900)"
+                                      strokeWidth="1.3"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </span>
+                                <span className="font-medium text-zinc-900 ">
+                                  {item.title}
+                                </span>
+                                {item.included ? (
+                                  <span className="rounded-full bg-[#C61B1B]/10 px-2 py-0.5 text-[10px] font-semibold text-[#C61B1B]">
+                                    {services.selection.includedLabel}
+                                  </span>
+                                ) : null}
+                              </div>
+                              <span className="font-semibold">
+                                {item.price}
+                              </span>
+                            </div>
+                          ))}
+                          {summaryNote ? (
+                            <p className="mt-4! text-xs! text-zinc-400">{summaryNote}</p>
+                          ) : null}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+
+                </details>
+              ) : (
+                <p className="text-sm text-zinc-500">
                   {services.selection.emptyLabel}
                 </p>
               )}
+
             </div>
-            {summaryItems.length ? (
-              <div className="text-right">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">
-                  {services.selection.totalLabel}
-                </p>
-                <p className="mt-1 text-xl font-semibold text-[#C61B1B]">
-                  {total.label}
-                </p>
-                {total.note ? (
-                  <p className="mt-1 text-xs text-zinc-400">{total.note}</p>
-                ) : null}
-              </div>
-            ) : null}
+
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-xl bg-[#C61B1B] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#A11111]"
+            >
+              {actionLabel}
+            </button>
           </div>
-          {summaryItems.length ? (
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-              {summaryItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between rounded-2xl border border-zinc-100 bg-white px-4 py-3"
-                >
-                  <div>
-                    <p className="text-sm font-semibold text-zinc-900">
-                      {item.title}
-                    </p>
-                    <p className="text-xs text-zinc-500">{item.price}</p>
-                  </div>
-                  {item.included ? (
-                    <span className="rounded-full bg-[#C61B1B]/10 px-3 py-1 text-xs font-semibold text-[#C61B1B]">
-                      {services.selection.includedLabel}
-                    </span>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          ) : null}
         </div>
       </section>
     </>

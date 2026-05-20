@@ -532,7 +532,7 @@
      "selection": {
        "summaryTitle": "สรุปรายการ",
        "totalLabel": "ยอดรวมโดยประมาณ",
-       "totalNote": "ยังไม่รวมรายการราคาพิเศษ",
+       "totalNote": "หมายเหตุ: ราคาอาจเปลี่ยนแปลงตามเงื่อนไขจริง",
        "totalUnavailable": "ติดต่อเพื่อขอใบเสนอราคา",
        "includedLabel": "รวมแล้ว",
        "selectedLabel": "เลือกแล้ว",
