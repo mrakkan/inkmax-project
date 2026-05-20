@@ -93,52 +93,43 @@ export default function ProductImageCarousel({
       {showControls && (
         <>
           <button
-            type="button"
-            onClick={goPrev}
-            aria-label="Previous image"
-            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/50 p-2 text-zinc-700 shadow-md ring-1 ring-zinc-100 transition hover:bg-white cursor-pointer"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden
-            >
-              <path
-                d="M12.5 4.5L7 10L12.5 15.5"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            onClick={goNext}
-            aria-label="Next image"
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/50 p-2 text-zinc-700 shadow-md ring-1 ring-zinc-100 transition hover:bg-white cursor-pointer"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden
-            >
-              <path
-                d="M7.5 4.5L13 10L7.5 15.5"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+        type="button"
+        aria-label="Previous slide"
+        className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-black/70 cursor-pointer"
+        onClick={goPrev}
+      >
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        aria-label="Next slide"
+        className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-black/70 cursor-pointer"
+        onClick={goNext}
+      >
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
 
           <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
             {images.map((_, index) => (
@@ -147,10 +138,10 @@ export default function ProductImageCarousel({
                 type="button"
                 onClick={() => goToIndex(index)}
                 aria-label={`Go to image ${index + 1}`}
-                className={`h-2.5 w-2.5 rounded-full transition ${
+                className={`h-2.5 w-2.5 rounded-full transition cursor-pointer ${
                   index === activeIndex
-                    ? "bg-[#A11111]"
-                    : "bg-zinc-300 hover:bg-zinc-400"
+                    ? "scale-125 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                    : "bg-white/45"
                 }`}
               />
             ))}
