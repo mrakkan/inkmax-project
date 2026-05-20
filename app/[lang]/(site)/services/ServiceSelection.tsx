@@ -135,6 +135,17 @@ type SelectableCardProps = {
   onClick?: () => void;
 };
 
+type SimpleSelectableCardProps = {
+  title: string;
+  price: string;
+  body?: string;
+  badge?: string;
+  selected?: boolean;
+  selectedLabel?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+};
+
 const SelectableCard = ({
   header,
   title,
@@ -284,6 +295,65 @@ const SelectableCard = ({
           {footnote}
         </p>
       ) : null}
+    </button>
+  );
+};
+
+const SimpleSelectableCard = ({
+  title,
+  price,
+  body,
+  badge,
+  selected,
+  selectedLabel,
+  disabled,
+  onClick,
+}: SimpleSelectableCardProps) => {
+  return (
+    <button
+      type="button"
+      className={`cursor-pointer group flex h-full min-h-[178px] flex-col gap-4 rounded-3xl border bg-white p-5 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${
+        selected ? "border-[#C61B1B]" : "border-zinc-200"
+      } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
+      onClick={onClick}
+      disabled={disabled}
+      aria-pressed={selected}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-base font-semibold text-zinc-900">{title}</h3>
+        <span
+          className={`inline-flex h-5 w-5 items-center justify-center rounded-[5px] border ${selected
+              ? "border-[#C61B1B] bg-[#C61B1B]"
+              : "border-zinc-300 bg-white"
+            }`}
+          aria-hidden="true"
+        >
+          {selected ? (
+            <svg
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 5L4.5 8.5L11 1.5"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : null}
+        </span>
+        {badge ? (
+          <span className="rounded-full bg-[#C61B1B]/10 px-3 py-1 text-xs font-semibold text-[#C61B1B]">
+            {badge}
+          </span>
+        ) : null}
+      </div>
+      <h3 className="mt-2 text-[#C61B1B]!">{price}</h3>
+      {body ? <p className=" text-sm text-zinc-600 whitespace-break-spaces">{body}</p> : null}
     </button>
   );
 };
@@ -549,7 +619,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
           {services.addOns.items.map((item) => {
             const included = includedAddOns.has(item.title);
             return (
-              <SelectableCard
+              <SimpleSelectableCard
                 key={item.title}
                 title={item.title}
                 price={item.price}
@@ -576,7 +646,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {services.subscription.items.map((item) => (
-            <SelectableCard
+            <SimpleSelectableCard
               key={item.title}
               title={item.title}
               price={item.price}
