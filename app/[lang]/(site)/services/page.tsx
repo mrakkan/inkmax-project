@@ -118,6 +118,7 @@ export default async function Services({
 
   return (
     <div className="flex w-full flex-1 flex-col gap-16 bg-white">
+      {/* ------------------- Banner ---------------------- */}
       <section className="mx-auto w-full">
         <div className="relative overflow-hidden">
           <Image
@@ -128,7 +129,10 @@ export default async function Services({
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
+          <div className="absolute inset-0 " style={{
+            background:
+              "linear-gradient(81.34deg, #040000 -3.95%, rgba(53, 0, 0, 0.5) 30.51%, rgba(102, 0, 0, 0) 50.17%, rgba(90, 46, 5, 0.2) 81.5%)",
+          }} />
           <div className="relative flex min-h-[320px] max-w-6xl flex-col justify-center gap-6 mx-auto px-6 py-12 text-white sm:min-h-[380px] lg:px-12">
             <div className="max-w-xl space-y-4">
               <h1 className="text-3xl font-semibold text-white/90! leading-tight sm:text-5xl">
@@ -150,6 +154,7 @@ export default async function Services({
         </div>
       </section>
 
+      {/* ------------------- Card ---------------------- */}
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 md:grid-cols-3">
           {services.categories.map((item, index) => {
@@ -203,6 +208,7 @@ export default async function Services({
         </div>
       </section>
 
+      {/* ------------------- End-to-End Process ---------------------- */}
       <section>
         <div className="text-center flex flex-col items-center justify-center gap-4 my-12">
           <h2 className="text-2xl font-semibold text-[#A31621]!">
@@ -245,10 +251,12 @@ export default async function Services({
         </div>
       </section>
 
+      {/* ------------------- ServiceSelection ---------------------- */}
       <ServiceSelection lang={lang} services={services} />
 
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10"><div className="bg-zinc-300 w-full h-[1px]"></div></div>
 
+      {/* ------------------- Standards ---------------------- */}
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col items-center justify-between gap-6  text-center md:flex-row md:text-left">
           <div>
@@ -271,6 +279,7 @@ export default async function Services({
         </div>
       </section>
 
+      {/* ------------------- End ---------------------- */}
       <section className="mx-auto w-full">
         <div className="relative overflow-hidden">
           <Image

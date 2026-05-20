@@ -1,13 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 type PackageItem = {
   tier: string;
   name: string;
   subtitle: string;
+  minAmount: string;
   price: string;
-  features: string[];
+  features?: string[];
+  suitableFor?: string[];
+  included?: string[];
+  highlights?: string[];
   footnote?: string;
   featured?: boolean;
   includedAddOns?: string[];
@@ -39,6 +44,11 @@ type ServicesSelectionData = {
   packages: {
     title: string;
     featuredLabel: string;
+    sectionLabels?: {
+      suitableFor: string;
+      included: string;
+      highlights: string;
+    };
     items: PackageItem[];
   };
   addOns: {
@@ -108,9 +118,15 @@ type SelectableCardProps = {
   header?: ReactNode;
   title: string;
   subtitle?: string;
+  minAmount?: string;
   price: string;
   body?: string;
   features?: string[];
+  sections?: Array<{
+    label: string;
+    items: string[];
+    tone?: "dot" | "check" | "blackdot";
+  }>;
   footnote?: string;
   badge?: string;
   selected?: boolean;
@@ -123,9 +139,11 @@ const SelectableCard = ({
   header,
   title,
   subtitle,
+  minAmount,
   price,
   body,
   features,
+  sections,
   footnote,
   badge,
   selected,
@@ -136,41 +154,135 @@ const SelectableCard = ({
   return (
     <button
       type="button"
-      className={`group flex h-full flex-col rounded-3xl border p-6 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${
-        selected
-          ? "border-[#C61B1B] bg-white"
-          : "border-zinc-200 bg-white"
-      } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
+      className={`cursor-pointer group relative flex h-full flex-col rounded-[28px] border bg-white p-6 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C61B1B]/40 ${selected
+          ? "border-[#C61B1B] ring-1 ring-[#C61B1B]/20"
+          : "border-zinc-200"
+        } ${disabled ? "cursor-not-allowed opacity-60" : "hover:-translate-y-0.5"}`}
       onClick={onClick}
       disabled={disabled}
       aria-pressed={selected}
     >
       <div className="flex items-start justify-between gap-3">
         <div>{header}</div>
-        {badge ? (
-          <span className="rounded-full bg-[#C61B1B]/10 px-3 py-1 text-xs font-semibold text-[#C61B1B]">
-            {badge}
-          </span>
-        ) : null}
+        <span
+          className={`inline-flex h-5 w-5 items-center justify-center rounded-[5px] border ${selected
+              ? "border-[#C61B1B] bg-[#C61B1B]"
+              : "border-zinc-300 bg-white"
+            }`}
+          aria-hidden="true"
+        >
+          {selected ? (
+            <svg
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 5L4.5 8.5L11 1.5"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : null}
+        </span>
       </div>
-      <h3 className="mt-3 text-xl font-semibold text-zinc-900">{title}</h3>
+      <h3 className="mt-4! leading-tight text-zinc-900 whitespace-break-spaces">
+        {title}
+      </h3>
       {subtitle ? (
         <p className="mt-1 text-sm text-zinc-500">{subtitle}</p>
       ) : null}
-      <p className="mt-4 text-lg font-semibold text-[#C61B1B]">{price}</p>
-      {features ? (
-        <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-          {features.map((feature) => (
-            <li key={feature}>• {feature}</li>
+      {minAmount ? (
+        <p className="mt-6 text-base!">{minAmount}</p>
+      ) : null}
+      <h3 className="mt-1 font-bold!">{price}</h3>
+      {sections?.length ? (
+        <div className="mt-6 space-y-5 border-t pt-2 border-zinc-300">
+          {sections.map((section, index) => (
+            <div key={`${section.label}-${index}`}>
+              <p className="mt-4 text-xs font-semibold ">
+                {section.label}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-zinc-600">
+                {section.items.map((item) => (
+                  <li key={item} className="flex gap-2 w-fit">
+                    {section.tone === "check" ? (
+                      <span className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full">
+                        <svg
+                          width="16"
+                          height="12"
+                          viewBox="0 0 10 8"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1 4L3.75 6.5L9 1.5"
+                            stroke="#C61B1B"
+                            strokeWidth="1.3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    ) : section.tone === "blackdot" ? (
+                      <span className="inline-flex h-4 w-4 items-center justify-center rounded-full">
+                        <span className="h-1.5 w-1.5 rounded-full bg-zinc-900" />
+                      </span>
+                    ) : (
+                      <span className="inline-flex h-4 w-4 min-w-4 rounded-full">
+                        <Image
+                          src="/icons/CheckMark.svg"
+                          alt="Check"
+                          width={16}
+                          height={16}
+                        />
+                      </span>
+                    )}
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
+      ) : features ? (
+        <div className="mt-6">
+          <ul className="space-y-2 text-sm text-zinc-600">
+            {features.map((feature) => (
+              <li key={feature} className="flex items-center gap-2">
+                <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#C61B1B]/10">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#C61B1B]" />
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : null}
       {body ? <p className="mt-3 text-sm text-zinc-600">{body}</p> : null}
-      {footnote ? <p className="mt-6 text-xs text-zinc-400">{footnote}</p> : null}
-      {selected ? (
-        <span className="mt-6 inline-flex w-fit rounded-full bg-[#C61B1B] px-3 py-1 text-xs font-semibold text-white">
-          {selectedLabel ?? "Selected"}
-        </span>
+      {footnote ? (
+        <p className="mt-auto inline-flex items-center gap-2 text-xs text-zinc-400 border-t pt-4 border-zinc-300">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="6" cy="6" r="4.8" stroke="#A1A1AA" strokeWidth="1" />
+            <path
+              d="M6 3.5V6.2L7.7 7.3"
+              stroke="#A1A1AA"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+          </svg>
+          {footnote}
+        </p>
       ) : null}
     </button>
   );
@@ -339,10 +451,10 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
       minTotal === 0 && maxTotal === 0 && hasUnknown
         ? services.selection.totalUnavailable
         : formatRange(
-            { min: minTotal, max: maxTotal },
-            formatter,
-            currencyLabel
-          );
+          { min: minTotal, max: maxTotal },
+          formatter,
+          currencyLabel
+        );
 
     return {
       label,
@@ -372,7 +484,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
             <rect width="150" height="4" rx="2" fill="#A11111" />
           </svg>
         </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 lg:grid-cols-4">
           {services.packages.items.map((item) => (
             <SelectableCard
               key={item.name}
@@ -383,8 +495,33 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
               }
               title={item.name}
               subtitle={item.subtitle}
+              minAmount={item.minAmount}
               price={item.price}
-              features={item.features}
+              sections={
+                [
+                  {
+                    label:
+                      services.packages.sectionLabels?.suitableFor ??
+                      "Suitable for",
+                    items: item.suitableFor ?? [],
+                    tone: "blackdot",
+                  },
+                  {
+                    label:
+                      services.packages.sectionLabels?.included ??
+                      "What you get",
+                    items: item.included ?? item.features ?? [],
+                    tone: "dot",
+                  },
+                  {
+                    label:
+                      services.packages.sectionLabels?.highlights ??
+                      "Highlights",
+                    items: item.highlights ?? [],
+                    tone: "check",
+                  },
+                ].filter((section) => section.items.length > 0)
+              }
               footnote={item.footnote}
               badge={item.featured ? services.packages.featuredLabel : undefined}
               selected={item.name === selectedPackage}
