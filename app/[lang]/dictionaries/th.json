@@ -111,19 +111,9 @@
       "title": "Supported By",
       "items": [
         {
-          "name": "TED Fund",
-          "logoLabel": "TED Fund",
-          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
-        },
-        {
-          "name": "กระทรวง อว.",
+          "name": "MHESI",
           "logoLabel": "MHESI",
           "logoSrc": "/home/Supported%20by_LOGO/%E0%B8%AD%E0%B8%A7.Logo.png"
-        },
-        {
-          "name": "Startup Thailand",
-          "logoLabel": "Startup Thailand",
-          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
           "name": "NIA",
@@ -131,7 +121,12 @@
           "logoSrc": "/home/Supported%20by_LOGO/NIA-logo.png"
         },
         {
-          "name": "มหาวิทยาลัยแม่ฟ้าหลวง",
+          "name": "EWC",
+          "logoLabel": "EWC",
+          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
+               },
+        {
+          "name": "Mae Fah Luang University",
           "logoLabel": "Mae Fah Luang University",
           "logoSrc": "/home/Supported%20by_LOGO/mfu_LOGO.png"
         },
@@ -141,15 +136,15 @@
           "logoSrc": "/home/Supported%20by_LOGO/ELP.png"
         },
         {
-          "name": "SiBB",
-          "logoLabel": "SiBB",
-          "logoSrc": "/home/Supported%20by_LOGO/SiBB.png"
+          "name": "Startup Thailand",
+          "logoLabel": "Startup Thailand",
+          "logoSrc": "/home/Supported%20by_LOGO/Startup.jpg"
         },
         {
-          "name": "EWC",
-          "logoLabel": "EWC",
-          "logoSrc": "/home/Supported%20by_LOGO/EWC.png"
-               }
+          "name": "TED Fund",
+          "logoLabel": "TED Fund",
+          "logoSrc": "/home/Supported%20by_LOGO/tedfund1.png"
+        }
       ]
     }
   },
