@@ -262,7 +262,7 @@
   },
   "services": {
     "title": "OEM Manufacturing Service",
-    "lead": "End-to-end OEM solutions from Idea to Delivery.",
+    "lead": "End-to-end OEM solutions\nfrom Idea to Delivery.",
     "categories": [
       {
         "title": "Seasoning Powder",
@@ -312,52 +312,163 @@
     "packages": {
       "title": "OEM Package Model",
       "featuredLabel": "Recommended",
+      "sectionLabels": {
+        "suitableFor": "Ideal For",
+        "included": "What’s Included",
+        "highlights": "Key Benefits"
+      },
       "items": [
         {
-          "tier": "Tier 1",
-          "name": "Starter",
-          "subtitle": "Small batch: 20-50 kg",
-          "price": "15,000 - 35,000 THB",
-          "features": [
-            "Standard recipe development",
-            "Small batch production",
-            "Basic packaging guidance",
-            "One design revision"
+          "tier": "PACKAGE 1",
+          "name": "Test Your\nMarket",
+          "subtitle": "For Market Testing",
+          "minAmount": "MOQ: 10-20 kg.",
+          "price": "8,900-12,000 THB",
+          "suitableFor": [
+            "Creators",
+            "Influencers",
+            "TikTok Sellers",
+            "Restaurants",
+            "Start-up SMEs",
+            "Brands Testing the Market"
           ],
-          "footnote": "Lead time: 15-20 days",
+          "included": [
+            "1 Basic Formula Development",
+            "1 Formula Revision",
+            "Product Samples for Testing",
+            "Low Minimum Production Quantity",
+            "Manufacturing in Certified Factories",
+            "Basic Product Cost Estimation",
+            "Initial Pricing Recommendation",
+            "Product Consultation",
+            "Packaging Guidance",
+            "1 Basic Label Design",
+            "Basic Quality Inspection"
+          ],
+          "highlights": [
+            "Reduce Risk Before Full Investment",
+            "Ideal for Market Testing",
+            "Low Initial Investment",
+            "Expert Team Support for Product Planning"
+          ],
+          "footnote": "Lead time: 10-15 days",
           "featured": false
         },
         {
-          "tier": "Tier 2",
-          "name": "Professional",
-          "subtitle": "Mid batch: 100-200 kg",
-          "price": "50,000 - 120,000 THB",
-          "features": [
-            "Custom recipe development",
-            "Flavor adjustment rounds",
-            "Packaging & label design",
-            "Regulatory consultation"
+          "tier": "PACKAGE 2",
+          "name": "Start Your\nBrand",
+          "subtitle": "For Emerging Brands",
+          "minAmount": "MOQ: 20-50 kg.",
+          "price": "19,000-39,000 THB",
+          "suitableFor": [
+            "Restaurants",
+            "SMEs",
+            "Start-up",
+            "First-Time Brand Owners"
           ],
-          "footnote": "Lead time: 25-30 days",
-          "featured": true
+          "included": [
+            "Custom Brand Formula Development",
+            "Up to 2 Formula Revisions",
+            "Product Samples Before Mass Production",
+            "Low MOQ Production Support",
+            "Manufacturing in Certified Factories",
+            "Product Cost & Gross Profit Estimation",
+            "Initial Pricing Recommendation",
+            "Basic Business Consultation",
+            "Packaging Consultation",
+            "1 Product Label Design",
+            "Basic Product Mockup",
+            "Packaging Supplier Recommendation",
+            "Product Quality Control (QC)",
+            "Basic FDA Registration Guidance"
+          ],
+          "highlights": [
+            "Easy Start for Your Own Brand",
+            "Suitable for Emerging Food Brands",
+            "Lower MOQ Than Industry Standard",
+            "End-to-End Support from Development to Launch"
+          ],
+          "footnote": "Lead time: 15-25 days",
+          "featured": false
         },
         {
-          "tier": "Tier 3",
-          "name": "Enterprise",
-          "subtitle": "Large batch: 1,000 kg+",
-          "price": "Custom quotation",
-          "features": [
-            "Advanced R&D and formulation",
-            "Full branding system support",
-            "Regulatory documentation",
-            "Dedicated QC and logistics"
+          "tier": "PACKAGE 3",
+          "name": "Build Your\nBrand",
+          "subtitle": "For Serious Brand Building",
+          "minAmount": "MOQ: 100-200 kg.",
+          "price": "59,000-129,000 THB",
+          "suitableFor": [
+             "Brand Owners",
+             "Growing SMEs",
+             "Distributors",
+             "Long-Term Brand Builders"
           ],
-          "footnote": "Lead time: by project scope",
-          "featured": false,
-          "includedAddOns": [
-            "FDA registration (customer owned)",
-            "Halal registration"
-          ]
+          "included": [
+            "Advanced Formula R&D",
+            "Market Positioning Analysis",
+            "Multiple Formula Revisions",
+            "Pre-Production Samples",
+            "Flexible MOQ with Scalable Production",
+            "Manufacturing in Certified Facilities",
+            "Cost & Profit Planning",
+            "Pricing & Margin Strategy",
+            "In-Depth Business Consultation",
+            "Packaging Design Support",
+            "Brand Identity & Positioning Development",
+            "Product Mockup Design",
+            "Sales & Marketing Guidance",
+            "Product Quality Control (QC)",
+            "FDA & Halal Support",
+            "Preliminary Shelf-Life Testing"
+          ],
+          "highlights": [
+            "Ready for Commercial Launch",
+            "Ideal for Long-Term Brand Growth",
+            "Complete Brand Support",
+            "Strategic Guidance for Brand Image & Positioning"
+          ],
+          "footnote": "Lead time: 25-35 days",
+          "featured": false
+        },
+        {
+          "tier": "PACKAGE 4",
+          "name": "Scale Your\nBrand",
+          "subtitle": "For Brands Ready to Scale",
+          "minAmount": "MOQ: 500-1,000+ kg.",
+          "price": "Custom Pricing",
+          "suitableFor": [
+            "Distributors",
+            "Modern Trade",
+            "Export Businesses",
+            "Brands Expanding into Larger Markets"
+          ],
+          "included": [
+            "Premium Custom Formula Development",
+            "Formula & Cost Optimization for Long-Term Growth",
+            "Business-Scale Product Samples",
+            "High-Volume Production Support",
+            "Production & Supply Chain Planning",
+            "Manufacturing Cost Optimization",
+            "Pricing & Business Strategy Planning",
+            "Dedicated Business Consultant",
+            "Packaging Improvement & Development",
+            "Brand Image Development for Commercial Scale",
+            "Long-Term OEM Manufacturing Support",
+            "Advanced Quality Control System",
+            "Regulatory, Compliance & Export Support",
+            "FDA, Halal & Related Certification Support",
+            "Export & Business Documentation Preparation",
+            "Health Claim Consultation",
+            "Export-Ready Product Support"
+          ],
+          "highlights": [
+            "Supports Long-Term Brand Growth",
+            "Improved Production Cost Efficiency",
+            "Ready for Modern Trade & Export Markets",
+            "Dedicated Support for Business Expansion"
+          ],
+          "footnote": "Lead time: Project Scope",
+          "featured": false
         }
       ]
     },
@@ -423,7 +534,11 @@
       "totalUnavailable": "Custom quotation",
       "includedLabel": "Included",
       "selectedLabel": "Selected",
-      "emptyLabel": "Select a package, add-ons, or a subscription."
+      "emptyLabel": "Select a package, add-ons, or a subscription.",
+      "itemsLabel": "Selected items",
+      "actionLabel": "Contact for quote",
+      "packageLabel": "Selected package",
+      "addOnLabel": "Add-on services"
     },
     "standards": {
       "title": "Standards",

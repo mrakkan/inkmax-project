@@ -138,7 +138,7 @@ export default async function Services({
               <h1 className="text-3xl font-semibold text-white/90! leading-tight sm:text-5xl">
                 {services.title}
               </h1>
-              <p className="text-base text-white/90! sm:text-lg">
+              <p className="text-base text-white/90! sm:text-lg whitespace-break-spaces">
                 {services.lead}
               </p>
             </div>

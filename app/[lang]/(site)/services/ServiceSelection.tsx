@@ -216,7 +216,7 @@ const SelectableCard = ({
       ) : null}
       <h3 className="mt-1 font-bold!">{price}</h3>
       {sections?.length ? (
-        <div className="mt-6 space-y-5 border-t pt-2 border-zinc-300">
+        <div className="mt-6 space-y-5 border-t pt-2 border-zinc-300 mb-4">
           {sections.map((section, index) => (
             <div key={`${section.label}-${index}`}>
               <p className="mt-4 text-xs font-semibold ">
