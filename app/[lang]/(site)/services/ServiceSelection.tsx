@@ -581,7 +581,34 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
           </svg>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-4">
-          {services.packages.items.map((item) => (
+          {services.packages.items.map((item) => {
+            const sections = (
+              [
+                {
+                  label:
+                    services.packages.sectionLabels?.suitableFor ??
+                    "Suitable for",
+                  items: item.suitableFor ?? [],
+                  tone: "blackdot",
+                },
+                {
+                  label:
+                    services.packages.sectionLabels?.included ??
+                    "What you get",
+                  items: item.included ?? item.features ?? [],
+                  tone: "dot",
+                },
+                {
+                  label:
+                    services.packages.sectionLabels?.highlights ??
+                    "Highlights",
+                  items: item.highlights ?? [],
+                  tone: "check",
+                },
+              ] satisfies NonNullable<SelectableCardProps["sections"]>
+            ).filter((section) => section.items.length > 0);
+
+            return (
             <SelectableCard
               key={item.name}
               header={
@@ -593,31 +620,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
               subtitle={item.subtitle}
               minAmount={item.minAmount}
               price={item.price}
-              sections={
-                [
-                  {
-                    label:
-                      services.packages.sectionLabels?.suitableFor ??
-                      "Suitable for",
-                    items: item.suitableFor ?? [],
-                    tone: "blackdot",
-                  },
-                  {
-                    label:
-                      services.packages.sectionLabels?.included ??
-                      "What you get",
-                    items: item.included ?? item.features ?? [],
-                    tone: "dot",
-                  },
-                  {
-                    label:
-                      services.packages.sectionLabels?.highlights ??
-                      "Highlights",
-                    items: item.highlights ?? [],
-                    tone: "check",
-                  },
-                ].filter((section) => section.items.length > 0)
-              }
+              sections={sections}
               footnote={item.footnote}
               badge={item.featured ? services.packages.featuredLabel : undefined}
               selected={item.name === selectedPackage}
@@ -628,7 +631,8 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
                 )
               }
             />
-          ))}
+            );
+          })}
         </div>
       </section>
 
