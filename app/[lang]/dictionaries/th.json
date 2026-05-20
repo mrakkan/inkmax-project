@@ -8,10 +8,10 @@
     "hero": {
       "tagline": [],
       "nav": [
-        "Company",
-        "Products",
-        "OEM",
-        "Overview"
+        "บริษัท",
+        "ผลิตภัณฑ์",
+        "บริการ OEM",
+        "ภาพรวม"
       ],
       "slides": [
         {
@@ -38,15 +38,12 @@
             "เราสร้าง คุณขยาย"
           ],
           "align": "left",
-          "image": "/images/HOME_OEM.jpg"
+          "image": "/images/Home_OEM.jpg"
         },
         {
           "id": "hero-4",
-          "title": "ร่วมกัน\nสร้างอนาคต",
-          "description": [
-            "ร่วมมือ สร้างสรรค์ เติบโต",
-            "เพื่อวันพรุ่งนี้ที่ยั่งยืน"
-          ],
+          "title": "จากงานวิจัย\nสู่โซลูชันที่ใช้ได้จริง",
+          "subtitle": "ปลดล็อกศักยภาพ",
           "align": "center",
           "image": "/images/Home_Overview.png"
         }

@@ -86,6 +86,7 @@ export default async function Home({
         slides={hero.slides}
         tagline={hero.tagline}
         navItems={hero.nav}
+        lang={lang}
       />
 
       <section className="relative z-10">

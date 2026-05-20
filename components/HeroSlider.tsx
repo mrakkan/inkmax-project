@@ -18,20 +18,23 @@ type HeroSliderProps = {
   slides: HeroSlide[];
   tagline?: string[];
   navItems?: string[];
+  lang?: string;
 };
 
 const DEFAULT_GRADIENT =
   "linear-gradient(120deg, rgba(224, 128, 128, 0.35) 0%, rgba(230, 142, 142, 0.45) 52%, rgba(255, 184, 150, 0.55) 100%), radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.35), transparent 55%)";
 
-const SLIDE_INTERVAL = 4800;
+const SLIDE_INTERVAL = 6800;
 
 export default function HeroSlider({
   slides,
   tagline = [],
   navItems = [],
+  lang,
 }: HeroSliderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const totalSlides = slides.length;
+  const isThai = (lang ?? "").toLowerCase().startsWith("th");
 
   const normalizedSlides = useMemo(() => {
     if (totalSlides > 0) {
@@ -143,7 +146,7 @@ export default function HeroSlider({
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(163,22,33,0.26) 62%, rgba(127,15,20,0.92) 100%)",
+                  "linear-gradient(180deg, rgba(163,22,33,0.26) 62%, rgba(59, 55, 55, 0.92) 100%)",
               }}
             />
           </div>
@@ -161,7 +164,12 @@ export default function HeroSlider({
         const isFirstSlide = index === 0;
         const isThirdSlide = index === 2;
         const isFourthSlide = index === 3;
-        const titleColor = isFirstSlide ? "#8b1419" : "#ffffff";
+        const hasThaiContent =
+          /[ก-๙]/.test(slide.title ?? "") ||
+          /[ก-๙]/.test(slide.subtitle ?? "") ||
+          (slide.description?.some((line) => /[ก-๙]/.test(line)) ?? false);
+        const useThaiSizing = isThai && hasThaiContent;
+        const titleColor = isFirstSlide ? "#d81e1eff" : "#ffffff";
         const subtitleColor = isFirstSlide
           ? "rgba(139, 20, 25, 0.80)"
           : "rgba(255, 255, 255, 0.90)";
@@ -174,17 +182,33 @@ export default function HeroSlider({
         const dotColor = isFirstSlide
           ? "rgba(139, 20, 25, 0.40)"
           : "rgba(255, 255, 255, 0.70)";
-        const titleFontSize = isThirdSlide
-          ? "clamp(2rem, 5vw, 4.2rem)"
-          : "clamp(1.6rem, 4vw, 3.4rem)";
-        const subtitleFontSize = isThirdSlide
-          ? "clamp(0.65rem, 1.4vw, 1rem)"
-          : isFirstSlide || isFourthSlide
-            ? "clamp(1.1rem, 3vw, 2.1rem)"
-            : "clamp(0.9rem, 1.8vw, 1.2rem)";
-        const descriptionFontSize = isThirdSlide
-          ? "clamp(1.8rem, 2vw, 1.8rem)"
-          : "clamp(1.9rem, 3vw, 2rem)";
+        const titleFontSize = useThaiSizing
+          ? isThirdSlide
+            ? "clamp(2.2rem, 5.4vw, 4.6rem)"
+            : "clamp(1.8rem, 4.4vw, 3.8rem)"
+          : isThirdSlide
+            ? "clamp(2rem, 5vw, 4.2rem)"
+            : isFirstSlide
+              ? "clamp(1.35rem, 3.4vw, 2.9rem)"
+              : "clamp(1.6rem, 4vw, 3.4rem)";
+        const subtitleFontSize = useThaiSizing
+          ? isThirdSlide
+            ? "clamp(0.8rem, 1.7vw, 1.2rem)"
+            : isFirstSlide || isFourthSlide
+              ? "clamp(1.25rem, 3.4vw, 2.35rem)"
+              : "clamp(1.05rem, 2.1vw, 1.5rem)"
+          : isThirdSlide
+            ? "clamp(0.65rem, 1.4vw, 1rem)"
+            : isFirstSlide || isFourthSlide
+              ? "clamp(1.1rem, 3vw, 2.1rem)"
+              : "clamp(0.9rem, 1.8vw, 1.2rem)";
+        const descriptionFontSize = useThaiSizing
+          ? isThirdSlide
+            ? "clamp(1.95rem, 2.2vw, 2.1rem)"
+            : "clamp(2.05rem, 3.3vw, 2.2rem)"
+          : isThirdSlide
+            ? "clamp(1.8rem, 2vw, 1.8rem)"
+            : "clamp(1.9rem, 3vw, 2rem)";
 
         return (
           <div key={`${slide.id}-content`} className="absolute inset-0 flex items-center px-6">
@@ -275,16 +299,16 @@ export default function HeroSlider({
       <button
         type="button"
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-black/45 transition hover:text-black/70"
+        className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-black/70"
         onClick={handlePrev}
       >
         <svg
-          width="16"
-          height="16"
+          width="25"
+          height="25"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
+          stroke="white"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -294,16 +318,16 @@ export default function HeroSlider({
       <button
         type="button"
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-black/45 transition hover:text-black/70"
+        className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-black/70"
         onClick={handleNext}
       >
         <svg
-          width="16"
-          height="16"
+          width="25"
+          height="25"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
+          stroke="white"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -319,7 +343,7 @@ export default function HeroSlider({
                 key={`${item}-${index}`}
                 type="button"
                 aria-label={`Go to slide ${index + 1}`}
-                className="group flex flex-col items-center gap-3 whitespace-nowrap"
+                className="group flex flex-col items-center gap-0 whitespace-nowrap lg:gap-3"
                 onClick={() => setActiveIndex(index)}
               >
                 <span
@@ -330,7 +354,7 @@ export default function HeroSlider({
                   }`}
                 />
                 <span
-                  className={`text-[10px] uppercase tracking-[0.26em] ${
+                  className={`hidden text-[10px] uppercase tracking-[0.26em] lg:block [@media(max-height:520px)]:hidden ${
                     index === activeIndex ? "text-white" : "text-white/80"
                   }`}
                   style={{ textShadow: "0 10px 22px rgba(0,0,0,0.28)" }}
@@ -360,7 +384,7 @@ export default function HeroSlider({
           </div>
           {navItems.length > 0 ? (
             <div
-              className="flex items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-white/80"
+              className="hidden items-center justify-center gap-6 whitespace-nowrap text-[10px] uppercase tracking-[0.26em] text-white/80 lg:flex [@media(max-height:520px)]:hidden"
               style={{ textShadow: "0 10px 22px rgba(0,0,0,0.28)" }}
             >
               {navItems.map((item, index) => (
