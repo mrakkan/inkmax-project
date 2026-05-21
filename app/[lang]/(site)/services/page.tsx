@@ -111,9 +111,9 @@ export default async function Services({
   ];
 
   const categoryAssets = [
-    { image: "/service/SEASONING.png", accent: "bg-[#B91C1C]" },
-    { image: "/service/CURRY.jpg", accent: "bg-[#166534]" },
-    { image: "/service/SAUCE.png", accent: "bg-[#D97706]" },
+    { image: "/service/SEASONING.webp", accent: "bg-[#B91C1C]" },
+    { image: "/service/CURRY.webp", accent: "bg-[#166534]" },
+    { image: "/service/SAUCE.webp", accent: "bg-[#D97706]" },
   ];
 
   return (
@@ -122,7 +122,7 @@ export default async function Services({
       <section className="mx-auto w-full">
         <div className="relative overflow-hidden">
           <Image
-            src="/service/OEMBANNER.jpg"
+            src="/OEMBANNER.webp"
             alt="OEM Manufacturing Service"
             fill
             priority
@@ -144,10 +144,10 @@ export default async function Services({
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
-                <Image src="/service/FDA_LOGO.png" alt="FDA logo" width={56} height={56} className="scale-75" />
+                <Image src="/service/FDA_LOGO.webp" alt="FDA logo" width={56} height={56} className="scale-75" />
               </div>
               <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
-                <Image src="/service/HALAL_LOGO.png" alt="Halal logo" width={72} height={72} className="scale-115" />
+                <Image src="/service/HALAL_LOGO.webp" alt="Halal logo" width={72} height={72} className="scale-115" />
               </div>
             </div>
           </div>
@@ -269,10 +269,10 @@ export default async function Services({
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex h-22 w-22 items-center justify-center rounded-2xl">
-              <Image src="/service/FDA_LOGO.png" alt="FDA logo" width={88} height={88} className="scale-75" />
+              <Image src="/service/FDA_LOGO.webp" alt="FDA logo" width={88} height={88} className="scale-75" />
             </div>
             <div className="flex h-28 w-28 items-center justify-center rounded-2xl ">
-              <Image src="/service/HALAL_LOGO.png" alt="Halal logo" width={112} height={112} className="scale-115" />
+              <Image src="/service/HALAL_LOGO.webp" alt="Halal logo" width={112} height={112} className="scale-115" />
             </div>
           </div>
 
@@ -299,7 +299,7 @@ export default async function Services({
             <div className="w-full max-w-lg shrink-0">
               <div className="relative mx-auto aspect-[47/23] w-full">
                 <Image
-                  src="/service/JAR.png"
+                  src="/service/JAR.webp"
                   alt="OEM Manufacturing Service"
                   fill
                   sizes="(min-width: 1024px) 480px, 100vw"
