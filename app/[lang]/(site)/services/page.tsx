@@ -285,15 +285,15 @@ export default async function Services({
           <div className="relative mx-auto flex min-h-[320px] max-w-7xl px-6 flex-col gap-8 py-12 text-white sm:min-h-[380px] lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:px-10">
             <div className="flex max-w-2xl flex-col gap-8">
               <div className="flex flex-col gap-4">
-                <h1 className="text-3xl font-bold! text-(--primary)! whitespace-nowrap leading-tight sm:text-5xl">
+                <h2 className="font-bold! text-(--primary)! leading-tight sm:text-5xl">
                   {services.cta.title}
-                </h1>
+                </h2>
                 <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="150" height="4" rx="2" fill="#A11111" />
                 </svg>
               </div>
-              <p className="text-black/90! font-bold whitespace-break-spaces">
-                {services.cta.body} <span className="text-(--primary)!">{services.cta.highlight}</span>
+              <p className="text-black/90! whitespace-break-spaces">
+                {services.cta.body} <span className="text-(--primary)! font-bold">{services.cta.highlight}</span>
               </p>
             </div>
             <div className="w-full max-w-lg shrink-0">
