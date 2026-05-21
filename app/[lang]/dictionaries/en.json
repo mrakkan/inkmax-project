@@ -530,23 +530,24 @@
     "selection": {
       "summaryTitle": "Summary",
       "totalLabel": "Estimated total",
-      "totalNote": "Plus custom-priced items",
+      "totalNote": "Note: Subject to actual requirements.",
       "totalUnavailable": "Custom quotation",
       "includedLabel": "Included",
       "selectedLabel": "Selected",
       "emptyLabel": "Select a package, add-ons, or a subscription.",
       "itemsLabel": "Selected items",
-      "actionLabel": "Contact for quote",
+      "actionLabel": "Request a Quotation",
       "packageLabel": "Selected package",
       "addOnLabel": "Add-on services"
     },
     "standards": {
       "title": "Standards",
-      "body": "International manufacturing standards for safety, quality, and reliability."
+      "body": "Manufactured under international standards to ensure safety, quality,\nand product reliability throughout every stage of production."
     },
     "cta": {
-      "title": "Start your brand with our OEM experts",
-      "body": "We support formulation, production, and packaging to launch with confidence."
+      "title": "Ready to Launch Your Brand?",
+      "body": "Start Your Seasoning Brand with a Team\nThat Supports You from Idea to",
+      "highlight": "Market Launch"
     }
   },
   "footer": {

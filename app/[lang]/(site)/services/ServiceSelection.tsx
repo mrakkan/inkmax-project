@@ -573,7 +573,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
     <>
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="text-center flex flex-col items-center justify-center gap-4 my-12">
-          <h2 className="text-2xl font-semibold text-[#A31621]!">
+          <h2 className="text-2xl font-semibold text-(--primary)!">
             {services.packages.title}
           </h2>
           <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -638,7 +638,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="text-center flex flex-col items-center justify-center gap-4 my-4">
-          <h2 className="text-2xl font-semibold text-[#A31621]!">
+          <h2 className="text-2xl font-semibold text-(--primary)!">
             {services.addOns.title}
           </h2>
           <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -667,7 +667,7 @@ export default function ServiceSelection({ lang, services }: ServiceSelectionPro
 
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="text-center flex flex-col items-center justify-center gap-4 my-4">
-          <h2 className="text-2xl font-semibold text-[#A31621]!">
+          <h2 className="text-2xl font-semibold text-(--primary)!">
             {services.subscription.title}
           </h2>
           <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">

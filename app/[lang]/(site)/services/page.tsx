@@ -184,10 +184,10 @@ export default async function Services({
                   </div>
 
                   <div className="relative z-10">
-                    <h3 className="text-xl font-semibold text-[#A31621]!">
+                    <h3 className="text-xl font-semibold text-(--primary)!">
                       {item.title}
                     </h3>
-                    <p className="mt-1 text-base font-semibold text-[#A31621]">
+                    <p className="mt-1 text-base font-semibold text-(--primary)">
                       {item.subtitle}
                     </p>
                   </div>
@@ -211,7 +211,7 @@ export default async function Services({
       {/* ------------------- End-to-End Process ---------------------- */}
       <section>
         <div className="text-center flex flex-col items-center justify-center gap-4 my-12">
-          <h2 className="text-2xl font-semibold text-[#A31621]!">
+          <h2 className="text-2xl font-semibold text-(--primary)!">
             {services.process.title}
           </h2>
           <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -232,13 +232,13 @@ export default async function Services({
                     key={step.title}
                     className="relative rounded-3xl border border-white/60 bg-white/80 p-12 text-center shadow-sm"
                   >
-                    <div className="absolute left-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-[#A31621] text-xs font-semibold text-white">
+                    <div className="absolute left-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-(--primary) text-xs font-semibold text-white">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                     <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white">
                       {icon}
                     </div>
-                    <h4 className="font-semibold text-[#A31621]!">
+                    <h4 className="font-semibold text-(--primary)!">
                       {step.title}
                     </h4>
                     <p className="mt-2 text-zinc-600">{step.body}</p>
@@ -260,7 +260,7 @@ export default async function Services({
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col items-center justify-between gap-6  text-center md:flex-row md:text-left">
           <div>
-            <h2 className="text-[#A31621]!">
+            <h2 className="text-(--primary)!">
               {services.standards.title}
             </h2>
             <p className="mt-2 whitespace-break-spaces">
@@ -282,18 +282,10 @@ export default async function Services({
       {/* ------------------- End ---------------------- */}
       <section className="mx-auto w-full">
         <div className="relative overflow-hidden">
-          <Image
-            src="/service/Close.jpg"
-            alt="OEM Manufacturing Service"
-            fill
-            priority
-            className="object-cover opacity-60"
-            sizes="100vw"
-          />
-          <div className="relative flex min-h-[320px] max-w-6xl flex-col justify-center gap-6 mx-auto px-6 py-12 text-white sm:min-h-[380px] lg:px-12">
-            <div className="flex flex-col justify-center items-center gap-8 text-center">
-              <div className="flex flex-col justify-center items-center gap-4">
-                <h1 className="text-3xl font-bold! text-(--primary)! whitespace-break-spaces leading-tight sm:text-5xl">
+          <div className="relative mx-auto flex min-h-[320px] max-w-7xl px-6 flex-col gap-8 py-12 text-white sm:min-h-[380px] lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:px-10">
+            <div className="flex max-w-2xl flex-col gap-8">
+              <div className="flex flex-col gap-4">
+                <h1 className="text-3xl font-bold! text-(--primary)! whitespace-nowrap leading-tight sm:text-5xl">
                   {services.cta.title}
                 </h1>
                 <svg width="150" height="4" viewBox="0 0 150 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -301,8 +293,19 @@ export default async function Services({
                 </svg>
               </div>
               <p className="text-black/90! font-bold whitespace-break-spaces">
-                {services.cta.body}
+                {services.cta.body} <span className="text-(--primary)!">{services.cta.highlight}</span>
               </p>
+            </div>
+            <div className="w-full max-w-lg shrink-0">
+              <div className="relative mx-auto aspect-[47/23] w-full">
+                <Image
+                  src="/service/JAR.png"
+                  alt="OEM Manufacturing Service"
+                  fill
+                  sizes="(min-width: 1024px) 480px, 100vw"
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
